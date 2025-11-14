@@ -659,14 +659,15 @@ def search_website_content(query, website_data):
 def check_book_availability_opac(title="", author="", isbn="", accession_numbers=None, cache_timeout=300, force_refresh=False):
     """
     Check book availability from IIT Ropar OPAC (Online Public Access Catalog).
+    Always fetches fresh data from OPAC - no caching used.
     
     Args:
         title (str): Book title to search for
         author (str): Author name
         isbn (str): ISBN number
         accession_numbers (list): List of accession numbers to search for (preferred method)
-        cache_timeout (int): Cache validity in seconds (default 5 minutes)
-        force_refresh (bool): If True, bypass cache for real-time check
+        cache_timeout (int): Legacy parameter - no longer used
+        force_refresh (bool): Legacy parameter - no longer used
         
     Returns:
         dict: Availability information or None if not found/error
@@ -691,19 +692,8 @@ def check_book_availability_opac(title="", author="", isbn="", accession_numbers
     cache_file.parent.mkdir(exist_ok=True)
     
     try:
-        # Check cache first (unless force refresh requested)
-        if not force_refresh and cache_file.exists():
-            import time
-            cache_age = time.time() - cache_file.stat().st_mtime
-            if cache_age < cache_timeout:
-                try:
-                    with open(cache_file, 'r', encoding='utf-8') as f:
-                        cached_data = json.load(f)
-                        if cache_key in cached_data:
-                            logger.info(f"✅ Using cached OPAC data for '{cache_key}'")
-                            return cached_data[cache_key]
-                except (json.JSONDecodeError, KeyError):
-                    pass
+        # Skip cache entirely for availability checks - always get fresh OPAC data
+        logger.info(f"🌐 Fetching fresh availability data from OPAC (cache bypassed)")
         
         # Construct search query - prioritize accession numbers
         search_terms = []
@@ -863,22 +853,8 @@ def check_book_availability_opac(title="", author="", isbn="", accession_numbers
         else:
             availability_info["status"] = "not_found"
         
-        # Cache the result
-        try:
-            if cache_file.exists():
-                with open(cache_file, 'r', encoding='utf-8') as f:
-                    cached_data = json.load(f)
-            else:
-                cached_data = {}
-            
-            cached_data[cache_key] = availability_info
-            
-            with open(cache_file, 'w', encoding='utf-8') as f:
-                json.dump(cached_data, f, indent=2, ensure_ascii=False)
-        except Exception as cache_error:
-            logger.warning(f"Failed to cache OPAC data: {cache_error}")
-        
-        logger.info(f"✅ OPAC check complete: {availability_info['status']} ({availability_info['available_copies']}/{availability_info['total_copies']} copies)")
+        # Skip caching for availability checks - always get fresh data
+        logger.info(f"✅ OPAC check complete: {availability_info['status']} ({availability_info['available_copies']}/{availability_info['total_copies']} copies) - Fresh data (not cached)")
         return availability_info
         
     except Exception as e:
@@ -1976,7 +1952,8 @@ def format_books_for_widget(results):
                     'collection': detail.get('collection', 'Unknown'),
                     'status': detail.get('status', 'Unknown'),
                     'barcode': detail.get('barcode', ''),
-                    'call_number': detail.get('call_number', '')
+                    'call_number': detail.get('call_number', ''),
+                    'due_date': detail.get('due_date', '')
                 }
                 item_details.append(item_info)
             

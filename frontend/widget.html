@@ -398,15 +398,15 @@
             box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nalanda-chat-window {
-                width: calc(100vw - 40px);
-                height: calc(100vh - 100px);
-                right: 20px;
-                left: 20px;
-                bottom: 80px;
-            }
+        /* Performance optimizations */
+        .nalanda-chat-toggle-btn,
+        .nalanda-chat-window,
+        .book-card {
+            will-change: transform, opacity;
+        }
+        
+        .nalanda-chat-messages {
+            contain: layout style paint;
         }
     </style>
 </head>
@@ -448,11 +448,15 @@
 
     <script>
         (function() {
+            // Performance optimizations for Nalanda Library Chatbot Widget
+            // - Removed slow typewriter effect (was creating DOM elements per character)
+            // - Use DocumentFragment for bulk DOM operations
+            // - Debounced event handlers to prevent rapid clicks
+            // - RequestAnimationFrame for smooth scrolling
+            // - Passive event listeners where appropriate
+            // - Input validation and processing state management
+            
             // Configuration - Backend API endpoint
-            // Update this based on your setup:
-            // Development: 'http://localhost:8000/chat'
-            // Production: 'https://your-domain.com/api/chat'
-            const API_URL = 'http://localhost:8000/chat';
             
             // DOM Elements
             const toggleBtn = document.getElementById('nalanda-chat-toggle');
@@ -462,44 +466,87 @@
             const inputField = document.getElementById('nalanda-chat-input');
             const sendBtn = document.getElementById('nalanda-chat-send');
 
-            // Toggle chat window
-            toggleBtn.addEventListener('click', function() {
-                chatWindow.classList.add('active');
-                inputField.focus();
-            });
+            // Performance optimizations
+            let isProcessing = false;
+            let clickTimeout;
 
-            closeBtn.addEventListener('click', function() {
-                chatWindow.classList.remove('active');
+            // Debounced toggle function
+            function toggleChat() {
+                if (clickTimeout) return;
                 
-                // Clear all chat messages when closing
-                messagesContainer.innerHTML = '';
-            });
+                clickTimeout = setTimeout(() => {
+                    clickTimeout = null;
+                }, 300);
 
-            // Send message function
+                const isActive = chatWindow.classList.contains('active');
+                
+                if (isActive) {
+                    // Clear messages when closing for better performance
+                    messagesContainer.innerHTML = '';
+                    chatWindow.classList.remove('active');
+                } else {
+                    chatWindow.classList.add('active');
+                    // Focus input after animation
+                    setTimeout(() => inputField.focus(), 300);
+                }
+            }
+
+            // Optimized event listeners with passive where appropriate
+            toggleBtn.addEventListener('click', toggleChat, { passive: true });
+            closeBtn.addEventListener('click', toggleChat, { passive: true });
+
+            // Optimized send message with processing check
+            function handleSendMessage() {
+                if (isProcessing || inputField.disabled) return;
+                isProcessing = true;
+                
+                sendMessage();
+                
+                // Reset processing flag after a short delay
+                setTimeout(() => { isProcessing = false; }, 100);
+            }
+
+
+
+            // Send message function - optimized
             function sendMessage() {
                 const message = inputField.value.trim();
                 if (!message) return;
+
+                // Disable input while processing
+                inputField.disabled = true;
+                sendBtn.disabled = true;
+                sendBtn.textContent = 'Sending...';
 
                 // Add user message to chat
                 addMessage(message, 'user');
                 inputField.value = '';
 
-                // Show typing indicator
-                const typingIndicator = document.createElement('div');
-                typingIndicator.className = 'nalanda-typing-indicator active';
-                typingIndicator.innerHTML = '<span class="nalanda-typing-dot"></span><span class="nalanda-typing-dot"></span><span class="nalanda-typing-dot"></span>';
+                // Create and show typing indicator (reuse if possible)
+                let typingIndicator = messagesContainer.querySelector('.nalanda-typing-indicator');
+                if (!typingIndicator) {
+                    typingIndicator = document.createElement('div');
+                    typingIndicator.className = 'nalanda-typing-indicator';
+                    typingIndicator.innerHTML = '<span class="nalanda-typing-dot"></span><span class="nalanda-typing-dot"></span><span class="nalanda-typing-dot"></span>';
+                }
+                typingIndicator.classList.add('active');
                 messagesContainer.appendChild(typingIndicator);
                 scrollToBottom();
 
-                // Send to backend API
+                // Send to backend API with timeout
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
                 fetch(API_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ query: message })
+                    body: JSON.stringify({ query: message }),
+                    signal: controller.signal
                 })
                 .then(response => {
+                    clearTimeout(timeoutId);
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
@@ -507,6 +554,7 @@
                 })
                 .then(data => {
                     // Remove typing indicator
+                    typingIndicator.classList.remove('active');
                     typingIndicator.remove();
                     
                     // Add bot response - handle both 'answer' and 'response' fields
@@ -514,128 +562,221 @@
                     addMessage(answer, 'bot');
                 })
                 .catch(error => {
+                    clearTimeout(timeoutId);
                     console.error('Error:', error);
+                    typingIndicator.classList.remove('active');
                     typingIndicator.remove();
-                    addMessage('⚠️ Sorry, I encountered an error connecting to the server. Please make sure the backend API is running at ' + API_URL, 'bot');
+                    
+                    const errorMsg = error.name === 'AbortError' 
+                        ? '⚠️ Request timed out. Please try again.'
+                        : '⚠️ Sorry, I encountered an error connecting to the server. Please make sure the backend API is running.';
+                    addMessage(errorMsg, 'bot');
+                })
+                .finally(() => {
+                    // Re-enable input
+                    inputField.disabled = false;
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = 'Send';
+                    inputField.focus();
                 });
             }
 
-            // Format JSON book results into HTML
+            // Format JSON book results into HTML - optimized version
             function formatBookResults(text) {
-                console.log('formatBookResults called with:', text.substring(0, 200) + '...');
                 try {
                     // Try to parse JSON from the text
                     const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/);
-                    console.log('JSON match found:', !!jsonMatch);
                     if (jsonMatch) {
                         const jsonData = JSON.parse(jsonMatch[1]);
-                        console.log('Parsed JSON data:', jsonData);
+                        
                         // Handle both array format and object with books property
                         let books = [];
                         if (Array.isArray(jsonData)) {
                             books = jsonData;
-                            console.log('Found books as array:', books.length);
                         } else if (jsonData.books && Array.isArray(jsonData.books)) {
                             books = jsonData.books;
-                            console.log('Found books in jsonData.books:', books.length);
                         }
                         
                         if (books.length > 0) {
-                            let html = '<div style="margin-top: 10px;">';
-                            html += `<strong>📚 Found ${books.length} book(s):</strong><br><br>`;
+                            // Pre-calculate status classes to avoid repeated computations
+                            const statusClasses = {
+                                available: 'available',
+                                issued: 'issued',
+                                unavailable: 'issued',
+                                unknown: 'unknown'
+                            };
                             
-                            books.forEach((book, index) => {
-                                console.log('Processing book:', book.title, 'Status:', book.status, 'Availability:', book.availability);
-                                // Get availability status - prefer OPAC data, fallback to database copies
+                            const statusTexts = {
+                                available: '📚 Available',
+                                issued: '📖 Issued',
+                                unavailable: '📖 Unavailable',
+                                unknown: '❓ Status Unknown'
+                            };
+                            
+                            // Use document fragment for better performance
+                            const fragment = document.createDocumentFragment();
+                            const container = document.createElement('div');
+                            container.style.marginTop = '10px';
+                            
+                            const header = document.createElement('strong');
+                            header.textContent = `📚 Found ${books.length} book(s):`;
+                            container.appendChild(header);
+                            container.appendChild(document.createElement('br'));
+                            container.appendChild(document.createElement('br'));
+                            
+                            // Process books in batches if there are many
+                            const processBook = (book) => {
                                 const availability = book.availability || {};
                                 let status = availability.status || 'unknown';
                                 let available = availability.available_copies || 0;
                                 let total = availability.total_copies || 0;
-                                let availabilityText = '';
-                                let availabilityClass = 'unknown';
                                 
                                 // If no OPAC data, use database copies information
                                 if (!availability.status && book.copies) {
-                                    // Assume all copies are available if no OPAC data
                                     total = parseInt(book.copies) || 0;
                                     available = total;
                                     status = total > 0 ? 'available' : 'unavailable';
                                 }
                                 
-                                if (status === 'available') {
-                                    availabilityText = `📚 Available (${available}/${total})`;
-                                    availabilityClass = 'available';
-                                } else if (status === 'issued') {
-                                    availabilityText = `📖 Issued (${available}/${total})`;
-                                    availabilityClass = 'issued';
-                                } else if (status === 'unavailable') {
-                                    availabilityText = `📖 Unavailable (${available}/${total})`;
-                                    availabilityClass = 'issued';
-                                } else {
-                                    availabilityText = '❓ Status Unknown';
-                                    availabilityClass = 'unknown';
+                                const availabilityClass = statusClasses[status] || 'unknown';
+                                const availabilityText = `${statusTexts[status] || '❓ Status Unknown'} (${available}/${total})`;
+                                
+                                // Create book card
+                                const bookCard = document.createElement('div');
+                                bookCard.className = 'book-card';
+                                
+                                // Book title
+                                const titleDiv = document.createElement('div');
+                                titleDiv.className = 'book-title';
+                                titleDiv.textContent = book.title || 'Unknown Title';
+                                bookCard.appendChild(titleDiv);
+                                
+                                // Book author
+                                if (book.author) {
+                                    const authorDiv = document.createElement('div');
+                                    authorDiv.className = 'book-author';
+                                    authorDiv.textContent = `by ${book.author}`;
+                                    bookCard.appendChild(authorDiv);
                                 }
                                 
-                                html += `
-                                    <div class="book-card">
-                                        <div class="book-title">${book.title || 'Unknown Title'}</div>
-
-                                        ${book.author ? `
-                                            <div class="book-author">by ${book.author}</div>
-                                        ` : ''}
-
-                                        <div class="book-meta">
-                                            ${book.year ? `<span>📅 ${book.year}</span>` : ''}
-                                            ${book.copies ? `<span>📚 Copies: ${book.copies}</span>` : ''}
-                                            ${book.item_type ? `<span>📖 Type: ${book.item_type}</span>` : ''}
-                                        </div>
-
-                                        ${book.call_numbers ? `
-                                            <div class="book-field"><strong>Call Number:</strong> 
-                                                ${Array.isArray(book.call_numbers) ? book.call_numbers.join(', ') : book.call_numbers}
-                                            </div>
-                                        ` : ''}
-
-                                        ${book.accessions ? `
-                                            <div class="book-field">
-                                                <strong>Accession #:</strong>  
-                                                ${Array.isArray(book.accessions) ? book.accessions.join(', ') : book.accessions}
-                                                <span class="book-badge ${availabilityClass}">
-                                                    ${availabilityText}
-                                                </span>
-                                            </div>
-                                        ` : `
-                                            <div class="book-field">
-                                                <span class="book-badge ${availabilityClass}">
-                                                    ${availabilityText}
-                                                </span>
-                                            </div>
-                                        `}
-
-                                        ${book.item_details && book.item_details.length ? `
-                                            <div class="item-box">
-                                                <div class="item-box-title">📋 Item Details:</div>
-
-                                                ${book.item_details.map(item => `
-                                                    <div class="item-row">
-                                                        <div class="item-info">
-                                                            <span class="item-type">${item.item_type} ${item.collection !== 'Unknown' ? `(${item.collection})` : ''}</span>
-                                                            <span class="item-status ${item.status === 'Available' ? 'item-status-available' : item.status === 'Checked out' ? 'item-status-issued' : 'item-status-other'}">
-                                                                ${item.status}
-                                                            </span>
-                                                            ${item.due_date && item.status === 'Checked out' ? `<span class="item-due-date">📅 Due: ${item.due_date}</span>` : ''}
-                                                        </div>
-                                                        ${item.barcode ? `<div class="item-barcode">🏷️ Barcode: ${item.barcode}</div>` : ''}
-                                                    </div>
-                                                `).join('')}
-                                            </div>
-                                        ` : ''}
-                                    </div>
-                                `;
+                                // Book meta
+                                const metaDiv = document.createElement('div');
+                                metaDiv.className = 'book-meta';
+                                
+                                if (book.year) {
+                                    const yearSpan = document.createElement('span');
+                                    yearSpan.textContent = `📅 ${book.year}`;
+                                    metaDiv.appendChild(yearSpan);
+                                }
+                                
+                                if (book.copies) {
+                                    const copiesSpan = document.createElement('span');
+                                    copiesSpan.textContent = `📚 Copies: ${book.copies}`;
+                                    metaDiv.appendChild(copiesSpan);
+                                }
+                                
+                                if (book.item_type) {
+                                    const typeSpan = document.createElement('span');
+                                    typeSpan.textContent = `📖 Type: ${book.item_type}`;
+                                    metaDiv.appendChild(typeSpan);
+                                }
+                                
+                                bookCard.appendChild(metaDiv);
+                                
+                                // Call numbers
+                                if (book.call_numbers) {
+                                    const callDiv = document.createElement('div');
+                                    callDiv.className = 'book-field';
+                                    const callStrong = document.createElement('strong');
+                                    callStrong.textContent = 'Call Number: ';
+                                    callDiv.appendChild(callStrong);
+                                    callDiv.appendChild(document.createTextNode(
+                                        Array.isArray(book.call_numbers) ? book.call_numbers.join(', ') : book.call_numbers
+                                    ));
+                                    bookCard.appendChild(callDiv);
+                                }
+                                
+                                // Accessions and availability badge
+                                const fieldDiv = document.createElement('div');
+                                fieldDiv.className = 'book-field';
+                                
+                                if (book.accessions) {
+                                    const accStrong = document.createElement('strong');
+                                    accStrong.textContent = 'Accession #: ';
+                                    fieldDiv.appendChild(accStrong);
+                                    fieldDiv.appendChild(document.createTextNode(
+                                        Array.isArray(book.accessions) ? book.accessions.join(', ') : book.accessions
+                                    ));
+                                }
+                                
+                                const badge = document.createElement('span');
+                                badge.className = `book-badge ${availabilityClass}`;
+                                badge.textContent = availabilityText;
+                                fieldDiv.appendChild(badge);
+                                
+                                bookCard.appendChild(fieldDiv);
+                                
+                                // Item details
+                                if (book.item_details && book.item_details.length) {
+                                    const itemBox = document.createElement('div');
+                                    itemBox.className = 'item-box';
+                                    
+                                    const itemTitle = document.createElement('div');
+                                    itemTitle.className = 'item-box-title';
+                                    itemTitle.textContent = '📋 Item Details:';
+                                    itemBox.appendChild(itemTitle);
+                                    
+                                    book.item_details.forEach(item => {
+                                        const itemRow = document.createElement('div');
+                                        itemRow.className = 'item-row';
+                                        
+                                        const itemInfo = document.createElement('div');
+                                        itemInfo.className = 'item-info';
+                                        
+                                        const itemType = document.createElement('span');
+                                        itemType.className = 'item-type';
+                                        itemType.textContent = `${item.item_type}${item.collection !== 'Unknown' ? ` (${item.collection})` : ''}`;
+                                        itemInfo.appendChild(itemType);
+                                        
+                                        const itemStatus = document.createElement('span');
+                                        const statusClass = item.status === 'Available' ? 'item-status-available' : 
+                                                          item.status === 'Checked out' ? 'item-status-issued' : 'item-status-other';
+                                        itemStatus.className = `item-status ${statusClass}`;
+                                        itemStatus.textContent = item.status;
+                                        itemInfo.appendChild(itemStatus);
+                                        
+                                        if (item.due_date && item.status === 'Checked out') {
+                                            const dueDate = document.createElement('span');
+                                            dueDate.className = 'item-due-date';
+                                            dueDate.textContent = `📅 Due: ${item.due_date}`;
+                                            itemInfo.appendChild(dueDate);
+                                        }
+                                        
+                                        itemRow.appendChild(itemInfo);
+                                        
+                                        if (item.barcode) {
+                                            const barcode = document.createElement('div');
+                                            barcode.className = 'item-barcode';
+                                            barcode.textContent = `🏷️ Barcode: ${item.barcode}`;
+                                            itemRow.appendChild(barcode);
+                                        }
+                                        
+                                        itemBox.appendChild(itemRow);
+                                    });
+                                    
+                                    bookCard.appendChild(itemBox);
+                                }
+                                
+                                return bookCard;
+                            };
+                            
+                            // Process all books
+                            books.forEach(book => {
+                                container.appendChild(processBook(book));
                             });
                             
-                            html += '</div>';
-                            return html;
+                            fragment.appendChild(container);
+                            return fragment;
                         }
                     }
                 } catch (e) {
@@ -644,8 +785,8 @@
                 return text; // Return original if not JSON
             }
 
-            // Add message to chat with typewriter effect for bot messages
-            function addMessage(text, sender) {
+            // Add message to chat - optimized version
+            function addMessage(content, sender) {
                 const messageDiv = document.createElement('div');
                 messageDiv.className = `nalanda-chat-message nalanda-${sender}-message`;
 
@@ -655,87 +796,63 @@
                 messageDiv.appendChild(bubbleDiv);
                 messagesContainer.appendChild(messageDiv);
 
-                // Handle HTML content for bot messages (backend may return formatted HTML)
+                // Handle content based on type and sender
                 if (sender === 'bot') {
-                    // Format JSON book results if present
-                    const formattedText = formatBookResults(text);
-                    // Apply typewriter effect for bot messages
-                    typeWriterEffect(bubbleDiv, formattedText);
-                } else {
-                    // User messages appear instantly
-                    bubbleDiv.textContent = text;
-                    scrollToBottom();
-                }
-            }
-
-            // Typewriter effect function
-            function typeWriterEffect(element, htmlText, speed = 10) {
-                // Remove HTML tags for character counting and timing
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = htmlText;
-                const textContent = tempDiv.textContent || tempDiv.innerText || '';
-                const totalChars = textContent.length;
-
-                let charIndex = 0;
-                let htmlIndex = 0;
-                let currentHtml = '';
-
-                function typeChar() {
-                    if (charIndex < totalChars) {
-                        // Find the next character in the HTML
-                        while (htmlIndex < htmlText.length) {
-                            const char = htmlText[htmlIndex];
-                            currentHtml += char;
-                            htmlIndex++;
-
-                            // Check if this character is visible text (not HTML tag)
-                            const tempCheck = document.createElement('div');
-                            tempCheck.innerHTML = currentHtml;
-                            const visibleText = tempCheck.textContent || tempCheck.innerText || '';
-
-                            if (visibleText.length > charIndex) {
-                                // This character is visible, update the display
-                                element.innerHTML = currentHtml;
-                                scrollToBottom();
-                                charIndex++;
-                                break;
-                            }
+                    if (typeof content === 'string') {
+                        // Check if it's JSON book results
+                        const formattedContent = formatBookResults(content);
+                        if (formattedContent !== content) {
+                            // It was JSON, formattedContent is a DocumentFragment
+                            bubbleDiv.appendChild(formattedContent);
+                        } else {
+                            // Regular text - use fast textContent
+                            bubbleDiv.textContent = content;
                         }
-
-                        setTimeout(typeChar, speed);
+                    } else if (content instanceof DocumentFragment) {
+                        // Already formatted content
+                        bubbleDiv.appendChild(content);
                     } else {
-                        // Typing complete, ensure final HTML is set
-                        element.innerHTML = htmlText;
-                        scrollToBottom();
+                        // Fallback
+                        bubbleDiv.textContent = String(content);
                     }
+                } else {
+                    // User messages - instant display
+                    bubbleDiv.textContent = content;
                 }
 
-                // Start the typewriter effect
-                typeChar();
+                scrollToBottom();
             }
 
-            // Scroll to bottom of messages
+            // Scroll to bottom of messages - optimized with RAF
             function scrollToBottom() {
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                // Use requestAnimationFrame for smoother scrolling
+                requestAnimationFrame(() => {
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                });
             }
 
             // Event listeners
-            sendBtn.addEventListener('click', sendMessage);
+            sendBtn.addEventListener('click', handleSendMessage, { passive: true });
             
             inputField.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
+                if (e.key === 'Enter' && !isProcessing) {
+                    handleSendMessage();
                 }
-            });
+            }, { passive: true });
 
-            // Handle clicking outside chat window to close
+            // Optimized outside click handler with throttling
+            let lastClickTime = 0;
             document.addEventListener('click', function(event) {
+                const now = Date.now();
+                if (now - lastClickTime < 100) return; // Throttle clicks
+                lastClickTime = now;
+
                 if (chatWindow.classList.contains('active') && 
                     !chatWindow.contains(event.target) && 
                     !toggleBtn.contains(event.target)) {
-                    chatWindow.classList.remove('active');
+                    toggleChat();
                 }
-            });
+            }, { passive: true });
         })();
     </script>
 </body>

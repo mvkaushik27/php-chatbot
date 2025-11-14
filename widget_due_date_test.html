@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Widget Due Date Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-data { background: #f0f0f0; padding: 10px; border-radius: 5px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Widget Due Date Test</h1>
+    <div class="test-data">
+        <strong>Test JSON Data:</strong><br>
+        <pre>{"title": "Data Structures with C", "author": "Lipschutz, B.", "availability": {"status": "issued", "available_copies": 0, "total_copies": 1}, "item_details": [{"item_type": "Books", "collection": "Nalanda LibraryCirculation Books", "status": "Checked out", "barcode": "14181", "due_date": "22/11/2025"}]}</pre>
+    </div>
+    <div id="test-output"></div>
+
+    <script>
+        // Test the formatBookResults function
+        function formatBookResults(books, originalText) {
+            let html = '<div style="margin-top: 10px;">';
+            html += '<div style="display: flex; flex-direction: column; gap: 12px;">';
+
+            books.forEach((book, index) => {
+                const availability = book.availability || {};
+                const status = availability.status || 'unknown';
+                const available = availability.available_copies || 0;
+                const total = availability.total_copies || 0;
+
+                let availabilityText = '';
+                let availabilityClass = 'unknown';
+
+                if (status === 'available') {
+                    availabilityText = `📚 Available (${available}/${total})`;
+                    availabilityClass = 'available';
+                } else if (status === 'issued') {
+                    availabilityText = `📖 Issued (${available}/${total})`;
+                    availabilityClass = 'issued';
+                } else {
+                    availabilityText = '❓ Status Unknown';
+                    availabilityClass = 'unknown';
+                }
+
+                html += `
+                    <div style="background: #f8f9fa; border-left: 3px solid #ff4b4b; padding: 12px; border-radius: 4px;">
+                        <div style="display: flex; gap: 15px; align-items: flex-start;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; color: #262730; margin-bottom: 4px;">${book.title}</div>
+                                ${book.author ? `<div style="color: #808495; font-size: 14px;">by ${book.author}</div>` : ''}
+
+                                ${book.item_details && book.item_details.length ? `
+                                    <div style="margin-top: 8px; padding: 8px; background: #f0f2f6; border-radius: 4px;">
+                                        <div style="font-size: 12px; font-weight: 600; color: #262730; margin-bottom: 4px;">📋 Item Details:</div>
+                                        ${book.item_details.map(item => `
+                                            <div style="font-size: 12px; color: #555; margin-bottom: 4px; padding: 4px; background: #fff; border-radius: 3px; border: 1px solid #e0e0e0;">
+                                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                                                    <span style="font-weight: 500;">${item.item_type} ${item.collection !== 'Unknown' ? `(${item.collection})` : ''}</span>
+                                                    <span style="${item.status === 'Available' ? 'color: #28a745;' : item.status === 'Checked out' ? 'color: #dc3545;' : 'color: #6c757d;'} font-weight: 600;">
+                                                        ${item.status}
+                                                    </span>
+                                                </div>
+                                                ${item.due_date && item.status === 'Checked out' ? `<div style="font-size: 11px; color: #dc3545; margin-top: 2px;">📅 Due: ${item.due_date}</div>` : ''}
+                                                ${item.barcode ? `<div style="font-size: 10px; color: #666; font-family: monospace; margin-top: 2px;">🏷️ Barcode: ${item.barcode}</div>` : ''}
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                ` : ''}
+                            </div>
+                            <div style="flex-shrink: 0; min-width: 140px;">
+                                <div class="availability-status ${availabilityClass}" style="
+                                    padding: 8px 12px;
+                                    border-radius: 6px;
+                                    font-weight: 600;
+                                    font-size: 14px;
+                                    text-align: center;
+                                    white-space: nowrap;
+                                    ${availabilityClass === 'available' ? 'background: #d4edda; color: #155724; border: 1px solid #c3e6cb;' : ''}
+                                    ${availabilityClass === 'issued' ? 'background: #fff3cd; color: #856404; border: 1px solid #ffeaa7;' : ''}
+                                    ${availabilityClass === 'unknown' ? 'background: #e2e3e5; color: #383d41; border: 1px solid #d6d8db;' : ''}
+                                ">
+                                    ${availabilityText}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div></div>';
+            return html;
+        }
+
+        // Test data
+        const testBooks = [{
+            "title": "Data Structures with C",
+            "author": "Lipschutz, B.",
+            "availability": {
+                "status": "issued",
+                "available_copies": 0,
+                "total_copies": 1
+            },
+            "item_details": [{
+                "item_type": "Books",
+                "collection": "Nalanda LibraryCirculation Books",
+                "status": "Checked out",
+                "barcode": "14181",
+                "due_date": "22/11/2025"
+            }]
+        }];
+
+        document.getElementById('test-output').innerHTML = formatBookResults(testBooks, '');
+    </script>
+</body>
+</html>

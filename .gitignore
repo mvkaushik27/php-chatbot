@@ -32,6 +32,10 @@ cache/
 backend/cache/
 logs/
 
+# OPAC cache (no longer used - always fetch fresh data)
+opac_cache.json
+backend/cache/opac_cache.json
+
 # FAISS indices (can be regenerated)
 *.faiss
 *_mapping.pkl
