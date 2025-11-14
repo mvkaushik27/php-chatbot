@@ -659,21 +659,21 @@ def search_website_content(query, website_data):
 def check_book_availability_opac(title="", author="", isbn="", accession_numbers=None, cache_timeout=300, force_refresh=False):
     """
     Check book availability from IIT Ropar OPAC (Online Public Access Catalog).
-    Always fetches fresh data from OPAC - no caching used.
+    Uses short-term caching (5 minutes) to speed up repeated queries.
     
     Args:
         title (str): Book title to search for
         author (str): Author name
         isbn (str): ISBN number
         accession_numbers (list): List of accession numbers to search for (preferred method)
-        cache_timeout (int): Legacy parameter - no longer used
-        force_refresh (bool): Legacy parameter - no longer used
+        cache_timeout (int): Cache duration in seconds (default: 300 = 5 minutes)
+        force_refresh (bool): Force fresh OPAC check, bypassing cache
         
     Returns:
         dict: Availability information or None if not found/error
     """
     if not NANDU_WEBSCRAPE:
-        logger.info("🌐 OPAC check disabled (NANDU_WEBSCRAPE=0)")
+        logger.debug("🌐 OPAC check disabled (NANDU_WEBSCRAPE=0)")
         return None
 
     if not HAS_BS4 or not HAS_REQUESTS:
@@ -692,8 +692,19 @@ def check_book_availability_opac(title="", author="", isbn="", accession_numbers
     cache_file.parent.mkdir(exist_ok=True)
     
     try:
-        # Skip cache entirely for availability checks - always get fresh OPAC data
-        logger.info(f"🌐 Fetching fresh availability data from OPAC (cache bypassed)")
+        # Check cache first (unless force_refresh)
+        if not force_refresh:
+            if cache_file.exists():
+                with open(cache_file, 'r', encoding='utf-8') as f:
+                    cache_data = json.load(f)
+                    if cache_key in cache_data:
+                        cached_entry = cache_data[cache_key]
+                        cache_time = cached_entry.get('cached_at', 0)
+                        if time.time() - cache_time < cache_timeout:
+                            logger.debug(f"⚡ Using cached OPAC data (age: {int(time.time() - cache_time)}s)")
+                            return cached_entry.get('data')
+        
+        logger.info(f"🌐 Fetching fresh availability data from OPAC")
         
         # Construct search query - prioritize accession numbers
         search_terms = []
@@ -853,8 +864,25 @@ def check_book_availability_opac(title="", author="", isbn="", accession_numbers
         else:
             availability_info["status"] = "not_found"
         
-        # Skip caching for availability checks - always get fresh data
-        logger.info(f"✅ OPAC check complete: {availability_info['status']} ({availability_info['available_copies']}/{availability_info['total_copies']} copies) - Fresh data (not cached)")
+        # Cache the result for faster subsequent queries
+        try:
+            cache_data = {}
+            if cache_file.exists():
+                with open(cache_file, 'r', encoding='utf-8') as f:
+                    cache_data = json.load(f)
+            
+            cache_data[cache_key] = {
+                'data': availability_info,
+                'cached_at': time.time()
+            }
+            
+            with open(cache_file, 'w', encoding='utf-8') as f:
+                json.dump(cache_data, f, indent=2)
+            logger.debug(f"💾 Cached OPAC result for {cache_key}")
+        except Exception as cache_error:
+            logger.warning(f"Failed to cache OPAC result: {cache_error}")
+        
+        logger.info(f"✅ OPAC check complete: {availability_info['status']} ({availability_info['available_copies']}/{availability_info['total_copies']} copies)")
         return availability_info
         
     except Exception as e:
@@ -1417,6 +1445,8 @@ def search_catalogue(query, limit=10):
     Searches across title, author, ISBN, call number with relevance scoring.
     """
     try:
+        if not query or not query.strip():
+            return []
         if not os.path.exists(CATALOGUE_DB):
             logger.error("Catalogue database not found")
             return []
@@ -1813,25 +1843,27 @@ def semantic_search(query, top_k=5):
         logger.warning(f"FAISS semantic search failed: {e}, trying TF-IDF fallback")
         return semantic_search_tfidf_fallback(query, top_k)
 
-def hybrid_book_search(query, intent: str | None = None, realtime_availability=False):
+def hybrid_book_search(query, intent: str | None = None, realtime_availability=False, check_availability=True):
     """Combine catalogue and semantic search, then merge duplicates.
     If intent == 'author', prefer author field in catalogue search.
     If realtime_availability=True, force refresh OPAC cache for real-time status.
+    If check_availability=False, skip OPAC checks for faster responses.
     """
     all_results = []
     
     # Try catalogue search (author-focused if intent indicates author)
+    # Reduce limits for faster initial results
     if intent == "author":
-        catalogue_results = search_catalogue_author(query, limit=20)
+        catalogue_results = search_catalogue_author(query, limit=10)
         if not catalogue_results:
-            catalogue_results = search_catalogue(query, limit=20)
+            catalogue_results = search_catalogue(query, limit=10)
     else:
-        catalogue_results = search_catalogue(query, limit=20)
+        catalogue_results = search_catalogue(query, limit=10)
     if catalogue_results:
         all_results.extend(catalogue_results)
     
-    # Try semantic search
-    semantic_results = semantic_search(query, top_k=10)
+    # Try semantic search with reduced limit
+    semantic_results = semantic_search(query, top_k=5)
     if semantic_results:
         all_results.extend(semantic_results)
     
@@ -1839,9 +1871,13 @@ def hybrid_book_search(query, intent: str | None = None, realtime_availability=F
     if all_results:
         merged = merge_duplicates(all_results)
         
-        # Add OPAC availability information to each book
-        for book in merged:
-            if NANDU_WEBSCRAPE:  # Only check if web scraping is enabled
+        # Limit to top 5 results for faster processing
+        merged = merged[:5]
+        
+        # Add OPAC availability information to each book (only if requested)
+        if check_availability and NANDU_WEBSCRAPE:
+            logger.info(f"🔍 Checking availability for {len(merged)} books...")
+            for book in merged:
                 title = book.get('Title', book.get('title', ''))
                 author = book.get('Author', book.get('author', ''))
                 isbn = book.get('ISBN', book.get('isbn', ''))
@@ -1865,6 +1901,8 @@ def hybrid_book_search(query, intent: str | None = None, realtime_availability=F
                     logger.info(f"📚 OPAC check for '{title}': {availability['status']}")
                 else:
                     book['opac_availability'] = None
+        else:
+            logger.info(f"⚡ Skipping OPAC checks for faster response")
         
         logger.info(f"✅ Hybrid search returned {len(merged)} unique books")
         return merged
