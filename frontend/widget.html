@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nalanda Library Chatbot Widget</title>
+    <style>
+        /* Reset and base styles for widget only */
+        .nalanda-chatbot-widget * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+        }
+
+        /* Widget Container */
+        .nalanda-chatbot-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        /* Toggle Button */
+        .nalanda-chat-toggle-btn {
+            padding: 15px 25px;
+            background: linear-gradient(90deg, #059669, #0d9488);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+        }
+
+        .nalanda-chat-toggle-btn:hover {
+            background: linear-gradient(90deg, #059669, #0d9488);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        .nalanda-chat-toggle-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Chat Window */
+        .nalanda-chat-window {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 420px;
+            height: 600px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .nalanda-chat-window.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Chat Header */
+        .nalanda-chat-header {
+            background: linear-gradient(90deg, #059669, #0d9488);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nalanda-chat-header h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .nalanda-chat-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nalanda-chat-close-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Chat Messages */
+        .nalanda-chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #e3f2fd;
+        }
+
+        .nalanda-chat-message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nalanda-message-bubble {
+            padding: 12px 16px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .nalanda-user-message .nalanda-message-bubble {
+            background: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border: 1px solid #e5e7eb;
+        }
+
+        .nalanda-bot-message .nalanda-message-bubble {
+            background: white;
+            align-self: flex-start;
+            border-left: 3px solid #10b981;
+        }
+
+        /* Chat Input */
+        .nalanda-chat-input-container {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .nalanda-chat-input-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nalanda-chat-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .nalanda-chat-input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 1px #10b981;
+        }
+
+        .nalanda-chat-send-btn {
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #059669, #0d9488);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .nalanda-chat-send-btn:hover {
+            background: linear-gradient(90deg, #059669, #0d9488);
+        }
+
+        .nalanda-chat-send-btn:active {
+            transform: scale(0.95);
+        }
+
+        .nalanda-chat-send-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Loading indicator */
+        .nalanda-typing-indicator {
+            display: none;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 18px;
+            max-width: 80px;
+            border-left: 3px solid #10b981;
+        }
+
+        .nalanda-typing-indicator.active {
+            display: block;
+        }
+
+        .nalanda-typing-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #059669;
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+
+        .nalanda-typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .nalanda-typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        /* Book card styling */
+        .nalanda-message-bubble strong {
+            color: #059669;
+        }
+
+        .nalanda-message-bubble div[style*="border-left"] {
+            transition: all 0.2s ease;
+        }
+
+        /* BOOK CARD – CLEAN DESIGN */
+        .book-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .book-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 6px;
+        }
+
+        .book-author {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+
+        .book-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 13px;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .book-field {
+            font-size: 13px;
+            margin-top: 8px;
+            color: #4b5563;
+        }
+
+        .book-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            margin-left: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Availability Colors */
+        .book-available {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .book-issued {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .book-unknown {
+            background: #e5e7eb;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        /* Item Details Box */
+        .item-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+
+        .item-box-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #4b5563;
+        }
+
+        .item-status-available {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .item-status-issued {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .item-status-other {
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .item-type {
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .item-status {
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-top: 2px;
+        }
+
+        .item-due-date {
+            font-size: 11px;
+            color: #dc2626;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        .item-barcode {
+            font-size: 10px;
+            color: #6b7280;
+            font-family: monospace;
+            margin-top: 2px;
+        }
+
+        .nalanda-message-bubble div[style*="border-left"]:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nalanda-chat-window {
+                width: calc(100vw - 40px);
+                height: calc(100vh - 100px);
+                right: 20px;
+                left: 20px;
+                bottom: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Chatbot Widget -->
+    <div class="nalanda-chatbot-widget">
+        <button id="nalanda-chat-toggle" class="nalanda-chat-toggle-btn" aria-label="Open chat">
+            💬 Ask Chatbot
+        </button>
+
+        <div id="nalanda-chat-window" class="nalanda-chat-window">
+            <div class="nalanda-chat-header">
+                <h3><img src="assets/iit_ropar_logo.png" alt="IIT Ropar" style="height: 24px; vertical-align: middle; margin-right: 8px;"> Nalanda Library Chatbot</h3>
+                <button id="nalanda-chat-close" class="nalanda-chat-close-btn" aria-label="Close chat">×</button>
+            </div>
+
+            <div id="nalanda-chat-messages" class="nalanda-chat-messages">
+                <div class="nalanda-chat-message nalanda-bot-message">
+                    <div class="nalanda-message-bubble">
+                        👋 Hello! I'm the Nalanda Library Chatbot. How can I help you today?
+                    </div>
+                </div>
+            </div>
+
+            <div class="nalanda-chat-input-container">
+                <div class="nalanda-chat-input-wrapper">
+                    <input 
+                        type="text" 
+                        id="nalanda-chat-input" 
+                        class="nalanda-chat-input" 
+                        placeholder="Ask about books, timings, services..."
+                        autocomplete="off"
+                    >
+                    <button id="nalanda-chat-send" class="nalanda-chat-send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Configuration - Backend API endpoint
+            // Update this based on your setup:
+            // Development: 'http://localhost:8000/chat'
+            // Production: 'https://your-domain.com/api/chat'
+            const API_URL = 'http://localhost:8000/chat';
+            
+            // DOM Elements
+            const toggleBtn = document.getElementById('nalanda-chat-toggle');
+            const chatWindow = document.getElementById('nalanda-chat-window');
+            const closeBtn = document.getElementById('nalanda-chat-close');
+            const messagesContainer = document.getElementById('nalanda-chat-messages');
+            const inputField = document.getElementById('nalanda-chat-input');
+            const sendBtn = document.getElementById('nalanda-chat-send');
+
+            // Toggle chat window
+            toggleBtn.addEventListener('click', function() {
+                chatWindow.classList.add('active');
+                inputField.focus();
+            });
+
+            closeBtn.addEventListener('click', function() {
+                chatWindow.classList.remove('active');
+                
+                // Clear all chat messages when closing
+                messagesContainer.innerHTML = '';
+            });
+
+            // Send message function
+            function sendMessage() {
+                const message = inputField.value.trim();
+                if (!message) return;
+
+                // Add user message to chat
+                addMessage(message, 'user');
+                inputField.value = '';
+
+                // Show typing indicator
+                const typingIndicator = document.createElement('div');
+                typingIndicator.className = 'nalanda-typing-indicator active';
+                typingIndicator.innerHTML = '<span class="nalanda-typing-dot"></span><span class="nalanda-typing-dot"></span><span class="nalanda-typing-dot"></span>';
+                messagesContainer.appendChild(typingIndicator);
+                scrollToBottom();
+
+                // Send to backend API
+                fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query: message })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Remove typing indicator
+                    typingIndicator.remove();
+                    
+                    // Add bot response - handle both 'answer' and 'response' fields
+                    const answer = data.answer || data.response || 'Sorry, I could not process your request.';
+                    addMessage(answer, 'bot');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    typingIndicator.remove();
+                    addMessage('⚠️ Sorry, I encountered an error connecting to the server. Please make sure the backend API is running at ' + API_URL, 'bot');
+                });
+            }
+
+            // Format JSON book results into HTML
+            function formatBookResults(text) {
+                console.log('formatBookResults called with:', text.substring(0, 200) + '...');
+                try {
+                    // Try to parse JSON from the text
+                    const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/);
+                    console.log('JSON match found:', !!jsonMatch);
+                    if (jsonMatch) {
+                        const jsonData = JSON.parse(jsonMatch[1]);
+                        console.log('Parsed JSON data:', jsonData);
+                        // Handle both array format and object with books property
+                        let books = [];
+                        if (Array.isArray(jsonData)) {
+                            books = jsonData;
+                            console.log('Found books as array:', books.length);
+                        } else if (jsonData.books && Array.isArray(jsonData.books)) {
+                            books = jsonData.books;
+                            console.log('Found books in jsonData.books:', books.length);
+                        }
+                        
+                        if (books.length > 0) {
+                            let html = '<div style="margin-top: 10px;">';
+                            html += `<strong>📚 Found ${books.length} book(s):</strong><br><br>`;
+                            
+                            books.forEach((book, index) => {
+                                console.log('Processing book:', book.title, 'Status:', book.status, 'Availability:', book.availability);
+                                // Get availability status - prefer OPAC data, fallback to database copies
+                                const availability = book.availability || {};
+                                let status = availability.status || 'unknown';
+                                let available = availability.available_copies || 0;
+                                let total = availability.total_copies || 0;
+                                let availabilityText = '';
+                                let availabilityClass = 'unknown';
+                                
+                                // If no OPAC data, use database copies information
+                                if (!availability.status && book.copies) {
+                                    // Assume all copies are available if no OPAC data
+                                    total = parseInt(book.copies) || 0;
+                                    available = total;
+                                    status = total > 0 ? 'available' : 'unavailable';
+                                }
+                                
+                                if (status === 'available') {
+                                    availabilityText = `📚 Available (${available}/${total})`;
+                                    availabilityClass = 'available';
+                                } else if (status === 'issued') {
+                                    availabilityText = `📖 Issued (${available}/${total})`;
+                                    availabilityClass = 'issued';
+                                } else if (status === 'unavailable') {
+                                    availabilityText = `📖 Unavailable (${available}/${total})`;
+                                    availabilityClass = 'issued';
+                                } else {
+                                    availabilityText = '❓ Status Unknown';
+                                    availabilityClass = 'unknown';
+                                }
+                                
+                                html += `
+                                    <div class="book-card">
+                                        <div class="book-title">${book.title || 'Unknown Title'}</div>
+
+                                        ${book.author ? `
+                                            <div class="book-author">by ${book.author}</div>
+                                        ` : ''}
+
+                                        <div class="book-meta">
+                                            ${book.year ? `<span>📅 ${book.year}</span>` : ''}
+                                            ${book.copies ? `<span>📚 Copies: ${book.copies}</span>` : ''}
+                                            ${book.item_type ? `<span>📖 Type: ${book.item_type}</span>` : ''}
+                                        </div>
+
+                                        ${book.call_numbers ? `
+                                            <div class="book-field"><strong>Call Number:</strong> 
+                                                ${Array.isArray(book.call_numbers) ? book.call_numbers.join(', ') : book.call_numbers}
+                                            </div>
+                                        ` : ''}
+
+                                        ${book.accessions ? `
+                                            <div class="book-field">
+                                                <strong>Accession #:</strong>  
+                                                ${Array.isArray(book.accessions) ? book.accessions.join(', ') : book.accessions}
+                                                <span class="book-badge ${availabilityClass}">
+                                                    ${availabilityText}
+                                                </span>
+                                            </div>
+                                        ` : `
+                                            <div class="book-field">
+                                                <span class="book-badge ${availabilityClass}">
+                                                    ${availabilityText}
+                                                </span>
+                                            </div>
+                                        `}
+
+                                        ${book.item_details && book.item_details.length ? `
+                                            <div class="item-box">
+                                                <div class="item-box-title">📋 Item Details:</div>
+
+                                                ${book.item_details.map(item => `
+                                                    <div class="item-row">
+                                                        <div class="item-info">
+                                                            <span class="item-type">${item.item_type} ${item.collection !== 'Unknown' ? `(${item.collection})` : ''}</span>
+                                                            <span class="item-status ${item.status === 'Available' ? 'item-status-available' : item.status === 'Checked out' ? 'item-status-issued' : 'item-status-other'}">
+                                                                ${item.status}
+                                                            </span>
+                                                            ${item.due_date && item.status === 'Checked out' ? `<span class="item-due-date">📅 Due: ${item.due_date}</span>` : ''}
+                                                        </div>
+                                                        ${item.barcode ? `<div class="item-barcode">🏷️ Barcode: ${item.barcode}</div>` : ''}
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                `;
+                            });
+                            
+                            html += '</div>';
+                            return html;
+                        }
+                    }
+                } catch (e) {
+                    console.log('Not JSON format, displaying as-is');
+                }
+                return text; // Return original if not JSON
+            }
+
+            // Add message to chat with typewriter effect for bot messages
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `nalanda-chat-message nalanda-${sender}-message`;
+
+                const bubbleDiv = document.createElement('div');
+                bubbleDiv.className = 'nalanda-message-bubble';
+
+                messageDiv.appendChild(bubbleDiv);
+                messagesContainer.appendChild(messageDiv);
+
+                // Handle HTML content for bot messages (backend may return formatted HTML)
+                if (sender === 'bot') {
+                    // Format JSON book results if present
+                    const formattedText = formatBookResults(text);
+                    // Apply typewriter effect for bot messages
+                    typeWriterEffect(bubbleDiv, formattedText);
+                } else {
+                    // User messages appear instantly
+                    bubbleDiv.textContent = text;
+                    scrollToBottom();
+                }
+            }
+
+            // Typewriter effect function
+            function typeWriterEffect(element, htmlText, speed = 10) {
+                // Remove HTML tags for character counting and timing
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = htmlText;
+                const textContent = tempDiv.textContent || tempDiv.innerText || '';
+                const totalChars = textContent.length;
+
+                let charIndex = 0;
+                let htmlIndex = 0;
+                let currentHtml = '';
+
+                function typeChar() {
+                    if (charIndex < totalChars) {
+                        // Find the next character in the HTML
+                        while (htmlIndex < htmlText.length) {
+                            const char = htmlText[htmlIndex];
+                            currentHtml += char;
+                            htmlIndex++;
+
+                            // Check if this character is visible text (not HTML tag)
+                            const tempCheck = document.createElement('div');
+                            tempCheck.innerHTML = currentHtml;
+                            const visibleText = tempCheck.textContent || tempCheck.innerText || '';
+
+                            if (visibleText.length > charIndex) {
+                                // This character is visible, update the display
+                                element.innerHTML = currentHtml;
+                                scrollToBottom();
+                                charIndex++;
+                                break;
+                            }
+                        }
+
+                        setTimeout(typeChar, speed);
+                    } else {
+                        // Typing complete, ensure final HTML is set
+                        element.innerHTML = htmlText;
+                        scrollToBottom();
+                    }
+                }
+
+                // Start the typewriter effect
+                typeChar();
+            }
+
+            // Scroll to bottom of messages
+            function scrollToBottom() {
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            // Event listeners
+            sendBtn.addEventListener('click', sendMessage);
+            
+            inputField.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Handle clicking outside chat window to close
+            document.addEventListener('click', function(event) {
+                if (chatWindow.classList.contains('active') && 
+                    !chatWindow.contains(event.target) && 
+                    !toggleBtn.contains(event.target)) {
+                    chatWindow.classList.remove('active');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
+
+

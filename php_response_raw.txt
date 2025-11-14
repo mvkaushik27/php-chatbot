@@ -1,0 +1,6 @@
+﻿<br />
+<b>Fatal error</b>:  Uncaught Error: Call to undefined function curl_init() in C:\Users\Admin\Videos\Nalanda_Chatbot_PHP_Integration\frontend\api\chat_handler.php:68
+Stack trace:
+#0 {main}
+  thrown in <b>C:\Users\Admin\Videos\Nalanda_Chatbot_PHP_Integration\frontend\api\chat_handler.php</b> on line <b>68</b><br />
+
