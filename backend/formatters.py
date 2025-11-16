@@ -182,7 +182,7 @@ def render_book_card(book):
         # Display copies count
         html_parts.append(f'<span><b>Copies:</b> {data["copies"]}</span>')
         
-        # Display OPAC availability (if available)
+        # Display OPAC availability (real-time from library system)
         opac_availability = book.get('opac_availability')
         if opac_availability:
             status = opac_availability.get('status', 'unknown')
@@ -193,10 +193,32 @@ def render_book_card(book):
                 status_html = f'<span class="availability available">📚 Available ({available}/{total})</span>'
             elif status == 'issued':
                 status_html = f'<span class="availability issued">📖 Issued ({available}/{total})</span>'
+                
+                # Add due date information for issued books
+                details = opac_availability.get('details', [])
+                due_dates = []
+                for detail in details:
+                    items = detail.get('items', [])
+                    for item in items:
+                        if item.get('status', '').lower() in ['checked out', 'issued'] and item.get('due_date'):
+                            due_dates.append(item['due_date'])
+                
+                if due_dates:
+                    # Remove duplicates and sort
+                    unique_due_dates = sorted(list(set(due_dates)))
+                    if len(unique_due_dates) == 1:
+                        status_html += f'<br><span class="due-date" style="font-size: 11px; color: #dc3545;">📅 Due: {html.escape(unique_due_dates[0])}</span>'
+                    else:
+                        status_html += f'<br><span class="due-date" style="font-size: 11px; color: #dc3545;">📅 Due: {html.escape(", ".join(unique_due_dates[:2]))}</span>'
+                        if len(unique_due_dates) > 2:
+                            status_html += f'<span style="font-size: 11px; color: #6c757d;"> +{len(unique_due_dates)-2} more</span>'
             else:
                 status_html = f'<span class="availability unknown">❓ Status Unknown</span>'
             
             html_parts.append(status_html)
+        else:
+            # Show that we're checking real-time availability
+            html_parts.append('<span class="availability checking">🔄 Checking OPAC availability...</span>')
         
         # Display call numbers (already limited to 2 + ... from merge_duplicates)
         if data.get('call_numbers'):
@@ -205,45 +227,81 @@ def render_book_card(book):
         
         html_parts.append('</div>')
         
-        # Display individual item details if available (for showing accession-specific status)
+        # Display detailed accession-level availability information
         if opac_availability and opac_availability.get('details'):
             html_parts.append('<div class="item-details-section" style="margin-top: 10px; padding: 8px; background: #f8f9fa; border-radius: 4px; border: 1px solid #e0e0e0;">')
-            html_parts.append('<p style="margin: 0 0 8px 0; font-weight: bold; color: #333;"><b>Item Status:</b></p>')
+            html_parts.append('<p style="margin: 0 0 8px 0; font-weight: bold; color: #333;"><b>📋 Accession-Level Status:</b></p>')
             
-            for item in opac_availability['details']:
-                item_type = item.get('item_type', 'Unknown')
-                collection = item.get('collection', 'Unknown')
-                item_status = item.get('status', 'Unknown')
-                barcode = item.get('barcode', '')
-                due_date = item.get('due_date', '')
+            for book_detail in opac_availability['details']:
+                # Check if this book has detailed item information
+                items = book_detail.get('items', [])
                 
-                # Status styling
-                if item_status == 'Available':
-                    status_class = 'item-available'
-                    status_icon = '🟢'
-                    status_style = 'color: #28a745; font-weight: bold;'
-                elif item_status == 'Checked out':
-                    status_class = 'item-issued'
-                    status_icon = '🔴'
-                    status_style = 'color: #dc3545; font-weight: bold;'
+                if items:
+                    # Display each accession with its specific status
+                    for item in items:
+                        accession = item.get('accession_number', 'Unknown')
+                        item_status = item.get('status', 'Unknown')
+                        due_date = item.get('due_date', '')
+                        
+                        # Status styling
+                        if item_status.lower() in ['available', 'on shelf']:
+                            status_class = 'item-available'
+                            status_icon = '🟢'
+                            status_style = 'color: #28a745; font-weight: bold;'
+                        elif item_status.lower() in ['checked out', 'issued']:
+                            status_class = 'item-issued'
+                            status_icon = '🔴'
+                            status_style = 'color: #dc3545; font-weight: bold;'
+                        else:
+                            status_class = 'item-unknown'
+                            status_icon = '❓'
+                            status_style = 'color: #6c757d; font-weight: bold;'
+                        
+                        html_parts.append('<div class="accession-detail-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; padding: 6px; background: white; border-radius: 3px; border: 1px solid #e0e0e0;">')
+                        html_parts.append(f'<span class="accession-info" style="flex: 1; font-size: 13px; color: #555;"><b>Accession:</b> {html.escape(accession)}</span>')
+                        html_parts.append(f'<span class="item-status {status_class}" style="{status_style} font-size: 12px;">{status_icon} {html.escape(item_status)}</span>')
+                        html_parts.append('</div>')
+                        
+                        # Show due date if item is checked out
+                        if due_date and item_status.lower() in ['checked out', 'issued']:
+                            html_parts.append('<div style="margin-left: 10px; margin-bottom: 8px; font-size: 11px; color: #dc3545; font-weight: bold;">')
+                            html_parts.append(f'📅 Due Date: {html.escape(due_date)}')
+                            html_parts.append('</div>')
                 else:
-                    status_class = 'item-unknown'
-                    status_icon = '❓'
-                    status_style = 'color: #6c757d; font-weight: bold;'
-                
-                html_parts.append('<div class="item-detail-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; padding: 4px; background: white; border-radius: 3px; border: 1px solid #e0e0e0;">')
-                html_parts.append(f'<span class="item-info" style="flex: 1; font-size: 13px; color: #555;">{html.escape(item_type)} ({html.escape(collection)})</span>')
-                html_parts.append(f'<span class="item-status {status_class}" style="{status_style} font-size: 12px;">{status_icon} {html.escape(item_status)}</span>')
-                html_parts.append('</div>')
-                
-                # Additional details row
-                if barcode or (due_date and item_status == 'Checked out'):
-                    html_parts.append('<div style="margin-left: 10px; font-size: 11px; color: #666; margin-bottom: 6px;">')
-                    if barcode:
-                        html_parts.append(f'📋 Barcode: {html.escape(barcode)}')
-                    if due_date and item_status == 'Checked out':
-                        html_parts.append(f' 📅 Due: {html.escape(due_date)}')
+                    # Fallback to general status display
+                    item_type = book_detail.get('item_type', 'Unknown')
+                    collection = book_detail.get('collection', 'Unknown')
+                    item_status = book_detail.get('status', 'Unknown')
+                    barcode = book_detail.get('barcode', '')
+                    due_date = book_detail.get('due_date', '')
+                    
+                    # Status styling
+                    if item_status == 'Available':
+                        status_class = 'item-available'
+                        status_icon = '🟢'
+                        status_style = 'color: #28a745; font-weight: bold;'
+                    elif item_status == 'Checked out':
+                        status_class = 'item-issued'
+                        status_icon = '🔴'
+                        status_style = 'color: #dc3545; font-weight: bold;'
+                    else:
+                        status_class = 'item-unknown'
+                        status_icon = '❓'
+                        status_style = 'color: #6c757d; font-weight: bold;'
+                    
+                    html_parts.append('<div class="item-detail-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; padding: 4px; background: white; border-radius: 3px; border: 1px solid #e0e0e0;">')
+                    html_parts.append(f'<span class="item-info" style="flex: 1; font-size: 13px; color: #555;">{html.escape(item_type)} ({html.escape(collection)})</span>')
+                    html_parts.append(f'<span class="item-status {status_class}" style="{status_style} font-size: 12px;">{status_icon} {html.escape(item_status)}</span>')
                     html_parts.append('</div>')
+                    
+                    # Additional details row
+                    if barcode or (due_date and item_status == 'Checked out'):
+                        html_parts.append('<div style="margin-left: 10px; font-size: 11px; color: #666; margin-bottom: 6px;">')
+                        if barcode:
+                            html_parts.append(f'📋 Barcode: {html.escape(barcode)}')
+                        if due_date and item_status == 'Checked out':
+                            html_parts.append(f' 📅 Due: {html.escape(due_date)}')
+                        html_parts.append('</div>')
             
             html_parts.append('</div>')
         

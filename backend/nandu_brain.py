@@ -72,6 +72,9 @@ except ImportError:
     TextBlob = None  # type: ignore
     
 
+# Load environment variables from .env file
+load_dotenv()
+
 # Configure logging
 logger = logging.getLogger(__name__)
 logging.getLogger("torch").setLevel(logging.ERROR)
@@ -491,7 +494,7 @@ def fetch_website_content(url="https://www.iitrpr.ac.in/library/", cache_timeout
         dict: Extracted website data including sections, links, and text content
     """
     # Respect runtime setting to avoid network calls unless explicitly enabled
-    if not NANDU_WEBSCRAPE:
+    if not _get_webscrape_enabled():
         logger.info("🌐 Website fetch disabled (NANDU_WEBSCRAPE=0)")
         return None
 
@@ -672,10 +675,6 @@ def check_book_availability_opac(title="", author="", isbn="", accession_numbers
     Returns:
         dict: Availability information or None if not found/error
     """
-    if not NANDU_WEBSCRAPE:
-        logger.debug("🌐 OPAC check disabled (NANDU_WEBSCRAPE=0)")
-        return None
-
     if not HAS_BS4 or not HAS_REQUESTS:
         logger.warning("Required libraries not available for OPAC checking")
         return None
@@ -818,32 +817,71 @@ def check_book_availability_opac(title="", author="", isbn="", accession_numbers
                 # Extract availability status from the record text
                 record_text = record.get_text()
                 
-                # Look for availability indicators in the more complex OPAC format
-                available_count = 0
-                issued_count = 0
+                # Parse detailed item information including accession numbers and due dates
+                book_info["items"] = []
                 
-                # Parse "Items available for loan:Nalanda Library(X)" pattern
-                available_match = re.search(r'Items available for loan:[^)]*\((\d+)\)', record_text)
-                if available_match:
-                    available_count = int(available_match.group(1))
+                # Look for item details in various formats
+                # Pattern 1: "Barcode: XXXX Status: Available/Checked out Due: Date"
+                item_patterns = [
+                    r'(?:Barcode|Accession):\s*([^\s]+).*?Status:\s*([^,\n]+)(?:.*?Due:\s*([^\n,]+))?',
+                    r'([0-9]+)\s*-\s*(Available|Checked out|Issued)(?:\s*-\s*Due:\s*([^\n,]+))?',
+                    r'Accession\s*#?\s*([0-9]+).*?(Available|Checked out|Issued)(?:.*?Due:\s*([^\n,]+))?'
+                ]
                 
-                # Parse "Not available:Nalanda Library: Checked out(X)" pattern
-                issued_match = re.search(r'Checked out\((\d+)\)', record_text)
-                if issued_match:
-                    issued_count = int(issued_match.group(1))
+                items_found = False
+                for pattern in item_patterns:
+                    matches = re.findall(pattern, record_text, re.IGNORECASE)
+                    for match in matches:
+                        accession = match[0].strip()
+                        status = match[1].strip()
+                        due_date = match[2].strip() if len(match) > 2 and match[2] else ""
+                        
+                        book_info["items"].append({
+                            "accession_number": accession,
+                            "status": status,
+                            "due_date": due_date
+                        })
+                        items_found = True
                 
-                # Also check for simpler patterns as fallback
-                if available_count == 0 and issued_count == 0:
-                    if any(word in record_text.lower() for word in ['available', 'not issued', 'on shelf']):
-                        available_count = 1  # Assume at least 1 if mentioned
-                    elif any(word in record_text.lower() for word in ['issued', 'checked out', 'on loan', 'borrowed']):
-                        issued_count = 1  # Assume at least 1 if mentioned
+                # Fallback: Look for simpler availability patterns
+                if not items_found:
+                    available_count = 0
+                    issued_count = 0
+                    
+                    # Parse "Items available for loan:Nalanda Library(X)" pattern
+                    available_match = re.search(r'Items available for loan:[^)]*\((\d+)\)', record_text)
+                    if available_match:
+                        available_count = int(available_match.group(1))
+                    
+                    # Parse "Not available:Nalanda Library: Checked out(X)" pattern
+                    issued_match = re.search(r'Checked out\((\d+)\)', record_text)
+                    if issued_match:
+                        issued_count = int(issued_match.group(1))
+                    
+                    # Create generic items if we have counts but no specific details
+                    for i in range(available_count):
+                        book_info["items"].append({
+                            "accession_number": f"Item {i+1}",
+                            "status": "Available",
+                            "due_date": ""
+                        })
+                    
+                    for i in range(issued_count):
+                        book_info["items"].append({
+                            "accession_number": f"Item {available_count + i + 1}",
+                            "status": "Checked out",
+                            "due_date": ""
+                        })
+                
+                # Count totals from parsed items
+                available_count = sum(1 for item in book_info["items"] if item["status"].lower() in ["available", "on shelf"])
+                issued_count = sum(1 for item in book_info["items"] if item["status"].lower() in ["checked out", "issued"])
                 
                 # Update availability info
                 availability_info["available_copies"] += available_count
                 availability_info["total_copies"] += available_count + issued_count
                 
-                # Set status for this specific book
+                # Set overall status for this book
                 if available_count > 0:
                     book_info["status"] = "Available"
                 elif issued_count > 0:
@@ -925,6 +963,29 @@ def classify_query(query):
         logger.info(f"📚 Fallback: BOOK (ISBN)")
         return 'book'
     
+    # Priority check for procedural "how to" queries (must be checked FIRST)
+    procedural_patterns = [
+        # Specific library procedures
+        r"\bhow (to|do i|can i)\s+(reserve|book|issue|borrow|return|renew)\b",
+        r"\bhow (to|do i|can i)\s+(get|obtain|access|find)\s+books?\b",
+        r"\bprocess (of|to|for)\s+(reserving|booking|issuing|borrowing)\b",
+        r"\bsteps? (to|for)\s+(reserve|book|issue|borrow|return|renew)\b",
+        r"\b(reservation|booking|issuing|borrowing|returning)\s+(process|procedure|method)\b",
+        r"\bhow (to|do i)\s+(place|make)\s+(reservation|booking)\b",
+        # General "how to" with book/books - these are procedural questions about library processes
+        r"\bhow (to|do i|can i)\s+\w+\s+(book|books)\b",  # "how to hold a book", "how to care for books", etc.
+        r"\bhow (to|do i|can i)\s+\w+\s+\w+\s+(book|books)\b",  # "how to properly handle a book", etc.
+        # Questions about book handling, care, usage
+        r"\bhow (to|do i)\s+(handle|hold|care|treat|protect|maintain)\b.*\b(book|books)\b",
+        r"\b(what|how)\s+(is|are)\s+the\s+(way|ways|method|methods|process|procedure)\b.*\b(book|books)\b"
+    ]
+    
+    # Check for procedural queries first (before book keywords)
+    for pattern in procedural_patterns:
+        if re.search(pattern, query_lower):
+            logger.info(f"📋 Fallback: GENERAL (procedural 'how to' query)")
+            return 'general'
+
     # General keywords (library services, policies, facilities)
     general_keywords = [
         'timing', 'hours', 'open', 'close', 'schedule',
@@ -932,7 +993,7 @@ def classify_query(query):
         'wifi', 'printer', 'facility', 'service', 'reading room',
         'fine', 'penalty', 'overdue', 'charges',
         'ebook', 'e-book', 'database', 'e-journal', 'vpn',
-        'how to issue', 'how to return', 'how to borrow', 'how to renew',
+        'how to issue', 'how to return', 'how to borrow', 'how to renew', 'how to reserve',
         'grammarly', 'turnitin', 'scopus', 'mendeley',
         'librarian', 'staff', 'helpdesk', 'contact',
         'borrow limit', 'issue limit', 'borrowing limit',
@@ -941,7 +1002,9 @@ def classify_query(query):
         'student', 'students', 'faculty', 'phd', 'pg', 'ug', 'mtech', 'btech',
         'how many books', 'can i borrow', 'can i issue', 'allowed to borrow',
         # Repository/OPAC and institutional keywords that should be GENERAL
-        'opac', 'dspace', 'd-space', 'repository', 'institutional repository'
+        'opac', 'dspace', 'd-space', 'repository', 'institutional repository',
+        # Reservation and booking queries
+        'reserve', 'reservation', 'book reservation', 'booking'
     ]
     
     # Priority check for e-resources/journals (must check BEFORE book keywords)
@@ -1874,9 +1937,9 @@ def hybrid_book_search(query, intent: str | None = None, realtime_availability=F
         # Limit to top 5 results for faster processing
         merged = merged[:5]
         
-        # Add OPAC availability information to each book (only if requested)
-        if check_availability and NANDU_WEBSCRAPE:
-            logger.info(f"🔍 Checking availability for {len(merged)} books...")
+        # Add OPAC availability information to each book (only if OPAC is enabled)
+        if check_availability and _get_webscrape_enabled():
+            logger.info(f"🔍 Checking OPAC availability for {len(merged)} books...")
             for book in merged:
                 title = book.get('Title', book.get('title', ''))
                 author = book.get('Author', book.get('author', ''))
@@ -1901,6 +1964,8 @@ def hybrid_book_search(query, intent: str | None = None, realtime_availability=F
                     logger.info(f"📚 OPAC check for '{title}': {availability['status']}")
                 else:
                     book['opac_availability'] = None
+        elif check_availability and not _get_webscrape_enabled():
+            logger.info(f"🚫 OPAC checking disabled (NANDU_WEBSCRAPE=0)")
         else:
             logger.info(f"⚡ Skipping OPAC checks for faster response")
         

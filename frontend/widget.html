@@ -205,20 +205,23 @@
             border-radius: 18px;
             max-width: 80px;
             border-left: 3px solid #10b981;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .nalanda-typing-indicator.active {
             display: block;
+            opacity: 1;
         }
 
         .nalanda-typing-dot {
             display: inline-block;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: #059669;
             margin: 0 2px;
-            animation: typing 1.4s infinite;
+            animation: chatgpt-thinking 1.4s ease-in-out infinite;
         }
 
         .nalanda-typing-dot:nth-child(2) {
@@ -229,13 +232,13 @@
             animation-delay: 0.4s;
         }
 
-        @keyframes typing {
+        @keyframes chatgpt-thinking {
             0%, 60%, 100% {
                 transform: translateY(0);
-                opacity: 0.7;
+                opacity: 0.4;
             }
             30% {
-                transform: translateY(-10px);
+                transform: translateY(-8px);
                 opacity: 1;
             }
         }
@@ -248,6 +251,52 @@
         .nalanda-message-bubble div[style*="border-left"] {
             transition: all 0.2s ease;
         }
+
+        /* ChatGPT-style typewriter cursor */
+        .nalanda-chat-message.typing-active .nalanda-message-bubble::after {
+            content: '▌';
+            color: #10b981;
+            animation: chatgpt-blink 1s infinite;
+            font-weight: normal;
+            margin-left: 1px;
+        }
+
+        .nalanda-user-message.typing-active .nalanda-message-bubble::after {
+            color: #6b7280;
+        }
+
+        .nalanda-chat-message.typing-complete .nalanda-message-bubble::after {
+            display: none;
+        }
+
+        @keyframes chatgpt-blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        /* Enhanced message appearance */
+        .nalanda-chat-message {
+            opacity: 0;
+            animation: messageSlideIn 0.3s ease-out forwards;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Smooth typing animation */
+        .typing-active .nalanda-message-bubble {
+            position: relative;
+        }
+
+
 
         /* BOOK CARD – CLEAN DESIGN */
         .book-card {
@@ -299,7 +348,10 @@
             margin-left: 8px;
             border-radius: 4px;
             font-size: 12px;
-            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 300px;
         }
 
         /* Availability Colors */
@@ -313,6 +365,12 @@
             background: #fee2e2;
             color: #991b1b;
             border: 1px solid #fecaca;
+        }
+        
+        .book-issued.with-due-date {
+            background: #fef2f2;
+            border: 2px solid #f87171;
+            font-weight: 600;
         }
 
         .book-unknown {
@@ -398,6 +456,71 @@
             box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
         }
 
+        /* OPAC Availability Status Styling - Professional Design */
+        .item-details-section {
+            margin-top: 16px !important;
+            padding: 16px !important;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+            border-radius: 10px !important;
+            border: 1px solid #cbd5e0 !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .item-details-section p {
+            margin: 0 0 12px 0 !important;
+            font-weight: 700 !important;
+            color: #2d3748 !important;
+            font-size: 14px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+        }
+
+        .item-detail-row {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            margin-bottom: 8px !important;
+            padding: 12px !important;
+            background: white !important;
+            border-radius: 8px !important;
+            border: 1px solid #e2e8f0 !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+            transition: transform 0.2s ease !important;
+        }
+
+        .item-detail-row:hover {
+            transform: translateY(-1px) !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .item-info {
+            flex: 1 !important;
+            font-size: 13px !important;
+            color: #4a5568 !important;
+            font-weight: 500 !important;
+        }
+
+        .item-available {
+            color: #28a745 !important;
+            font-weight: bold !important;
+            font-size: 12px !important;
+        }
+
+        .item-issued {
+            color: #dc3545 !important;
+            font-weight: bold !important;
+            font-size: 12px !important;
+        }
+
+        .item-unknown {
+            color: #6c757d !important;
+            font-weight: bold !important;
+            font-size: 12px !important;
+        }
+
+
+
         /* Performance optimizations */
         .nalanda-chat-toggle-btn,
         .nalanda-chat-window,
@@ -457,6 +580,9 @@
             // - Input validation and processing state management
             
             // Configuration - Backend API endpoint
+            // PRODUCTION: Update this URL to your production backend
+            const API_URL = 'https://your-domain.com/api/chat'; // TODO: Update for production
+            // const API_URL = 'http://localhost:8000/chat'; // Local development
             
             // DOM Elements
             const toggleBtn = document.getElementById('nalanda-chat-toggle');
@@ -553,13 +679,19 @@
                     return response.json();
                 })
                 .then(data => {
-                    // Remove typing indicator
+                    // Remove typing indicator with smooth transition
                     typingIndicator.classList.remove('active');
-                    typingIndicator.remove();
+                    setTimeout(() => {
+                        if (typingIndicator.parentNode) {
+                            typingIndicator.remove();
+                        }
+                    }, 300);
                     
-                    // Add bot response - handle both 'answer' and 'response' fields
+                    // Add bot response with slight delay for natural feel
                     const answer = data.answer || data.response || 'Sorry, I could not process your request.';
-                    addMessage(answer, 'bot');
+                    setTimeout(() => {
+                        addMessage(answer, 'bot');
+                    }, 400);
                 })
                 .catch(error => {
                     clearTimeout(timeoutId);
@@ -639,7 +771,12 @@
                                 }
                                 
                                 const availabilityClass = statusClasses[status] || 'unknown';
-                                const availabilityText = `${statusTexts[status] || '❓ Status Unknown'} (${available}/${total})`;
+                                let availabilityText = `${statusTexts[status] || '❓ Status Unknown'} (${available}/${total})`;
+                                
+                                // Add due date information for issued books
+                                if (status === 'issued' && availability.due_date) {
+                                    availabilityText += ` - Due: ${availability.due_date}`;
+                                }
                                 
                                 // Create book card
                                 const bookCard = document.createElement('div');
@@ -710,13 +847,83 @@
                                 }
                                 
                                 const badge = document.createElement('span');
-                                badge.className = `book-badge ${availabilityClass}`;
+                                let badgeClass = `book-badge ${availabilityClass}`;
+                                if (status === 'issued' && availability.due_date) {
+                                    badgeClass += ' with-due-date';
+                                }
+                                badge.className = badgeClass;
                                 badge.textContent = availabilityText;
                                 fieldDiv.appendChild(badge);
                                 
                                 bookCard.appendChild(fieldDiv);
                                 
-                                // Item details
+                                // OPAC Availability Status (Real-time from library system)
+                                const opacAvailability = book.opac_availability;
+                                if (opacAvailability) {
+                                    const availabilitySection = document.createElement('div');
+                                    availabilitySection.className = 'item-details-section';
+                                    availabilitySection.style.cssText = 'margin-top: 10px; padding: 8px; background: #f8f9fa; border-radius: 4px; border: 1px solid #e0e0e0;';
+                                    
+                                    const availTitle = document.createElement('p');
+                                    availTitle.style.cssText = 'margin: 0 0 8px 0; font-weight: bold; color: #333;';
+                                    availTitle.innerHTML = '<b>📋 Accession-Level Status:</b>';
+                                    availabilitySection.appendChild(availTitle);
+                                    
+                                    // Display detailed item information from OPAC
+                                    if (opacAvailability.details && opacAvailability.details.length > 0) {
+                                        opacAvailability.details.forEach(bookDetail => {
+                                            const items = bookDetail.items || [];
+                                            
+                                            if (items.length > 0) {
+                                                // Display each accession with its specific status
+                                                items.forEach(item => {
+                                                    const accessionRow = document.createElement('div');
+                                                    accessionRow.className = 'accession-detail-row';
+                                                    accessionRow.style.cssText = 'display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; padding: 6px; background: white; border-radius: 3px; border: 1px solid #e0e0e0;';
+                                                    
+                                                    const accessionInfo = document.createElement('span');
+                                                    accessionInfo.className = 'accession-info';
+                                                    accessionInfo.style.cssText = 'flex: 1; font-size: 13px; color: #555;';
+                                                    accessionInfo.innerHTML = `<b>Accession:</b> ${item.accession_number || 'Unknown'}`;
+                                                    
+                                                    const statusSpan = document.createElement('span');
+                                                    const itemStatus = item.status || 'Unknown';
+                                                    
+                                                    // Status styling
+                                                    if (itemStatus.toLowerCase().includes('available') || itemStatus.toLowerCase().includes('on shelf')) {
+                                                        statusSpan.className = 'item-available';
+                                                        statusSpan.style.cssText = 'color: #28a745; font-weight: bold; font-size: 12px;';
+                                                        statusSpan.innerHTML = '🟢 ' + itemStatus;
+                                                    } else if (itemStatus.toLowerCase().includes('checked out') || itemStatus.toLowerCase().includes('issued')) {
+                                                        statusSpan.className = 'item-issued';
+                                                        statusSpan.style.cssText = 'color: #dc3545; font-weight: bold; font-size: 12px;';
+                                                        statusSpan.innerHTML = '🔴 ' + itemStatus;
+                                                    } else {
+                                                        statusSpan.className = 'item-unknown';
+                                                        statusSpan.style.cssText = 'color: #6c757d; font-weight: bold; font-size: 12px;';
+                                                        statusSpan.innerHTML = '❓ ' + itemStatus;
+                                                    }
+                                                    
+                                                    accessionRow.appendChild(accessionInfo);
+                                                    accessionRow.appendChild(statusSpan);
+                                                    availabilitySection.appendChild(accessionRow);
+                                                    
+                                                    // Show due date if item is checked out
+                                                    if (item.due_date && (itemStatus.toLowerCase().includes('checked out') || itemStatus.toLowerCase().includes('issued'))) {
+                                                        const dueDateDiv = document.createElement('div');
+                                                        dueDateDiv.style.cssText = 'margin-left: 10px; margin-bottom: 8px; font-size: 11px; color: #dc3545; font-weight: bold;';
+                                                        dueDateDiv.innerHTML = '📅 Due Date: ' + item.due_date;
+                                                        availabilitySection.appendChild(dueDateDiv);
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
+                                    
+                                    bookCard.appendChild(availabilitySection);
+                                }
+
+                                // Item details (fallback for non-OPAC data)
                                 if (book.item_details && book.item_details.length) {
                                     const itemBox = document.createElement('div');
                                     itemBox.className = 'item-box';
@@ -785,7 +992,7 @@
                 return text; // Return original if not JSON
             }
 
-            // Add message to chat - optimized version
+            // Add message to chat with ChatGPT-style typewriter effect
             function addMessage(content, sender) {
                 const messageDiv = document.createElement('div');
                 messageDiv.className = `nalanda-chat-message nalanda-${sender}-message`;
@@ -798,30 +1005,82 @@
 
                 // Handle content based on type and sender
                 if (sender === 'bot') {
+                    // Add typing cursor initially
+                    messageDiv.classList.add('typing-active');
+                    
                     if (typeof content === 'string') {
                         // Check if it's JSON book results
                         const formattedContent = formatBookResults(content);
                         if (formattedContent !== content) {
-                            // It was JSON, formattedContent is a DocumentFragment
+                            // It was JSON, formattedContent is a DocumentFragment - show instantly
                             bubbleDiv.appendChild(formattedContent);
+                            messageDiv.classList.remove('typing-active');
+                            messageDiv.classList.add('typing-complete');
                         } else {
-                            // Regular text - use fast textContent
-                            bubbleDiv.textContent = content;
+                            // Apply ChatGPT-style typewriter effect
+                            typewriterEffect(bubbleDiv, content, messageDiv);
                         }
                     } else if (content instanceof DocumentFragment) {
-                        // Already formatted content
+                        // Already formatted content - show instantly
                         bubbleDiv.appendChild(content);
+                        messageDiv.classList.remove('typing-active');
+                        messageDiv.classList.add('typing-complete');
                     } else {
-                        // Fallback
-                        bubbleDiv.textContent = String(content);
+                        // Apply typewriter to string content
+                        typewriterEffect(bubbleDiv, String(content), messageDiv);
                     }
                 } else {
-                    // User messages - instant display
-                    bubbleDiv.textContent = content;
+                    // User messages - instant display with user typewriter effect
+                    typewriterEffect(bubbleDiv, content, messageDiv, true);
                 }
 
                 scrollToBottom();
             }
+
+            // ChatGPT-style typewriter effect
+            function typewriterEffect(element, content, messageDiv, isUser = false) {
+                const text = typeof content === 'string' ? content : String(content);
+                const hasHtml = /<[^>]+>/.test(text);
+                
+                // Different speeds for user vs bot messages (ChatGPT style)
+                const speed = isUser ? 15 : 25; // User types faster, bot types more thoughtfully
+                
+                let index = 0;
+                element.innerHTML = '';
+                
+                function typeCharacter() {
+                    if (index < text.length) {
+                        if (hasHtml) {
+                            // For HTML content, build it progressively
+                            const partialHtml = text.substring(0, index + 1);
+                            // Try to maintain valid HTML structure
+                            element.innerHTML = partialHtml;
+                        } else {
+                            // For plain text, just add characters
+                            element.textContent = text.substring(0, index + 1);
+                        }
+                        
+                        index++;
+                        scrollToBottom();
+                        
+                        // Variable speed for more natural typing
+                        const nextSpeed = speed + Math.random() * 15 - 7; // ±7ms variation
+                        setTimeout(typeCharacter, Math.max(10, nextSpeed));
+                    } else {
+                        // Typing complete
+                        if (hasHtml) {
+                            element.innerHTML = text; // Ensure final HTML is correct
+                        }
+                        messageDiv.classList.remove('typing-active');
+                        messageDiv.classList.add('typing-complete');
+                    }
+                }
+                
+                // Start typing after a brief pause (more natural)
+                setTimeout(typeCharacter, isUser ? 100 : 200);
+            }
+
+
 
             // Scroll to bottom of messages - optimized with RAF
             function scrollToBottom() {

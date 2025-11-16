@@ -377,7 +377,11 @@
     },
     "how to reserve a book": {
         "intent": "borrowing",
-        "answer": "To reserve a book: 1) Search in OPAC (https:\/\/opac.iitrpr.ac.in) 2) If book is issued to someone, click 'Reserve' 3) You'll be notified when book is available 4) Collect within 2 days after notification."
+        "answer": "To reserve a book:\n1) Search in OPAC (https:\/\/opac.iitrpr.ac.in)\n2) If book is issued to someone, click 'Reserve'\n3) You'll be notified when book is available\n4) Collect within 2 days after notification."
+    },
+    "how to hold a book": {
+        "intent": "general",
+        "answer": "📚 **Proper Book Handling Guidelines:**\n\n✅ **Do:**\n• Handle books with clean, dry hands\n• Open books gently, don't force the spine\n• Support the book's weight when reading\n• Use bookmarks instead of folding pages\n• Keep books away from food and drinks\n• Store books upright on shelves\n\n❌ **Don't:**\n• Pull books by the top of the spine\n• Write or highlight in library books\n• Leave books in damp or sunny places\n• Use books as coasters or writing surfaces\n\n**Remember:** Library books are shared resources. Handle them with care so others can enjoy them too! 📖"
     },
     "book search system": {
         "intent": "borrowing",

@@ -17,8 +17,7 @@ import json
 import subprocess
 from typing import Optional
 
-# Enable web scraping for OPAC functionality
-os.environ['NANDU_WEBSCRAPE'] = '1'
+# OPAC functionality controlled by .env file (NANDU_WEBSCRAPE)
 
 # Add parent directory to path to import nandu_brain
 sys.path.insert(0, str(Path(__file__).parent))
@@ -37,10 +36,14 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS - Allow localhost for local testing
+# CORS - Configure for production
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        # Production domains (UPDATE THESE)
+        "https://library.iitrpr.ac.in",
+        "https://www.iitrpr.ac.in",
+        # Local testing
         "http://localhost",
         "http://localhost:80",
         "http://localhost:8080",
@@ -178,6 +181,50 @@ async def chat(request: Request, data: ChatRequest):
                     if acc_text:
                         accessions = [a.strip() for a in acc_text.split(',')]
                 
+                # Extract OPAC availability information
+                availability = None
+                if meta_div:
+                    # Look for availability spans
+                    for span in meta_div.find_all('span', class_='availability'):
+                        txt = span.get_text(' ', strip=True)
+                        if '📚 Available' in txt:
+                            # Parse available/total from text like "📚 Available (2/3)"
+                            match = re.search(r'\((\d+)/(\d+)\)', txt)
+                            if match:
+                                available_copies = int(match.group(1))
+                                total_copies = int(match.group(2))
+                                availability = {
+                                    'status': 'available',
+                                    'available_copies': available_copies,
+                                    'total_copies': total_copies
+                                }
+                        elif '📖 Issued' in txt:
+                            # Parse issued status
+                            match = re.search(r'\((\d+)/(\d+)\)', txt)
+                            if match:
+                                available_copies = int(match.group(1))
+                                total_copies = int(match.group(2))
+                                availability = {
+                                    'status': 'issued',
+                                    'available_copies': available_copies,
+                                    'total_copies': total_copies
+                                }
+                                
+                                # Extract due date if present
+                                due_date_span = span.find('span', class_='due-date')
+                                if due_date_span:
+                                    due_text = due_date_span.get_text(strip=True)
+                                    # Extract date from "📅 Due: 2025-12-15" format
+                                    due_match = re.search(r'Due:\s*([^,]+)', due_text)
+                                    if due_match:
+                                        availability['due_date'] = due_match.group(1).strip()
+                        elif '❓ Status Unknown' in txt:
+                            availability = {
+                                'status': 'unknown',
+                                'available_copies': 0,
+                                'total_copies': 0
+                            }
+                
                 books_raw.append({
                     'title': title,
                     'author': author,
@@ -185,7 +232,8 @@ async def chat(request: Request, data: ChatRequest):
                     'isbn': isbn,
                     'copies': copies,
                     'call_numbers': call_numbers,
-                    'accessions': accessions
+                    'accessions': accessions,
+                    'availability': availability
                 })
             
             # Second pass: merge duplicates with same title, author, and ISBN
@@ -209,6 +257,9 @@ async def chat(request: Request, data: ChatRequest):
                     for acc in book['accessions']:
                         if acc and acc not in merged_books[key]['accessions']:
                             merged_books[key]['accessions'].append(acc)
+                    # Preserve availability info (prefer the first one found)
+                    if book['availability'] and not merged_books[key].get('availability'):
+                        merged_books[key]['availability'] = book['availability']
                 else:
                     # New entry
                     merged_books[key] = book
@@ -217,7 +268,7 @@ async def chat(request: Request, data: ChatRequest):
             books = []
             for book in list(merged_books.values())[:6]:
                 summary = f"{book['title']} by {book['author']} ({book['year']})."[:240]
-                books.append({
+                book_data = {
                     'title': book['title'],
                     'author': book['author'],
                     'year': book['year'],
@@ -226,7 +277,13 @@ async def chat(request: Request, data: ChatRequest):
                     'call_numbers': ', '.join(book['call_numbers']),
                     'accessions': ', '.join(book['accessions']) if book['accessions'] else '',
                     'summary': summary
-                })
+                }
+                
+                # Include availability information if present
+                if book.get('availability'):
+                    book_data['availability'] = book['availability']
+                
+                books.append(book_data)
             
             # Wrap in JSON string for frontend, but keep API contract 'response' as string
             import json

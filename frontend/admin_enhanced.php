@@ -6,10 +6,39 @@
 
 // Configuration
 define('ADMIN_USERNAME', 'admin');
-define('ADMIN_PASSWORD', 'admin123'); // CHANGE THIS IN PRODUCTION!
+define('ADMIN_PASSWORD', 'admin123'); // ⚠️ CRITICAL: CHANGE THIS IN PRODUCTION!
 define('GENERAL_QUERIES_FILE', '../backend/general_queries.json');
 define('CACHE_DIR', '../backend/cache');
+define('CONFIG_FILE', '../backend/.env');
 define('MAX_UPLOAD_SIZE', 10 * 1024 * 1024); // 10MB
+
+// Function to read OPAC configuration
+function getOpacEnabled() {
+    if (file_exists(CONFIG_FILE)) {
+        $content = file_get_contents(CONFIG_FILE);
+        if (preg_match('/NANDU_WEBSCRAPE=([01])/', $content, $matches)) {
+            return $matches[1] === '1';
+        }
+    }
+    return false; // Default to disabled
+}
+
+// Function to set OPAC configuration
+function setOpacEnabled($enabled) {
+    $envContent = '';
+    if (file_exists(CONFIG_FILE)) {
+        $envContent = file_get_contents(CONFIG_FILE);
+    }
+    
+    $value = $enabled ? '1' : '0';
+    if (preg_match('/NANDU_WEBSCRAPE=/', $envContent)) {
+        $envContent = preg_replace('/NANDU_WEBSCRAPE=[01]/', 'NANDU_WEBSCRAPE=' . $value, $envContent);
+    } else {
+        $envContent .= "\nNANDU_WEBSCRAPE=" . $value . "\n";
+    }
+    
+    return file_put_contents(CONFIG_FILE, $envContent) !== false;
+}
 
 session_start();
 
@@ -31,6 +60,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         $_SESSION['login_time'] = time();
     } else {
         $login_error = 'Invalid credentials';
+    }
+}
+
+// Handle OPAC toggle
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_opac']) && $_SESSION['admin_logged_in']) {
+    $enable_opac = isset($_POST['enable_opac']) && $_POST['enable_opac'] === '1';
+    if (setOpacEnabled($enable_opac)) {
+        $success_message = 'OPAC search ' . ($enable_opac ? 'enabled' : 'disabled') . ' successfully!';
+        
+        // Log OPAC configuration change to backend
+        $log_data = json_encode([
+            'activity_type' => 'admin_action',
+            'activity' => 'opac_toggle',
+            'admin_user' => $_SESSION['admin_user'] ?? 'admin',
+            'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
+            'timestamp' => date('c'),
+            'details' => [
+                'opac_enabled' => $enable_opac,
+                'action' => $enable_opac ? 'enabled' : 'disabled',
+                'source' => 'php_admin_panel'
+            ]
+        ]);
+        @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
+    } else {
+        $error_message = 'Failed to update OPAC configuration.';
+        
+        // Log failed OPAC configuration change
+        $log_data = json_encode([
+            'activity_type' => 'admin_action',
+            'activity' => 'opac_toggle_failed',
+            'admin_user' => $_SESSION['admin_user'] ?? 'admin',
+            'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
+            'timestamp' => date('c'),
+            'details' => [
+                'attempted_action' => $enable_opac ? 'enable' : 'disable',
+                'error' => 'Configuration file write failed',
+                'source' => 'php_admin_panel'
+            ]
+        ]);
+        @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
     }
 }
 
@@ -442,6 +511,77 @@ $queries = loadGeneralQueries();
         
         .btn-full {
             width: 100%;
+        }
+        
+        /* Toggle Switch Styles */
+        .config-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .toggle-label input[type="checkbox"] {
+            display: none;
+        }
+        
+        .toggle-slider {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 30px;
+            margin-right: 15px;
+            transition: background 0.3s;
+        }
+        
+        .toggle-slider:before {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .toggle-label input[type="checkbox"]:checked + .toggle-slider {
+            background: #28a745;
+        }
+        
+        .toggle-label input[type="checkbox"]:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+        
+        .toggle-text {
+            color: #333;
+        }
+        
+        .config-description {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 4px;
+            border-left: 4px solid #17a2b8;
         }
         
         .alert {
@@ -1175,6 +1315,27 @@ $queries = loadGeneralQueries();
             <div id="system" class="tab-content">
                 <div class="section">
                     <h2>⚙️ System Configuration</h2>
+                    
+                    <div class="config-section">
+                        <h3>🔍 OPAC Search Settings</h3>
+                        <form method="POST" style="margin-bottom: 20px;">
+                            <div class="toggle-container">
+                                <label class="toggle-label">
+                                    <input type="checkbox" name="enable_opac" value="1" <?= getOpacEnabled() ? 'checked' : '' ?> onchange="this.form.submit()">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-text">
+                                        OPAC Real-time Search: 
+                                        <strong><?= getOpacEnabled() ? 'Enabled' : 'Disabled' ?></strong>
+                                    </span>
+                                </label>
+                                <input type="hidden" name="toggle_opac" value="1">
+                            </div>
+                            <p class="config-description">
+                                📚 When enabled, book searches will include real-time availability data from the OPAC system, 
+                                showing current status and due dates for each item.
+                            </p>
+                        </form>
+                    </div>
                     
                     <h3>Environment Information</h3>
                     <table>

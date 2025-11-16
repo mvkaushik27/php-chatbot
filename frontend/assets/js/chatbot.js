@@ -210,29 +210,38 @@
             }
         }
         
-        // Escape HTML first
-        text = escapeHtml(text);
+        // Check if text already contains HTML tags (from backend)
+        const hasHtmlTags = /<[^>]+>/.test(text);
         
-        // Convert **bold** to <strong>
-        text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        
-        // Convert *italic* to <em>
-        text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
-        
-        // Convert [text](url) to links
-        text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-        
-        // Convert line breaks
-        text = text.replace(/\n/g, '<br>');
-        
-        // Convert bullet points
-        text = text.replace(/^[•·●] (.+)$/gm, '<li>$1</li>');
-        text = text.replace(/(<li>.*?<\/li>(?:\s*<li>.*?<\/li>)*)/gs, '<ul>$1</ul>');
-        
-        // Convert numbered lists
-        text = text.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
-        
-        return text;
+        if (hasHtmlTags) {
+            // Text already contains HTML from backend, return as-is
+            return text;
+        } else {
+            // Text is plain text or markdown, process it
+            // Escape HTML first
+            text = escapeHtml(text);
+            
+            // Convert **bold** to <strong>
+            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // Convert *italic* to <em>
+            text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            
+            // Convert [text](url) to links
+            text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+            
+            // Convert line breaks
+            text = text.replace(/\n/g, '<br>');
+            
+            // Convert bullet points
+            text = text.replace(/^[•·●] (.+)$/gm, '<li>$1</li>');
+            text = text.replace(/(<li>.*?<\/li>(?:\s*<li>.*?<\/li>)*)/gs, '<ul>$1</ul>');
+            
+            // Convert numbered lists
+            text = text.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+            
+            return text;
+        }
     }
     
     // Format book results from JSON data
