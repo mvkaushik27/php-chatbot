@@ -511,6 +511,217 @@ footer {
     border: 1px solid #d1d5db;
 }
 
+/* Book Results Layout */
+.book-results {
+    margin-top: 10px;
+}
+
+.book-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.book-card {
+    background: #f8f9fa;
+    border-left: 3px solid #ff4b4b;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.book-main {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.book-info {
+    flex: 1;
+}
+
+.book-title {
+    font-weight: 600;
+    color: #262730;
+    margin-bottom: 4px;
+}
+
+.book-author {
+    color: #808495;
+    font-size: 14px;
+}
+
+.book-meta {
+    display: flex;
+    gap: 15px;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #666;
+    flex-wrap: wrap;
+}
+
+.book-details {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #555;
+}
+
+.book-details:nth-of-type(2) {
+    margin-top: 4px;
+}
+
+.book-availability {
+    flex-shrink: 0;
+    min-width: 140px;
+}
+
+.availability-status {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.availability-status.available {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.availability-status.issued {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.availability-status.unknown {
+    background: #e2e3e5;
+    color: #383d41;
+    border: 1px solid #d6d8db;
+}
+
+/* Item Details Section */
+.item-details-section {
+    margin-top: 8px;
+    padding: 8px;
+    background: #f0f2f6;
+    border-radius: 4px;
+}
+
+.item-details-header {
+    font-size: 12px;
+    font-weight: 600;
+    color: #262730;
+    margin-bottom: 4px;
+}
+
+.item-detail {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 4px;
+    padding: 4px;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #e0e0e0;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.item-type {
+    font-weight: 500;
+}
+
+.item-status {
+    font-weight: 600;
+}
+
+.item-status.available {
+    color: #28a745;
+}
+
+.item-status.checked-out {
+    color: #dc3545;
+}
+
+.item-status.other {
+    color: #6c757d;
+}
+
+.item-due-date {
+    font-size: 11px;
+    color: #dc3545;
+    margin-top: 2px;
+}
+
+.item-barcode {
+    font-size: 10px;
+    color: #666;
+    font-family: monospace;
+    margin-top: 2px;
+}
+
+.book-summary {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Show More Books Button Styles */
+.show-more-section {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+}
+
+.show-more-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.show-more-btn:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+.show-more-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.additional-books {
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 2px dashed #e5e7eb;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 
 

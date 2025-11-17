@@ -12,6 +12,27 @@ define('CACHE_DIR', '../backend/cache');
 define('CONFIG_FILE', '../backend/.env');
 define('MAX_UPLOAD_SIZE', 10 * 1024 * 1024); // 10MB
 
+// Helper function to log admin activity
+function logAdminActivity($activity, $details = []) {
+    $log_data = json_encode([
+        'activity_type' => 'admin_action',
+        'activity' => $activity,
+        'admin_user' => $_SESSION['admin_user'] ?? 'admin',
+        'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
+        'timestamp' => date('c'),
+        'details' => array_merge($details, ['source' => 'php_admin_panel'])
+    ]);
+    @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
+}
+
+// Helper function to get admin user info
+function getAdminInfo() {
+    return [
+        'admin_user' => $_SESSION['admin_user'] ?? 'admin',
+        'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown'
+    ];
+}
+
 // Function to read OPAC configuration
 function getOpacEnabled() {
     if (file_exists(CONFIG_FILE)) {
@@ -70,36 +91,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_opac']) && $_S
         $success_message = 'OPAC search ' . ($enable_opac ? 'enabled' : 'disabled') . ' successfully!';
         
         // Log OPAC configuration change to backend
-        $log_data = json_encode([
-            'activity_type' => 'admin_action',
-            'activity' => 'opac_toggle',
-            'admin_user' => $_SESSION['admin_user'] ?? 'admin',
-            'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-            'timestamp' => date('c'),
-            'details' => [
-                'opac_enabled' => $enable_opac,
-                'action' => $enable_opac ? 'enabled' : 'disabled',
-                'source' => 'php_admin_panel'
-            ]
+        logAdminActivity('opac_toggle', [
+            'opac_enabled' => $enable_opac,
+            'action' => $enable_opac ? 'enabled' : 'disabled'
         ]);
-        @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
     } else {
         $error_message = 'Failed to update OPAC configuration.';
         
         // Log failed OPAC configuration change
-        $log_data = json_encode([
-            'activity_type' => 'admin_action',
-            'activity' => 'opac_toggle_failed',
-            'admin_user' => $_SESSION['admin_user'] ?? 'admin',
-            'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-            'timestamp' => date('c'),
-            'details' => [
-                'attempted_action' => $enable_opac ? 'enable' : 'disable',
-                'error' => 'Configuration file write failed',
-                'source' => 'php_admin_panel'
-            ]
+        logAdminActivity('opac_toggle_failed', [
+            'attempted_action' => $enable_opac ? 'enable' : 'disable',
+            'error' => 'Configuration file write failed'
         ]);
-        @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
     }
 }
 
@@ -120,36 +123,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_queries']) && $_
                 $success_message = 'General queries updated and FAISS index rebuilt successfully!';
 
                 // Log successful rebuild
-                $log_data = json_encode([
-                    'activity_type' => 'admin_action',
-                    'activity' => 'faiss_rebuild_php',
-                    'admin_user' => $_SESSION['admin_user'] ?? 'admin',
-                    'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-                    'timestamp' => date('c'),
-                    'details' => [
-                        'index_type' => 'general',
-                        'rebuild_success' => true,
-                        'output_length' => strlen($rebuild_output)
-                    ]
+                logAdminActivity('faiss_rebuild_php', [
+                    'index_type' => 'general',
+                    'rebuild_success' => true,
+                    'output_length' => strlen($rebuild_output)
                 ]);
-                @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
             } else {
                 $success_message = 'General queries updated but FAISS index rebuild may have failed. Check system logs.';
 
                 // Log failed rebuild
-                $log_data = json_encode([
-                    'activity_type' => 'admin_action',
-                    'activity' => 'faiss_rebuild_php',
-                    'admin_user' => $_SESSION['admin_user'] ?? 'admin',
-                    'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-                    'timestamp' => date('c'),
-                    'details' => [
-                        'index_type' => 'general',
-                        'rebuild_success' => false,
-                        'error_output' => substr($rebuild_output, 0, 500)
-                    ]
+                logAdminActivity('faiss_rebuild_php', [
+                    'index_type' => 'general',
+                    'rebuild_success' => false,
+                    'error_output' => substr($rebuild_output, 0, 500)
                 ]);
-                @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
             }
         } else {
             $error_message = 'Invalid JSON format';
@@ -167,15 +154,7 @@ if (isset($_GET['clear_cache']) && $_SESSION['admin_logged_in']) {
         $success_message = 'Cache cleared successfully!';
         
         // Log admin activity
-        $log_data = json_encode([
-            'activity_type' => 'admin_action',
-            'activity' => 'cache_clear_php',
-            'admin_user' => $_SESSION['admin_user'] ?? 'admin',
-            'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-            'timestamp' => date('c'),
-            'details' => ['source' => 'php_admin_panel']
-        ]);
-        @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
+        logAdminActivity('cache_clear_php');
     } else {
         $error_message = 'Failed to clear cache';
     }
@@ -211,20 +190,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['json_file']) && $_SE
                     $success_message = 'File uploaded successfully!';
                     
                     // Log admin activity for file upload
-                    $log_data = json_encode([
-                        'activity_type' => 'admin_action',
-                        'activity' => 'file_upload_php',
-                        'admin_user' => $_SESSION['admin_user'] ?? 'admin',
-                        'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-                        'timestamp' => date('c'),
-                        'details' => [
-                            'file_type' => $json_type,
-                            'file_size' => strlen($content),
-                            'target_path' => $target_path,
-                            'rebuild_requested' => $rebuild_after
-                        ]
+                    logAdminActivity('file_upload_php', [
+                        'file_type' => $json_type,
+                        'file_size' => strlen($content),
+                        'target_path' => $target_path,
+                        'rebuild_requested' => $rebuild_after
                     ]);
-                    @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
                     
                     // Trigger FAISS rebuild if requested
                     if ($rebuild_after) {
@@ -244,37 +215,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['json_file']) && $_SE
                                 $success_message .= ' FAISS index rebuilt successfully!';
                                 
                                 // Log rebuild activity
-                                $rebuild_log_data = json_encode([
-                                    'activity_type' => 'admin_action',
-                                    'activity' => 'faiss_rebuild_php',
-                                    'admin_user' => $_SESSION['admin_user'] ?? 'admin',
-                                    'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-                                    'timestamp' => date('c'),
-                                    'details' => [
-                                        'index_type' => $json_type,
-                                        'triggered_by' => 'file_upload',
-                                        'rebuild_success' => true
-                                    ]
+                                logAdminActivity('faiss_rebuild_php', [
+                                    'index_type' => $json_type,
+                                    'triggered_by' => 'file_upload',
+                                    'rebuild_success' => true
                                 ]);
-                                @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($rebuild_log_data));
                             } else {
                                 $success_message .= ' File uploaded but index rebuild may have failed. Check system logs.';
                                 
                                 // Log failed rebuild
-                                $failed_log_data = json_encode([
-                                    'activity_type' => 'admin_action',
-                                    'activity' => 'faiss_rebuild_php',
-                                    'admin_user' => $_SESSION['admin_user'] ?? 'admin',
-                                    'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-                                    'timestamp' => date('c'),
-                                    'details' => [
-                                        'index_type' => $json_type,
-                                        'triggered_by' => 'file_upload',
-                                        'rebuild_success' => false,
-                                        'error_output' => substr($output, 0, 500)
-                                    ]
+                                logAdminActivity('faiss_rebuild_php', [
+                                    'index_type' => $json_type,
+                                    'triggered_by' => 'file_upload',
+                                    'rebuild_success' => false,
+                                    'error_output' => substr($output, 0, 500)
                                 ]);
-                                @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($failed_log_data));
                             }
                         }
                     }
@@ -311,36 +266,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rebuild_faiss']) && $
             $success_message = ucfirst($index_type) . ' FAISS index rebuilt successfully!';
             
             // Log successful rebuild
-            $log_data = json_encode([
-                'activity_type' => 'admin_action',
-                'activity' => 'faiss_rebuild_php',
-                'admin_user' => $_SESSION['admin_user'] ?? 'admin',
-                'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-                'timestamp' => date('c'),
-                'details' => [
-                    'index_type' => $index_type,
-                    'rebuild_success' => true,
-                    'output_length' => strlen($output)
-                ]
+            logAdminActivity('faiss_rebuild_php', [
+                'index_type' => $index_type,
+                'rebuild_success' => true,
+                'output_length' => strlen($output)
             ]);
-            @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
         } else {
             $error_message = 'Failed to rebuild index. Error: ' . htmlspecialchars($output);
             
             // Log failed rebuild
-            $log_data = json_encode([
-                'activity_type' => 'admin_action',
-                'activity' => 'faiss_rebuild_php',
-                'admin_user' => $_SESSION['admin_user'] ?? 'admin',
-                'client_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
-                'timestamp' => date('c'),
-                'details' => [
-                    'index_type' => $index_type,
-                    'rebuild_success' => false,
-                    'error_output' => substr($output, 0, 500)
-                ]
+            logAdminActivity('faiss_rebuild_php', [
+                'index_type' => $index_type,
+                'rebuild_success' => false,
+                'error_output' => substr($output, 0, 500)
             ]);
-            @file_get_contents('http://localhost:8000/admin/log-activity?data=' . urlencode($log_data));
         }
     } else {
         $error_message = 'Invalid index type';

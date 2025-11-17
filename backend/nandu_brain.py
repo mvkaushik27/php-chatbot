@@ -56,7 +56,7 @@ except ImportError:
 
 # Check for requests library
 try:
-    import requests
+    # requests already imported at top, just check if it's available
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -407,7 +407,7 @@ def auto_correct_spelling(query):
         return query
 
     # Lazy-load and cache a lexicon of author tokens from the catalogue
-    import string
+    # string module already imported at top
 
     @lru_cache(maxsize=1)
     def _author_token_lexicon() -> set:
@@ -508,7 +508,7 @@ def fetch_website_content(url="https://www.iitrpr.ac.in/library/", cache_timeout
     try:
         # Check if cache exists and is valid
         if cache_file.exists():
-            import time
+            # time module already imported at top
             cache_age = time.time() - cache_file.stat().st_mtime
             if cache_age < cache_timeout:
                 with open(cache_file, 'r', encoding='utf-8') as f:
@@ -1066,7 +1066,78 @@ def classify_query(query):
         'library book', 'library books'
     ]
     
-    # Check if it matches book keywords
+    # Exclusion patterns - these queries should NOT be classified as book searches
+    exclusion_patterns = [
+        # Personal belongings and entry procedures
+        'make entry', 'entry of', 'bring my', 'my books and laptop', 'personal books',
+        'own books', 'entry portal', 'entry exit',
+        
+        # Library rules and procedures
+        'do i have to', 'should i', 'can i bring', 'allowed to bring',
+        'entry register', 'register entry',
+        
+        # Library services and policies
+        'library rule', 'library policy', 'library service', 'library procedure',
+        'fine policy', 'membership', 'card required', 'id card',
+        
+        # Vacation and borrowing policies
+        'books for vacation', 'vacation books', 'books for summer', 'books for winter',
+        'can i get books for', 'vacation period', 'holiday books', 'semester break',
+        
+        # Borrowing policy questions
+        'can i issue', 'can i borrow', 'how many books can i', 'book limit',
+        'borrowing limit', 'issue limit', 'renewal policy', 'due date',
+        
+        # Book renewal questions
+        'can i renew', 'renew my books', 'book renewal', 'renewal of books',
+        'extend books', 'extension of books',
+        
+        # Common area booking
+        'can i book', 'book a common', 'common sphere', 'sphere area',
+        'book common area', 'reserve area', 'area booking',
+        
+        # Damaged/defective book issues
+        'book is damaged', 'damaged book', 'book damaged', 'defective book',
+        'torn book', 'missing pages', 'book condition', 'want to issue but',
+        'issue but damaged', 'issue but torn', 'book but damaged',
+        'issue a book but', 'but it\'s damaged', 'but damaged',
+        
+        # Return and card issues
+        'return book without', 'without a card', 'somebody else\'s card',
+        'without card', 'return without card', 'else\'s card',
+        
+        # Renewal policies and procedures
+        'renew without bringing', 'renew a book without', 'how many times',
+        'times can renew', 'times i can renew', 'renew how many',
+        
+        # Library recall and policies
+        'library recall', 'can library recall', 'recall the book',
+        'library can recall', 'book that i have issued',
+        
+        # Location and directions
+        'where are', 'where is', 'location of', 'fiction books in',
+        'books in the library', 'where can i find',
+        
+        # Techno booth and facility booking
+        'techno booth', 'book techno booth', 'strength required',
+        'min and max strength', 'booth booking', 'facility booking',
+        
+        # Book bank and special services
+        'book bank book', 'what is book bank', 'book bank service',
+        'bank book is', 'book bank policy',
+        
+        # General library questions
+        'how to', 'what to do', 'where to', 'when to', 'why to'
+    ]
+    
+    # Check if query matches exclusion patterns (should NOT be book search)
+    for pattern in exclusion_patterns:
+        if pattern in query_lower:
+            logger.info(f"🚫 Query excluded from book search (pattern: '{pattern}')")
+            # Return early - skip ALL book classification logic
+            return 'general'
+    
+    # Only check book keywords if not excluded above
     for keyword in book_keywords:
         if keyword in query_lower:
             logger.info(f"Fallback classified '{query}' as BOOK QUERY (keyword: '{keyword}')")
@@ -1128,8 +1199,7 @@ def merge_duplicates(results):
         logger.debug("No results to merge")
         return []
 
-    import string
-    from collections import defaultdict, Counter
+    # string and collections modules already imported at top
 
     def normalize_title(s: str) -> str:
         s = (s or "").strip().lower()
@@ -2225,6 +2295,19 @@ def get_nandu_response(q, search_mode: str = "auto", client_ip: str = "default")
             else:
                 return "⚠️ I couldn't retrieve the library statistics at this time. Please try again later."
         
+        # Check for "show more books" requests
+        show_more_patterns = [
+            'show more books', 'more books', 'show more', 'yes show more',
+            'yes, show more', 'see more books', 'view more books',
+            'display more books', 'list more books', 'more results'
+        ]
+        
+        is_show_more_query = any(pattern in query_lower for pattern in show_more_patterns)
+        
+        if is_show_more_query:
+            logger.info("📚 Detected 'show more books' request")
+            return "📚 **I'd be happy to show you more books!** However, I need to know what topic or subject you're interested in.<br><br>**Please search for a specific topic first** (like 'machine learning', 'physics', 'chemistry', etc.) and I'll show you the top 5 results. Then you can ask for more!<br><br>**Try asking:** *'Find books about [your topic]'*"
+        
         # Check for accession number queries (bc: format)
         accession_match = re.search(r'\bbc:(\d+)\b', original_query, re.IGNORECASE)
         if accession_match:
@@ -2438,23 +2521,38 @@ def get_nandu_response(q, search_mode: str = "auto", client_ip: str = "default")
                     # Conversational intro based on context
                     if book_intent == "author":
                         intro = f"📚 **Great! I found {count} book{'s' if count != 1 else ''} by {clean_q} in our library:**\n\n"
-                    elif count == 1:
+                    # Implement progressive disclosure: show 5 books initially, offer to show more
+                    if count == 1:
                         intro = f"📚 **Perfect! I found exactly what you're looking for:**\n\n"
-                    elif count <= 3:
+                        display_count = 1
+                    elif count <= 10:
                         intro = f"📚 **I found {count} books matching '{clean_q}':**\n\n"
+                        display_count = count
                     else:
-                        intro = f"📚 **I found {count} books related to '{clean_q}'. Here are the most relevant ones:**\n\n"
+                        intro = f"📚 **I found {count} books related to '{clean_q}'. Here are the top 10 most relevant:**\n\n"
+                        display_count = 10
                     
-                    # Format as HTML for backward compatibility
-                    book_cards = format_results(results[:10])  # Limit to top 10 for better UX
+                    # Format as HTML for backward compatibility - show initial batch
+                    book_cards = format_results(results[:display_count])
                     
                     # Add JSON data for widget to parse and display with separate availability column
-                    widget_books = format_books_for_widget(results[:10])
+                    widget_books = format_books_for_widget(results[:display_count])
                     
-                    # Add helpful footer if many results
+                    # Add "Show more" option if more than 10 books available
                     footer = ""
                     if count > 10:
-                        footer = f"\n\n💡 *Showing top 10 results. {count - 10} more books are available. Try refining your search for more specific results.*"
+                        remaining = min(count - 10, 15)  # Show up to 15 more books
+                        footer = f"\n\n💡 *Showing top 10 results. Would you like to see {remaining} more books? Just say **'show more books'** or **'yes, show more'**.*"
+                        
+                        # Include all available books (up to 25 total) in JSON for frontend to handle
+                        all_widget_books = format_books_for_widget(results[:25])
+                        widget_books = {
+                            "initial_books": widget_books,
+                            "all_books": all_widget_books,
+                            "has_more": True,
+                            "total_count": count,
+                            "showing_count": display_count
+                        }
                     
                     # Return response with both HTML and JSON for widget
                     response_text = intro + book_cards + footer

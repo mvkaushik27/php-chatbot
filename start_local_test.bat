@@ -53,13 +53,16 @@ if not exist "backend\nandu_brain.py" (
     exit /b 1
 )
 
-echo [1/5] Checking Python dependencies...
+echo [1/5] Checking and updating Python dependencies...
 cd backend
 pip show fastapi >nul 2>&1
 if errorlevel 1 (
     echo [INFO] Installing FastAPI and dependencies...
     pip install fastapi uvicorn python-dotenv
 )
+
+echo [INFO] Upgrading sentence-transformers to latest version...
+pip install --upgrade sentence-transformers>=5.1.2
 
 echo [2/5] Starting Python Backend API...
 start "Nalanda Python Backend" cmd /k "python api_server.py"

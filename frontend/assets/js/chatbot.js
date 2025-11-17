@@ -182,26 +182,21 @@
     function formatBotMessage(text) {
         // Check if the message contains a JSON code block
         const jsonMatch = text.match(/```json\s*\n([\s\S]*?)\n```/);
-        console.log('formatBotMessage called, JSON match found:', !!jsonMatch);
         
         if (jsonMatch) {
             try {
                 const jsonData = JSON.parse(jsonMatch[1]);
-                console.log('Parsed JSON data:', jsonData);
                 
                 // Handle both array format and object with books property
                 let books = [];
                 if (Array.isArray(jsonData)) {
                     books = jsonData;
-                    console.log('Found books as array:', books.length);
                 } else if (jsonData.books && Array.isArray(jsonData.books)) {
                     books = jsonData.books;
-                    console.log('Found books in jsonData.books:', books.length);
                 }
                 
                 // If we have books data
                 if (books.length > 0) {
-                    console.log('Calling formatBookResults with', books.length, 'books');
                     return formatBookResults(books, text);
                 }
             } catch (e) {
@@ -255,12 +250,26 @@
             html += `<p>${intro.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}</p>`;
         }
 
-        html += '<div style="margin-top: 10px;">';
+        html += '<div class="book-results">';
+        
+        // Check if this is progressive disclosure format
+        let booksToShow = books;
+        let hasMore = false;
+        let allBooks = [];
+        
+        if (books && typeof books === 'object' && books.initial_books) {
+            // Progressive disclosure format
+            booksToShow = books.initial_books;
+            allBooks = books.all_books;
+            hasMore = books.has_more;
+        } else if (Array.isArray(books)) {
+            booksToShow = books;
+        }
         
         // Create a table-like layout with availability in separate column
-        html += '<div style="display: flex; flex-direction: column; gap: 12px;">';
+        html += '<div class="book-list" id="initial-books">';
         
-        books.forEach((book, index) => {
+        booksToShow.forEach((book, index) => {
             // Get availability status
             const availability = book.availability || {};
             const status = availability.status || 'unknown';
@@ -281,52 +290,55 @@
                 availabilityClass = 'unknown';
             }
             
+            const safeTitle = escapeHtml(book.title);
+            const safeAuthor = book.author ? escapeHtml(book.author) : '';
+            const safeYear = book.year ? escapeHtml(book.year) : '';
+            const safeIsbn = book.isbn ? escapeHtml(book.isbn) : '';
+            const safeCopies = book.copies ? escapeHtml(book.copies) : '';
+            const safeCallNumbers = book.call_numbers && book.call_numbers.length ? escapeHtml(book.call_numbers.join(', ')) : '';
+            const safeAccessions = book.accessions && book.accessions.length ? escapeHtml(book.accessions.join(', ')) : '';
+            
             html += `
-                <div style="background: #f8f9fa; border-left: 3px solid #ff4b4b; padding: 12px; border-radius: 4px;">
-                    <div style="display: flex; gap: 15px; align-items: flex-start;">
-                        <div style="flex: 1;">
-                            <div style="font-weight: 600; color: #262730; margin-bottom: 4px;">${escapeHtml(book.title)}</div>
-                            ${book.author ? `<div style="color: #808495; font-size: 14px;">by ${escapeHtml(book.author)}</div>` : ''}
-                            <div style="display: flex; gap: 15px; margin-top: 6px; font-size: 13px; color: #666; flex-wrap: wrap;">
-                                ${book.year ? `<span>📅 ${escapeHtml(book.year)}</span>` : ''}
-                                ${book.isbn ? `<span>📖 ISBN: ${escapeHtml(book.isbn)}</span>` : ''}
-                                ${book.copies ? `<span>📚 Copies: ${escapeHtml(book.copies)}</span>` : ''}
+                <div class="book-card">
+                    <div class="book-main">
+                        <div class="book-info">
+                            <div class="book-title">${safeTitle}</div>
+                            ${safeAuthor ? `<div class="book-author">by ${safeAuthor}</div>` : ''}
+                            <div class="book-meta">
+                                ${safeYear ? `<span>📅 ${safeYear}</span>` : ''}
+                                ${safeIsbn ? `<span>📖 ISBN: ${safeIsbn}</span>` : ''}
+                                ${safeCopies ? `<span>📚 Copies: ${safeCopies}</span>` : ''}
                             </div>
-                            ${book.call_numbers && book.call_numbers.length ? `<div style="margin-top: 6px; font-size: 13px; color: #555;"><strong>Call Number:</strong> ${escapeHtml(book.call_numbers.join(', '))}</div>` : ''}
-                            ${book.accessions && book.accessions.length ? `<div style="margin-top: 4px; font-size: 13px; color: #555;"><strong>Accession #:</strong> ${escapeHtml(book.accessions.join(', '))}</div>` : ''}
+                            ${safeCallNumbers ? `<div class="book-details"><strong>Call Number:</strong> ${safeCallNumbers}</div>` : ''}
+                            ${safeAccessions ? `<div class="book-details"><strong>Accession #:</strong> ${safeAccessions}</div>` : ''}
                             
                             ${book.item_details && book.item_details.length ? `
-                                <div style="margin-top: 8px; padding: 8px; background: #f0f2f6; border-radius: 4px;">
-                                    <div style="font-size: 12px; font-weight: 600; color: #262730; margin-bottom: 4px;">📋 Item Details:</div>
-                                    ${book.item_details.map(item => `
-                                        <div style="font-size: 12px; color: #555; margin-bottom: 4px; padding: 4px; background: #fff; border-radius: 3px; border: 1px solid #e0e0e0;">
-                                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
-                                                <span style="font-weight: 500;">${escapeHtml(item.item_type)} ${item.collection !== 'Unknown' ? `(${escapeHtml(item.collection)})` : ''}</span>
-                                                <span style="${item.status === 'Available' ? 'color: #28a745;' : item.status === 'Checked out' ? 'color: #dc3545;' : 'color: #6c757d;'} font-weight: 600;">
-                                                    ${item.status}
-                                                </span>
+                                <div class="item-details-section">
+                                    <div class="item-details-header">📋 Item Details:</div>
+                                    ${book.item_details.map(item => {
+                                        const safeItemType = escapeHtml(item.item_type);
+                                        const safeCollection = item.collection !== 'Unknown' ? escapeHtml(item.collection) : '';
+                                        const safeDueDate = item.due_date ? escapeHtml(item.due_date) : '';
+                                        const safeBarcode = item.barcode ? escapeHtml(item.barcode) : '';
+                                        const statusClass = item.status === 'Available' ? 'available' : item.status === 'Checked out' ? 'checked-out' : 'other';
+                                        
+                                        return `
+                                        <div class="item-detail">
+                                            <div class="item-header">
+                                                <span class="item-type">${safeItemType} ${safeCollection ? `(${safeCollection})` : ''}</span>
+                                                <span class="item-status ${statusClass}">${item.status}</span>
                                             </div>
-                                            ${item.due_date && item.status === 'Checked out' ? `<div style="font-size: 11px; color: #dc3545; margin-top: 2px;">📅 Due: ${escapeHtml(item.due_date)}</div>` : ''}
-                                            ${item.barcode ? `<div style="font-size: 10px; color: #666; font-family: monospace; margin-top: 2px;">🏷️ Barcode: ${escapeHtml(item.barcode)}</div>` : ''}
-                                        </div>
-                                    `).join('')}
+                                            ${safeDueDate && item.status === 'Checked out' ? `<div class="item-due-date">📅 Due: ${safeDueDate}</div>` : ''}
+                                            ${safeBarcode ? `<div class="item-barcode">🏷️ Barcode: ${safeBarcode}</div>` : ''}
+                                        </div>`;
+                                    }).join('')}
                                 </div>
                             ` : ''}
                             
-                            ${book.summary ? `<div style="margin-top: 6px; font-size: 13px; color: #666; font-style: italic;">${escapeHtml(book.summary)}</div>` : ''}
+                            ${book.summary ? `<div class="book-summary">${escapeHtml(book.summary)}</div>` : ''}
                         </div>
-                        <div style="flex-shrink: 0; min-width: 140px;">
-                            <div class="availability-status ${availabilityClass}" style="
-                                padding: 8px 12px;
-                                border-radius: 6px;
-                                font-weight: 600;
-                                font-size: 14px;
-                                text-align: center;
-                                white-space: nowrap;
-                                ${availabilityClass === 'available' ? 'background: #d4edda; color: #155724; border: 1px solid #c3e6cb;' : ''}
-                                ${availabilityClass === 'issued' ? 'background: #fff3cd; color: #856404; border: 1px solid #ffeaa7;' : ''}
-                                ${availabilityClass === 'unknown' ? 'background: #e2e3e5; color: #383d41; border: 1px solid #d6d8db;' : ''}
-                            ">
+                        <div class="book-availability">
+                            <div class="availability-status ${availabilityClass}">
                                 ${availabilityText}
                             </div>
                         </div>
@@ -335,7 +347,82 @@
             `;
         });
         
-        html += '</div></div>';
+        html += '</div>'; // Close book-list
+        
+        // Add "Show More" button if there are more books available
+        if (hasMore && allBooks && allBooks.length > booksToShow.length) {
+            const remainingCount = allBooks.length - booksToShow.length;
+            html += `
+                <div class="show-more-section" style="text-align: center; margin: 15px 0;">
+                    <button class="show-more-btn" onclick="showMoreBooks()" 
+                            style="background: #10b981; color: white; border: none; padding: 10px 20px; 
+                                   border-radius: 6px; cursor: pointer; font-weight: 500;">
+                        📚 Show ${remainingCount} More Books
+                    </button>
+                </div>
+                <div class="additional-books" id="additional-books" style="display: none;">
+                    <div class="book-list">
+            `;
+            
+            // Add the additional books (hidden initially)
+            const additionalBooks = allBooks.slice(booksToShow.length);
+            additionalBooks.forEach((book, index) => {
+                // Get availability status
+                const availability = book.availability || {};
+                const status = availability.status || 'unknown';
+                const available = availability.available_copies || 0;
+                const total = availability.total_copies || 0;
+                
+                let availabilityText = '';
+                let availabilityClass = 'unknown';
+                
+                if (status === 'available') {
+                    availabilityText = `📚 Available (${available}/${total})`;
+                    availabilityClass = 'available';
+                } else if (status === 'issued') {
+                    availabilityText = `📖 Issued (${available}/${total})`;
+                    availabilityClass = 'issued';
+                } else {
+                    availabilityText = '❓ Status Unknown';
+                    availabilityClass = 'unknown';
+                }
+                
+                const safeTitle = escapeHtml(book.title);
+                const safeAuthor = book.author ? escapeHtml(book.author) : '';
+                const safeYear = book.year ? escapeHtml(book.year) : '';
+                const safeIsbn = book.isbn ? escapeHtml(book.isbn) : '';
+                const safeCopies = book.copies ? escapeHtml(book.copies) : '';
+                const safeCallNumbers = book.call_numbers && book.call_numbers.length ? escapeHtml(book.call_numbers.join(', ')) : '';
+                const safeAccessions = book.accessions && book.accessions.length ? escapeHtml(book.accessions.join(', ')) : '';
+                
+                html += `
+                    <div class="book-card">
+                        <div class="book-main">
+                            <div class="book-info">
+                                <div class="book-title">${safeTitle}</div>
+                                ${safeAuthor ? `<div class="book-author">by ${safeAuthor}</div>` : ''}
+                                <div class="book-meta">
+                                    ${safeYear ? `<span>📅 ${safeYear}</span>` : ''}
+                                    ${safeIsbn ? `<span>📖 ISBN: ${safeIsbn}</span>` : ''}
+                                    ${safeCopies ? `<span>📚 Copies: ${safeCopies}</span>` : ''}
+                                </div>
+                                ${safeCallNumbers ? `<div class="book-details"><strong>Call Number:</strong> ${safeCallNumbers}</div>` : ''}
+                                ${safeAccessions ? `<div class="book-details"><strong>Accession #:</strong> ${safeAccessions}</div>` : ''}
+                            </div>
+                        </div>
+                        <div class="book-availability">
+                            <div class="availability-status ${availabilityClass}">
+                                ${availabilityText}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div></div>'; // Close additional-books book-list
+        }
+        
+        html += '</div>'; // Close book-results
         
         // Add footer note if present
         const footerMatch = originalText.match(/```\s*\n(.*)$/s);
@@ -346,6 +433,20 @@
 
         return html;
     }
+    
+    // Show more books functionality
+    window.showMoreBooks = function() {
+        const additionalBooksDiv = document.getElementById('additional-books');
+        const showMoreSection = document.querySelector('.show-more-section');
+        
+        if (additionalBooksDiv && showMoreSection) {
+            additionalBooksDiv.style.display = 'block';
+            showMoreSection.style.display = 'none';
+            
+            // Smooth scroll to the additional books
+            additionalBooksDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
     
     // Escape HTML to prevent XSS
     function escapeHtml(text) {

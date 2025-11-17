@@ -14,6 +14,7 @@ import logging
 import time
 import os
 import json
+import re
 import subprocess
 from typing import Optional
 
@@ -92,9 +93,7 @@ async def chat(request: Request, data: ChatRequest):
     
     try:
         # Get client IP from headers (set by PHP or direct access)
-        client_ip = request.headers.get('X-Client-IP', 
-                     request.headers.get('X-Forwarded-For',
-                     request.client.host))
+        client_ip = _get_client_ip(request)
         
         logger.info(f"📥 Query from {client_ip}: '{data.query[:50]}...'")
         
@@ -122,7 +121,6 @@ async def chat(request: Request, data: ChatRequest):
         # If response looks like raw HTML book cards, transform to plain JSON format
         if isinstance(response, str) and '<div class="book-card"' in response:
             from bs4 import BeautifulSoup  # lightweight parse of our own HTML structure
-            import re
             soup = BeautifulSoup(response, 'html.parser')
             cards = soup.select('div.book-card')
             books_raw = []
@@ -286,7 +284,6 @@ async def chat(request: Request, data: ChatRequest):
                 books.append(book_data)
             
             # Wrap in JSON string for frontend, but keep API contract 'response' as string
-            import json
             response_payload = json.dumps({ 'books': books }, ensure_ascii=False)
             response = f"```json\n{response_payload}\n```"
         # Ensure response is a string for model contract
@@ -314,6 +311,22 @@ async def chat(request: Request, data: ChatRequest):
 # ---------------------------
 BASE_DIR = Path(__file__).parent.resolve()
 
+def _get_client_ip(request: Request) -> str:
+    """Extract client IP from request headers or client info."""
+    return request.headers.get('X-Client-IP', 
+           request.headers.get('X-Forwarded-For',
+           request.client.host if request.client else "unknown"))
+
+def _log_admin_activity(activity: str, details: dict, start_time: float, request: Request, admin_user: str = "admin") -> None:
+    """Log admin activity with standardized processing time."""
+    details["processing_time_ms"] = round((time.time() - start_time) * 1000, 2)
+    nandu_brain.audit_log_admin_activity(
+        activity, 
+        details,
+        admin_user=admin_user,
+        client_ip=_get_client_ip(request)
+    )
+
 def _run_script(cmd: list[str]) -> tuple[bool, str]:
     """Run a script in backend directory and return (ok, output)."""
     try:
@@ -338,7 +351,6 @@ def _save_upload(dest_path: Path, up: UploadFile) -> None:
 @app.post("/admin/clear-cache")
 async def admin_clear_cache(request: Request):
     """Clear backend caches and lightweight state."""
-    client_ip = request.client.host if request.client else "unknown"
     start_time = time.time()
     
     try:
@@ -358,12 +370,7 @@ async def admin_clear_cache(request: Request):
             cleared["rate_limiter"] = False
         
         # Log admin activity
-        nandu_brain.audit_log_admin_activity(
-            "cache_clear", 
-            {"cleared_items": cleared, "processing_time_ms": round((time.time() - start_time) * 1000, 2)},
-            admin_user="admin",
-            client_ip=client_ip
-        )
+        _log_admin_activity("cache_clear", {"cleared_items": cleared}, start_time, request)
         
         return {"ok": True, "cleared": cleared}
     except Exception as e:
@@ -378,7 +385,6 @@ async def admin_upload_general_queries(
     rebuild: bool = Form(False)
 ):
     """Upload general_queries.json and optionally rebuild FAISS index."""
-    client_ip = request.client.host if request.client else "unknown"
     start_time = time.time()
     
     try:
@@ -399,17 +405,16 @@ async def admin_upload_general_queries(
             rebuild_ok, output = _run_script([sys.executable, "build_general_queries_index.py"])
         
         # Log admin activity
-        nandu_brain.audit_log_admin_activity(
+        _log_admin_activity(
             "file_upload", 
             {
                 "file_type": "general_queries.json",
                 "file_size": dest.stat().st_size,
                 "rebuild_requested": rebuild,
-                "rebuild_success": rebuild_ok,
-                "processing_time_ms": round((time.time() - start_time) * 1000, 2)
+                "rebuild_success": rebuild_ok
             },
-            admin_user="admin",
-            client_ip=client_ip
+            start_time,
+            request
         )
         
         return {"ok": True, "rebuild_ok": rebuild_ok, "output": output}
@@ -427,7 +432,6 @@ async def admin_upload_catalogue_csv(
     rebuild: bool = Form(True)
 ):
     """Upload catalogue.csv and optionally rebuild FAISS index."""
-    client_ip = request.client.host if request.client else "unknown"
     start_time = time.time()
     
     try:
@@ -443,17 +447,16 @@ async def admin_upload_catalogue_csv(
             rebuild_ok, output = _run_script([sys.executable, "catalogue_indexer.py"])
         
         # Log admin activity
-        nandu_brain.audit_log_admin_activity(
+        _log_admin_activity(
             "file_upload", 
             {
                 "file_type": "catalogue.csv",
                 "file_size": dest.stat().st_size,
                 "rebuild_requested": rebuild,
-                "rebuild_success": rebuild_ok,
-                "processing_time_ms": round((time.time() - start_time) * 1000, 2)
+                "rebuild_success": rebuild_ok
             },
-            admin_user="admin",
-            client_ip=client_ip
+            start_time, 
+            request
         )
         
         return {"ok": True, "rebuild_ok": rebuild_ok, "output": output}
@@ -471,7 +474,6 @@ class RebuildRequest(BaseModel):
 @app.post("/admin/rebuild")
 async def admin_rebuild(request: Request, req: RebuildRequest):
     """Rebuild FAISS indices on demand."""
-    client_ip = request.client.host if request.client else "unknown"
     start_time = time.time()
     
     index = req.index.strip().lower()
@@ -488,16 +490,15 @@ async def admin_rebuild(request: Request, req: RebuildRequest):
         ok, out = _run_script([sys.executable, "catalogue_indexer.py"])
     
     # Log admin activity
-    nandu_brain.audit_log_admin_activity(
+    _log_admin_activity(
         "faiss_rebuild", 
         {
             "index_type": index,
             "rebuild_success": ok,
-            "output_length": len(out),
-            "processing_time_ms": round((time.time() - start_time) * 1000, 2)
+            "output_length": len(out)
         },
-        admin_user="admin",
-        client_ip=client_ip
+        start_time,
+        request
     )
     
     return {"ok": ok, "output": out}
@@ -517,7 +518,7 @@ async def admin_log_activity(request: Request, data: str = None):
         activity = activity_data.get("activity", "unknown")
         details = activity_data.get("details", {})
         admin_user = activity_data.get("admin_user", "admin")
-        client_ip = activity_data.get("client_ip", request.client.host if request.client else "unknown")
+        client_ip = activity_data.get("client_ip", _get_client_ip(request))
         
         # Log using the backend function
         nandu_brain.audit_log_admin_activity(
@@ -535,7 +536,6 @@ async def admin_log_activity(request: Request, data: str = None):
 @app.get("/admin/index-status")
 async def admin_index_status(request: Request):
     """Return presence, size and mtime for FAISS indices and data files."""
-    client_ip = request.client.host if request.client else "unknown"
     
     def info(p: Path):
         if not p.exists():
@@ -562,7 +562,7 @@ async def admin_index_status(request: Request):
             "existing_files": [k for k, v in payload.items() if v.get("exists", False)]
         },
         admin_user="admin",
-        client_ip=client_ip
+        client_ip=_get_client_ip(request)
     )
     
     return payload
@@ -584,7 +584,6 @@ async def health():
     """
     try:
         # Simple health check - just verify imports work
-        import os
         checks = {
             "database": os.path.exists("catalogue.db"),
             "nandu_brain": True,  # If we got here, import worked

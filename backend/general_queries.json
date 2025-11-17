@@ -5,7 +5,7 @@
     },
     "library timing": {
         "intent": "general",
-        "answer": "Library working hours: Weekdays (Mon-Fri) 9:00 AM - 8:00 PM. Reading area may offer extended or 24\/7 access. Circulation counter follows office timings. Check official notices for changes during exams or holidays."
+        "answer": "Library is open 24/7 throughout the year. Staff are available from 9:00 AM to 2:00 AM daily. During exam periods, staff hours may be extended. Self-service kiosks are available 24/7 for book issue/return."
     },
     "fine policy": {
         "intent": "rules",
@@ -93,15 +93,15 @@
     },
     "what are library timings": {
         "intent": "general",
-        "answer": "The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24\/7. First Floor is open from 6 AM to 2 AM. Issue\/Return via Kiosk is available 24\/7; staff counter timings are 9 AM to 5:30 PM (working days)."
+        "answer": "Library is open 24/7 throughout the year. Staff are available from 9:00 AM to 2:00 AM daily. During exam periods, staff hours may be extended. Self-service kiosks are available 24/7 for book issue/return."
     },
     "when is library open": {
         "intent": "general",
-        "answer": "The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24\/7. First Floor is open from 6 AM to 2 AM. Issue\/Return via Kiosk is available 24\/7; staff counter timings are 9 AM to 5:30 PM (working days)."
+        "answer": "Library is open 24/7 throughout the year. Staff are available from 9:00 AM to 2:00 AM daily. During exam periods, staff hours may be extended. Self-service kiosks are available 24/7 for book issue/return."
     },
     "library opening hours": {
         "intent": "general",
-        "answer": "The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24\/7. First Floor is open from 6 AM to 2 AM. Issue\/Return via Kiosk is available 24\/7; staff counter timings are 9 AM to 5:30 PM (working days)."
+        "answer": "Library is open 24/7 throughout the year. Staff are available from 9:00 AM to 2:00 AM daily. During exam periods, staff hours may be extended. Self-service kiosks are available 24/7 for book issue/return."
     },
     "library hours today": {
         "intent": "general",
@@ -15146,5 +15146,793 @@
     "what should i know about explain institutional repository": {
         "intent": "general",
         "answer": "IIT Ropar's DSpace is the institutional repository that stores and provides open access to theses, dissertations, project reports, faculty publications, conference papers and technical reports. Accessible via the DSpace URL (institutional repository)."
+    },
+    "what should I do if the book I borrowed got lost": {
+        "intent": "acquisition",
+        "answer": "You will be given two weeks time to replace the same copy of a new book along with the payment of overdue fines if any. If the book is unavailable in the market for purchase, you are required to pay the gross price of the book i.e. price of the book at the time of purchase; along with the fine accumulated."
+    },
+    "lost book policy": {
+        "intent": "acquisition",
+        "answer": "You will be given two weeks time to replace the same copy of a new book along with the payment of overdue fines if any. If the book is unavailable in the market for purchase, you are required to pay the gross price of the book i.e. price of the book at the time of purchase; along with the fine accumulated."
+    },
+    "how to recommend a book for purchase": {
+        "intent": "acquisition",
+        "answer": "You can recommend book via your OPAC login portal or by filling out indent form or by scanning QR code (near the helpdesk)."
+    },
+    "book recommendation process": {
+        "intent": "acquisition",
+        "answer": "You can recommend book via your OPAC login portal or by filling out indent form or by scanning QR code (near the helpdesk)."
+    },
+    "normal time period for receiving suggested books": {
+        "intent": "acquisition",
+        "answer": "Usually it takes around one month."
+    },
+    "how long for book suggestions": {
+        "intent": "acquisition",
+        "answer": "Usually it takes around one month."
+    },
+    "how do I know whether suggested books have arrived": {
+        "intent": "acquisition",
+        "answer": "You will be informed via email as soon as books will be arrived in the library."
+    },
+    "notification for suggested books": {
+        "intent": "acquisition",
+        "answer": "You will be informed via email as soon as books will be arrived in the library."
+    },
+    "how many books I can suggest": {
+        "intent": "acquisition",
+        "answer": "There is no such limit on suggesting the numbers of books."
+    },
+    "book suggestion limit": {
+        "intent": "acquisition",
+        "answer": "There is no such limit on suggesting the numbers of books."
+    },
+    "whom to contact for book procurement queries": {
+        "intent": "acquisition",
+        "answer": "You can contact Dr. Harpreet Kaur at the library office or email your query to harpreetkaur@iitrpr.ac.in"
+    },
+    "book procurement contact": {
+        "intent": "acquisition",
+        "answer": "You can contact Dr. Harpreet Kaur at the library office or email your query to harpreetkaur@iitrpr.ac.in"
+    },
+    "procedure of donating books to library": {
+        "intent": "acquisition",
+        "answer": "The student can donate the books in the library by submitting the books with their name written on it to Dr. Harpreet Kaur."
+    },
+    "book donation process": {
+        "intent": "acquisition",
+        "answer": "The student can donate the books in the library by submitting the books with their name written on it to Dr. Harpreet Kaur."
+    },
+    "how can I be alerted to new items acquired": {
+        "intent": "acquisition",
+        "answer": "Newly procured books are displayed in the new arrival areas. Users can also check for new arrivals though OPAC."
+    },
+    "new arrivals notification": {
+        "intent": "acquisition",
+        "answer": "Newly procured books are displayed in the new arrival areas. Users can also check for new arrivals though OPAC."
+    },
+    "is there any inter library loan facility": {
+        "intent": "circulation",
+        "answer": "Yes, library does provide e-ILL service, allow researchers to request articles and other materials from libraries in India and around the world."
+    },
+    "inter library loan": {
+        "intent": "circulation",
+        "answer": "Yes, library does provide e-ILL service, allow researchers to request articles and other materials from libraries in India and around the world."
+    },
+    "I want to issue a book but it's damaged": {
+        "intent": "circulation",
+        "answer": "Before issuing the book, the user should check it properly to ensure that there is no damage, if so ,report to library circulation counter, otherwise he/she will be held responsible for damage, if found at the time of returning of the book."
+    },
+    "damaged book issue": {
+        "intent": "circulation",
+        "answer": "Before issuing the book, the user should check it properly to ensure that there is no damage, if so ,report to library circulation counter, otherwise he/she will be held responsible for damage, if found at the time of returning of the book."
+    },
+    "what is RFID system": {
+        "intent": "circulation",
+        "answer": "RFID technologies facilitate easy lending process and provide security for the library through electronic article surveillance."
+    },
+    "RFID technology": {
+        "intent": "circulation",
+        "answer": "RFID technologies facilitate easy lending process and provide security for the library through electronic article surveillance."
+    },
+    "can I borrow book from friend's card": {
+        "intent": "circulation",
+        "answer": "It is suggested to bring your own id card to borrow book to avoid any confusion."
+    },
+    "borrowing with friend's card": {
+        "intent": "circulation",
+        "answer": "It is suggested to bring your own id card to borrow book to avoid any confusion."
+    },
+    "can I return book without card": {
+        "intent": "circulation",
+        "answer": "Yes, you can return book without a card or from somebody else's card."
+    },
+    "return without card": {
+        "intent": "circulation",
+        "answer": "Yes, you can return book without a card or from somebody else's card."
+    },
+    "can I issue book without card": {
+        "intent": "circulation",
+        "answer": "No, you must carry your card to issue book."
+    },
+    "issue without card": {
+        "intent": "circulation",
+        "answer": "No, you must carry your card to issue book."
+    },
+    "can I renew book without bringing to library": {
+        "intent": "circulation",
+        "answer": "Borrower should bring the books physically to the library for renewal."
+    },
+    "remote book renewal": {
+        "intent": "circulation",
+        "answer": "Borrower should bring the books physically to the library for renewal."
+    },
+    "how many books can I issue and for how long": {
+        "intent": "circulation",
+        "answer": "Find complete details of user issue privileges here: https://www.iitrpr.ac.in/library/pdf/library_brochure_2016.pdf"
+    },
+    "book issue limits": {
+        "intent": "circulation",
+        "answer": "Find complete details of user issue privileges here: https://www.iitrpr.ac.in/library/pdf/library_brochure_2016.pdf"
+    },
+    "what to do if book I want is already issued": {
+        "intent": "circulation",
+        "answer": "You can place a hold on it through OPAC login portal."
+    },
+    "book already issued": {
+        "intent": "circulation",
+        "answer": "You can place a hold on it through OPAC login portal."
+    },
+    "how will I know reserved book is available": {
+        "intent": "circulation",
+        "answer": "Once the reserved book is returned in the library , you will receive an email notification about the book."
+    },
+    "reserved book notification": {
+        "intent": "circulation",
+        "answer": "Once the reserved book is returned in the library , you will receive an email notification about the book."
+    },
+    "can I issue theses dissertation DVDs CDs": {
+        "intent": "circulation",
+        "answer": "Theses/Dissertation, DVD/CDs cannot be borrowed by library users."
+    },
+    "thesis dissertation borrowing": {
+        "intent": "circulation",
+        "answer": "Theses/Dissertation, DVD/CDs cannot be borrowed by library users."
+    },
+    "how much fine for late return": {
+        "intent": "circulation",
+        "answer": "Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due date. The fine amount doubles every subsequent week (₹4.00, ₹8.00, ₹16.00, etc.). After four weeks of non-return\/non-renewal, the member's library membership is temporarily deactivated and fines continue to accrue until the item is returned. Lost or damaged books must be replaced with the latest edition or reimbursed at the current price plus a processing fee. Loss of Smart ID card: ₹300 for first duplicate; charge may double for subsequent replacements. For exact charges and exceptions, contact libraryhelpdesk@iitrpr.ac.in or check the official site."
+    },
+    "late return fine": {
+        "intent": "circulation",
+        "answer": "Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due date. The fine amount doubles every subsequent week (₹4.00, ₹8.00, ₹16.00, etc.). After four weeks of non-return\/non-renewal, the member's library membership is temporarily deactivated and fines continue to accrue until the item is returned. Lost or damaged books must be replaced with the latest edition or reimbursed at the current price plus a processing fee. Loss of Smart ID card: ₹300 for first duplicate; charge may double for subsequent replacements. For exact charges and exceptions, contact libraryhelpdesk@iitrpr.ac.in or check the official site."
+    },
+    "where to pay fine": {
+        "intent": "circulation",
+        "answer": "For the payment you need to scan the QR Code on the Circulation Counter. After making the payment you need to fill the Google Sheet for the transaction record."
+    },
+    "fine payment process": {
+        "intent": "circulation",
+        "answer": "For the payment you need to scan the QR Code on the Circulation Counter. After making the payment you need to fill the Google Sheet for the transaction record."
+    },
+    "what to do if book I want to issue is damaged": {
+        "intent": "circulation",
+        "answer": "Before issuing the book, the user should check it properly to ensure that there is no damage, if so missing pages, report to library helpdesk counter, otherwise he/she will be held responsible for damage, if found at the time of returning of the book."
+    },
+    "how to cancel reserved document": {
+        "intent": "circulation",
+        "answer": "To cancel reserved documents, kindly utilize the KOHA WEBOPAC. Log in to your account and proceed to cancel the reserved document(s)."
+    },
+    "cancel book reservation": {
+        "intent": "circulation",
+        "answer": "To cancel reserved documents, kindly utilize the KOHA WEBOPAC. Log in to your account and proceed to cancel the reserved document(s)."
+    },
+    "where can I get reserved document": {
+        "intent": "circulation",
+        "answer": "You can pick up the reserved book at the library helpdesk."
+    },
+    "reserved book pickup": {
+        "intent": "circulation",
+        "answer": "You can pick up the reserved book at the library helpdesk."
+    },
+    "how many times can I renew book": {
+        "intent": "circulation",
+        "answer": "There is no such limit on number of times a book can be renewed unless the book is reserved by someone else."
+    },
+    "book renewal limit": {
+        "intent": "circulation",
+        "answer": "There is no such limit on number of times a book can be renewed unless the book is reserved by someone else."
+    },
+    "what is kiosk": {
+        "intent": "circulation",
+        "answer": "A kiosk is a self service station in the library where you can check out , return or renew books on your own."
+    },
+    "library kiosk": {
+        "intent": "circulation",
+        "answer": "A kiosk is a self service station in the library where you can check out , return or renew books on your own."
+    },
+    "how to borrow book using kiosk": {
+        "intent": "circulation",
+        "answer": "Steps to borrow books: Place your card on the scanner ->enter password-> place book/books on scanner->click on checkout."
+    },
+    "kiosk borrowing process": {
+        "intent": "circulation",
+        "answer": "Steps to borrow books: Place your card on the scanner ->enter password-> place book/books on scanner->click on checkout."
+    },
+    "can library recall issued book": {
+        "intent": "circulation",
+        "answer": "Library staff may recall the book at any time before the due date in the case of emergency."
+    },
+    "library book recall": {
+        "intent": "circulation",
+        "answer": "Library staff may recall the book at any time before the due date in the case of emergency."
+    },
+    "do I have to make entry for issued book in register": {
+        "intent": "circulation",
+        "answer": "Yes, please ensure to make entry for issued book in register every time you bring the books to the library."
+    },
+    "book register entry": {
+        "intent": "circulation",
+        "answer": "Yes, please ensure to make entry for issued book in register every time you bring the books to the library."
+    },
+    "can I issue books if I have fine due": {
+        "intent": "circulation",
+        "answer": "Yes, it depends upon case to case basis, if overdue charges are more than Rs. 150/- then you have to pay fine to continue transaction. Amount less than Rs. 150/- can be paid at the end of the semester."
+    },
+    "issue with pending fine": {
+        "intent": "circulation",
+        "answer": "Yes, it depends upon case to case basis, if overdue charges are more than Rs. 150/- then you have to pay fine to continue transaction. Amount less than Rs. 150/- can be paid at the end of the semester."
+    },
+    "can I issue books on display": {
+        "intent": "circulation",
+        "answer": "Yes, books on display are available for loan."
+    },
+    "display books borrowing": {
+        "intent": "circulation",
+        "answer": "Yes, books on display are available for loan."
+    },
+    "how to know book is overdue": {
+        "intent": "circulation",
+        "answer": "You will be intimated with e-mail notification for your overdue materials. In that case, you need to return/renew the books to avoid heavy fines."
+    },
+    "overdue notification": {
+        "intent": "circulation",
+        "answer": "You will be intimated with e-mail notification for your overdue materials. In that case, you need to return/renew the books to avoid heavy fines."
+    },
+    "what to do if issued book got damaged": {
+        "intent": "circulation",
+        "answer": "If a book gets damaged, please bring it to the library helpdesk as soon as possible. Library staff will assess the damage and inform you on repair or replacement."
+    },
+    "damaged book handling": {
+        "intent": "circulation",
+        "answer": "If a book gets damaged, please bring it to the library helpdesk as soon as possible. Library staff will assess the damage and inform you on repair or replacement."
+    },
+    "do I get email notification for transactions": {
+        "intent": "circulation",
+        "answer": "Yes, you will receive an e-mail notification for your transactions of issue/return/renew."
+    },
+    "transaction email notification": {
+        "intent": "circulation",
+        "answer": "Yes, you will receive an e-mail notification for your transactions of issue/return/renew."
+    },
+    "can I renew my books": {
+        "intent": "circulation",
+        "answer": "You can renew the books if there are no reservations on them. The borrower has to bring the book physically to the library and can be renewed through self-service Kiosk and also on staff station. Faculty members and Research scholars can renew the reference books on staff station only."
+    },
+    "book renewal process": {
+        "intent": "circulation",
+        "answer": "You can renew the books if there are no reservations on them. The borrower has to bring the book physically to the library and can be renewed through self-service Kiosk and also on staff station. Faculty members and Research scholars can renew the reference books on staff station only."
+    },
+    "can I get books for vacations": {
+        "intent": "circulation",
+        "answer": "You can borrow two books for the vacation period. The issue of the book will start one week before the vacation and due date will be the first working day of every semester."
+    },
+    "vacation book borrowing": {
+        "intent": "circulation",
+        "answer": "You can borrow two books for the vacation period. The issue of the book will start one week before the vacation and due date will be the first working day of every semester."
+    },
+    "what are timings for issue return books": {
+        "intent": "circulation",
+        "answer": "Self-service Kiosk: 24/7 throughout the year. Staff Station: 9:00 AM to 2:00 AM daily (extended during exam periods)."
+    },
+    "issue return timings": {
+        "intent": "circulation",
+        "answer": "Self-service Kiosk: 24/7 throughout the year. Staff Station: 9:00 AM to 2:00 AM daily (extended during exam periods)."
+    },
+    "what are periodicals": {
+        "intent": "periodicals",
+        "answer": "Periodicals are the publications like magazines, journals and newspapers that are released on a regular schedule , such as weekly , monthly , quarterly etc."
+    },
+    "periodicals definition": {
+        "intent": "periodicals",
+        "answer": "Periodicals are the publications like magazines, journals and newspapers that are released on a regular schedule , such as weekly , monthly , quarterly etc."
+    },
+    "what type of periodicals in library": {
+        "intent": "periodicals",
+        "answer": "Please visit https://www.iitrpr.ac.in/library/print_resources.php for print periodicals details. Please visit https://www.iitrpr.ac.in/library/e-journals.php for E-periodical details."
+    },
+    "library periodicals types": {
+        "intent": "periodicals",
+        "answer": "Please visit https://www.iitrpr.ac.in/library/print_resources.php for print periodicals details. Please visit https://www.iitrpr.ac.in/library/e-journals.php for E-periodical details."
+    },
+    "can I issue periodicals": {
+        "intent": "periodicals",
+        "answer": "Only the back volumes of periodicals can be borrowed for 2 days."
+    },
+    "periodicals borrowing": {
+        "intent": "periodicals",
+        "answer": "Only the back volumes of periodicals can be borrowed for 2 days."
+    },
+    "how to recommend journal newspaper magazines": {
+        "intent": "periodicals",
+        "answer": "Please contact Dr. Tarvinder Handa subscriptions@iitrpr.ac.in"
+    },
+    "journal recommendation": {
+        "intent": "periodicals",
+        "answer": "Please contact Dr. Tarvinder Handa subscriptions@iitrpr.ac.in"
+    },
+    "how to know suggested journal arrived": {
+        "intent": "periodicals",
+        "answer": "You will be informed via email as soon as books will be arrived in the library."
+    },
+    "journal arrival notification": {
+        "intent": "periodicals",
+        "answer": "You will be informed via email as soon as books will be arrived in the library."
+    },
+    "whom to contact for journal procurement": {
+        "intent": "periodicals",
+        "answer": "Please send your queries at subscriptions@iitrpr.ac.in"
+    },
+    "journal procurement contact": {
+        "intent": "periodicals",
+        "answer": "Please send your queries at subscriptions@iitrpr.ac.in"
+    },
+    "how to access e resources": {
+        "intent": "periodicals",
+        "answer": "You can access e-resources by connecting to the library wifi. The wifi password is displayed on the wall near the helpdesk."
+    },
+    "e-resources access": {
+        "intent": "periodicals",
+        "answer": "You can access e-resources by connecting to the library wifi. The wifi password is displayed on the wall near the helpdesk."
+    },
+    "is there limitation on downloading articles": {
+        "intent": "periodicals",
+        "answer": "Yes, systematic downloading of the articles is strictly prohibited."
+    },
+    "article download restrictions": {
+        "intent": "periodicals",
+        "answer": "Yes, systematic downloading of the articles is strictly prohibited."
+    },
+    "what are licensing restrictions": {
+        "intent": "periodicals",
+        "answer": "Electronic resources subscribed by IIT Ropar are restricted to users of IIT Ropar by license agreement for the purposes of research, teaching, and private study. Using these resources for commercial purpose, systematic downloading, copying or distributing of information is expressly prohibited."
+    },
+    "licensing restrictions": {
+        "intent": "periodicals",
+        "answer": "Electronic resources subscribed by IIT Ropar are restricted to users of IIT Ropar by license agreement for the purposes of research, teaching, and private study. Using these resources for commercial purpose, systematic downloading, copying or distributing of information is expressly prohibited."
+    },
+    "what to do if can't find required article": {
+        "intent": "periodicals",
+        "answer": "Please visit library helpdesk for assistance."
+    },
+    "article not found": {
+        "intent": "periodicals",
+        "answer": "Please visit library helpdesk for assistance."
+    },
+    "what are types of e-resources in library": {
+        "intent": "periodicals",
+        "answer": "Please visit https://www.iitrpr.ac.in/library/e-journals.php for e journals, https://www.iitrpr.ac.in/library/other_tools.php for online research tools, https://www.iitrpr.ac.in/library/e_books.php for e books, https://www.iitrpr.ac.in/library/databases.php for databases."
+    },
+    "library e-resources types": {
+        "intent": "periodicals",
+        "answer": "Please visit https://www.iitrpr.ac.in/library/e-journals.php for e journals, https://www.iitrpr.ac.in/library/other_tools.php for online research tools, https://www.iitrpr.ac.in/library/e_books.php for e books, https://www.iitrpr.ac.in/library/databases.php for databases."
+    },
+    "what is EDD service": {
+        "intent": "periodicals",
+        "answer": "EDD is one of the important services of the libraries in electronic age and it works almost like ILL service. It refers to the delivery of the article(s)/chapter(s)/electronic copies of the document from the member libraries. Generally one library request the another library for the electronic resources which they have not subscribed."
+    },
+    "EDD service": {
+        "intent": "periodicals",
+        "answer": "EDD is one of the important services of the libraries in electronic age and it works almost like ILL service. It refers to the delivery of the article(s)/chapter(s)/electronic copies of the document from the member libraries. Generally one library request the another library for the electronic resources which they have not subscribed."
+    },
+    "how does EDD service work": {
+        "intent": "periodicals",
+        "answer": "In IIT Ropar, user(s) sends the bibliographical details along with the web link to subscriptions@iitrpr.ac.in and library arrange the articles from their subscription or from the member libraries depending on the availability. Our library also helps the other member libraries by providing electronic copies of the article(s) within the frame work of Publisher(s) license agreement."
+    },
+    "EDD service process": {
+        "intent": "periodicals",
+        "answer": "In IIT Ropar, user(s) sends the bibliographical details along with the web link to subscriptions@iitrpr.ac.in and library arrange the articles from their subscription or from the member libraries depending on the availability. Our library also helps the other member libraries by providing electronic copies of the article(s) within the frame work of Publisher(s) license agreement."
+    },
+    "what is OPAC": {
+        "intent": "technical",
+        "answer": "An Online Public Access Catalogue (OPAC) is an online portal of Library Automation System used to search the library resources and members transactions."
+    },
+    "OPAC definition": {
+        "intent": "technical",
+        "answer": "An Online Public Access Catalogue (OPAC) is an online portal of Library Automation System used to search the library resources and members transactions."
+    },
+    "where can I access OPAC": {
+        "intent": "technical",
+        "answer": "OPAC is user friendly and accessible anywhere, any time. Users can search the books by entering various fields like Title, Author, Subject, Keyword, Accession & Class Numbers etc and track the physical location of books in the Library. OPAC can be accessed by visiting the below mentioned link: https://opac.iitrpr.ac.in"
+    },
+    "OPAC access": {
+        "intent": "technical",
+        "answer": "OPAC is user friendly and accessible anywhere, any time. Users can search the books by entering various fields like Title, Author, Subject, Keyword, Accession & Class Numbers etc and track the physical location of books in the Library. OPAC can be accessed by visiting the below mentioned link: https://opac.iitrpr.ac.in"
+    },
+    "is OPAC accessible on mobile": {
+        "intent": "technical",
+        "answer": "Users can search books using OPAC through their Smartphone and tablets also."
+    },
+    "OPAC mobile access": {
+        "intent": "technical",
+        "answer": "Users can search books using OPAC through their Smartphone and tablets also."
+    },
+    "how to search book in OPAC": {
+        "intent": "technical",
+        "answer": "Enter the book title , author or keyword in the search bar and browse the results to find the book you are looking for."
+    },
+    "OPAC book search": {
+        "intent": "technical",
+        "answer": "Enter the book title , author or keyword in the search bar and browse the results to find the book you are looking for."
+    },
+    "what to do if book not issuing from kiosk": {
+        "intent": "technical",
+        "answer": "If the book is not issuing from the kiosk , please come to the library helpdesk for assistance."
+    },
+    "kiosk issue problem": {
+        "intent": "technical",
+        "answer": "If the book is not issuing from the kiosk , please come to the library helpdesk for assistance."
+    },
+    "how to find book on shelf": {
+        "intent": "technical",
+        "answer": "Books in the library are organized using the DDC system . Each book has unique accession number and shelves are arranged by call no. you can easily locate books by referring their classification and accession number through koha web opac."
+    },
+    "book shelf location": {
+        "intent": "technical",
+        "answer": "Books in the library are organized using the DDC system . Each book has unique accession number and shelves are arranged by call no. you can easily locate books by referring their classification and accession number through koha web opac."
+    },
+    "what to do if can't find book on shelf": {
+        "intent": "technical",
+        "answer": "Kindly visit the library helpdesk for assistance."
+    },
+    "book not on shelf": {
+        "intent": "technical",
+        "answer": "Kindly visit the library helpdesk for assistance."
+    },
+    "where are fiction books": {
+        "intent": "technical",
+        "answer": "You can find fiction books on the 1st floor , in the corner of the nook area ."
+    },
+    "fiction books location": {
+        "intent": "technical",
+        "answer": "You can find fiction books on the 1st floor , in the corner of the nook area ."
+    },
+    "how are books organized in library": {
+        "intent": "technical",
+        "answer": "Stack & Reading Area 1(Ground Floor)-Computer Science; Basic Sciences; Humanities (Class No. -000-599). Stack & Reading Area 2(Ground Floor)-Engineering and Technology; The Art(Class No.600-799). Fiction books - 1st floor. Reference books – 1st floor."
+    },
+    "library book organization": {
+        "intent": "technical",
+        "answer": "Stack & Reading Area 1(Ground Floor)-Computer Science; Basic Sciences; Humanities (Class No. -000-599). Stack & Reading Area 2(Ground Floor)-Engineering and Technology; The Art(Class No.600-799). Fiction books - 1st floor. Reference books – 1st floor."
+    },
+    "where can I find faculty publication": {
+        "intent": "technical",
+        "answer": "Faculty publication are located on the first floor , in the corner of the nook area next to fiction books."
+    },
+    "faculty publications location": {
+        "intent": "technical",
+        "answer": "Faculty publication are located on the first floor , in the corner of the nook area next to fiction books."
+    },
+    "what are reference books": {
+        "intent": "reference",
+        "answer": "Reference books are the books that are used for quick consultation and cannot be borrowed."
+    },
+    "reference books definition": {
+        "intent": "reference",
+        "answer": "Reference books are the books that are used for quick consultation and cannot be borrowed."
+    },
+    "can PhD student issue reference books": {
+        "intent": "reference",
+        "answer": "Yes, only phd students can issue reference book for 1 week. Note:- Reference material cannot be issued out of the Library."
+    },
+    "PhD reference book borrowing": {
+        "intent": "reference",
+        "answer": "Yes, only phd students can issue reference book for 1 week. Note:- Reference material cannot be issued out of the Library."
+    },
+    "what is book bank book": {
+        "intent": "reference",
+        "answer": "Book Bank Service is made available to the UG Students. Students can borrow one book form the book bank category and can retain for entire semester."
+    },
+    "book bank service": {
+        "intent": "reference",
+        "answer": "Book Bank Service is made available to the UG Students. Students can borrow one book form the book bank category and can retain for entire semester."
+    },
+    "how to distinguish reference and book bank books": {
+        "intent": "reference",
+        "answer": "Reference books are marked in green label and are kept on the first floor in the reference section and book bank books are marked in blue strip and are kept in the reading area 2 on the last rack."
+    },
+    "reference vs book bank identification": {
+        "intent": "reference",
+        "answer": "Reference books are marked in green label and are kept on the first floor in the reference section and book bank books are marked in blue strip and are kept in the reading area 2 on the last rack."
+    },
+    "whom to contact for reference service": {
+        "intent": "reference",
+        "answer": "libraryhelpdesk@iitrpr.ac.in or libraryservices@iitrpr.ac.in."
+    },
+    "reference service contact": {
+        "intent": "reference",
+        "answer": "libraryhelpdesk@iitrpr.ac.in or libraryservices@iitrpr.ac.in."
+    },
+    "how will I get library membership": {
+        "intent": "membership",
+        "answer": "The library membership form is available at the circulation counter. Please submit the filled form along with the softcopy of the JPG photograph. You may mail photograph libraryhelpdesk@iitrpr.ac.in After submitting membership form with the photograph, you will be issued a smart card from the library."
+    },
+    "library membership process": {
+        "intent": "membership",
+        "answer": "The library membership form is available at the circulation counter. Please submit the filled form along with the softcopy of the JPG photograph. You may mail photograph libraryhelpdesk@iitrpr.ac.in After submitting membership form with the photograph, you will be issued a smart card from the library."
+    },
+    "can outsider get library membership": {
+        "intent": "membership",
+        "answer": "Yes, before taking the membership please drop an email regarding your deatils and reasons for availing the library membership to <libraryhelpdesk@iitrpr.ac.in> and for the availibility of space in the library. The forms are available on library website <https://www.iitrpr.ac.in/library/external_library_membership.php>"
+    },
+    "external library membership": {
+        "intent": "membership",
+        "answer": "Yes, before taking the membership please drop an email regarding your deatils and reasons for availing the library membership to <libraryhelpdesk@iitrpr.ac.in> and for the availibility of space in the library. The forms are available on library website <https://www.iitrpr.ac.in/library/external_library_membership.php>"
+    },
+    "is it ID card or library card": {
+        "intent": "membership",
+        "answer": "This smart card serves dual purpose; it is going to be your Institute Identity Card as well as a Library Smart Identity Card."
+    },
+    "smart card dual purpose": {
+        "intent": "membership",
+        "answer": "This smart card serves dual purpose; it is going to be your Institute Identity Card as well as a Library Smart Identity Card."
+    },
+    "what is smart about institute library card": {
+        "intent": "membership",
+        "answer": "The Institute cum Library Smart Identity Card is embedded with a RFID chip that contains patrons' information as well as library account details. Using this smart card, users can carry out self-service such as issue, return, renew of books on the Kiosk."
+    },
+    "smart card features": {
+        "intent": "membership",
+        "answer": "The Institute cum Library Smart Identity Card is embedded with a RFID chip that contains patrons' information as well as library account details. Using this smart card, users can carry out self-service such as issue, return, renew of books on the Kiosk."
+    },
+    "contact person for smart identity card": {
+        "intent": "membership",
+        "answer": "Mr. Vineet Jamwal can be contacted at vineet.jamwal@iitrpr.ac.in"
+    },
+    "smart card contact": {
+        "intent": "membership",
+        "answer": "Mr. Vineet Jamwal can be contacted at vineet.jamwal@iitrpr.ac.in"
+    },
+    "can I bring own books and laptop": {
+        "intent": "general_services",
+        "answer": "You are allowed to bring your personal books, other reading materials, and laptops inside the library."
+    },
+    "personal items in library": {
+        "intent": "general_services",
+        "answer": "You are allowed to bring your personal books, other reading materials, and laptops inside the library."
+    },
+    "do I have to make entry of books and laptop": {
+        "intent": "general_services",
+        "answer": "Proper entry of laptops, personal books should be made in the Entry/Exit Portal."
+    },
+    "personal items entry": {
+        "intent": "general_services",
+        "answer": "Proper entry of laptops, personal books should be made in the Entry/Exit Portal."
+    },
+    "how to change koha login password": {
+        "intent": "general_services",
+        "answer": "To change password, click on forget password on your opac login."
+    },
+    "koha password change": {
+        "intent": "general_services",
+        "answer": "To change password, click on forget password on your opac login."
+    },
+    "is there research writing assistance": {
+        "intent": "general_services",
+        "answer": "The library provides access to Grammarly and Overleaf Tools, helping researchers improve their writing skills and simplifying the process of writing academic documents and collaboration, especially those with complex formatting requirements."
+    },
+    "research writing tools": {
+        "intent": "general_services",
+        "answer": "The library provides access to Grammarly and Overleaf Tools, helping researchers improve their writing skills and simplifying the process of writing academic documents and collaboration, especially those with complex formatting requirements."
+    },
+    "is library open on public holidays": {
+        "intent": "general_services",
+        "answer": "Library opens all the days of the year including public holidays."
+    },
+    "library holiday hours": {
+        "intent": "general_services",
+        "answer": "Library opens all the days of the year including public holidays."
+    },
+    "can I access library computers": {
+        "intent": "general_services",
+        "answer": "Yes, you can use library's computers only for the purpose of academic and research."
+    },
+    "library computer access": {
+        "intent": "general_services",
+        "answer": "Yes, you can use library's computers only for the purpose of academic and research."
+    },
+    "what plagiarism detection software available": {
+        "intent": "general_services",
+        "answer": "Turnitin-Anti Plagiarism Tool"
+    },
+    "plagiarism software": {
+        "intent": "general_services",
+        "answer": "Turnitin-Anti Plagiarism Tool"
+    },
+    "where to send document for plagiarism check": {
+        "intent": "general_services",
+        "answer": "You can mail your file to Mrs. Amrita Bhattacharya on libraryhelpdesk@iitrpr.ac.in"
+    },
+    "plagiarism check submission": {
+        "intent": "general_services",
+        "answer": "You can mail your file to Mrs. Amrita Bhattacharya on libraryhelpdesk@iitrpr.ac.in"
+    },
+    "what to do if lost library card": {
+        "intent": "general_services",
+        "answer": "A fine of Rs. 300/- is applicable on loss of the card, charges are double on each re-issue of the duplicate card."
+    },
+    "lost card fine": {
+        "intent": "general_services",
+        "answer": "A fine of Rs. 300/- is applicable on loss of the card, charges are double on each re-issue of the duplicate card."
+    },
+    "how can I get clearance of dues": {
+        "intent": "general_services",
+        "answer": "You can ask about your overdue account at library helpdesk."
+    },
+    "dues clearance": {
+        "intent": "general_services",
+        "answer": "You can ask about your overdue account at library helpdesk."
+    },
+    "can I take photocopy of book pages": {
+        "intent": "general_services",
+        "answer": "All library users, when making copies of library materials by adhering to copyright laws."
+    },
+    "photocopying policy": {
+        "intent": "general_services",
+        "answer": "All library users, when making copies of library materials by adhering to copyright laws."
+    },
+    "can I use mobile phone in library": {
+        "intent": "general_services",
+        "answer": "Use of Mobile phone inside the library is strictly prohibited. To avoid disturbance keep it on silent mode and go out to talk when you receive calls."
+    },
+    "mobile phone policy": {
+        "intent": "general_services",
+        "answer": "Use of Mobile phone inside the library is strictly prohibited. To avoid disturbance keep it on silent mode and go out to talk when you receive calls."
+    },
+    "are there group study areas": {
+        "intent": "general_services",
+        "answer": "Yes can do group study in common sphere but please maintain a low voice to avoid disturbing others."
+    },
+    "group study facilities": {
+        "intent": "general_services",
+        "answer": "Yes can do group study in common sphere but please maintain a low voice to avoid disturbing others."
+    },
+    "can I leave belongings in library": {
+        "intent": "general_services",
+        "answer": "Library will not be responsible for the loss or damage of personal belongings of the user."
+    },
+    "belongings safety": {
+        "intent": "general_services",
+        "answer": "Library will not be responsible for the loss or damage of personal belongings of the user."
+    },
+    "where are DVDs CDs in library": {
+        "intent": "general_services",
+        "answer": "DVDs and CDs are available in the digital learning hub , located between technobooth and cubical area on a rack for easy access."
+    },
+    "DVD CD location": {
+        "intent": "general_services",
+        "answer": "DVDs and CDs are available in the digital learning hub , located between technobooth and cubical area on a rack for easy access."
+    },
+    "what is grammarly how to access": {
+        "intent": "general_services",
+        "answer": "Grammarly is a comprehensive AI writing assistant designed to enhance writing quality and correctness. To access, please sign up with your institutional mail id on grammarly site."
+    },
+    "grammarly access": {
+        "intent": "general_services",
+        "answer": "Grammarly is a comprehensive AI writing assistant designed to enhance writing quality and correctness. To access, please sign up with your institutional mail id on grammarly site."
+    },
+    "I have lost my belongings where to find": {
+        "intent": "general_services",
+        "answer": "Please avoid leaving personal belongings unattended. If you have lost something, please inquire at the helpdesk to check if lost item have been submitted there."
+    },
+    "lost belongings": {
+        "intent": "general_services",
+        "answer": "Please avoid leaving personal belongings unattended. If you have lost something, please inquire at the helpdesk to check if lost item have been submitted there."
+    },
+    "can I book common sphere area": {
+        "intent": "general_services",
+        "answer": "In common sphere, students can have library related programmes with prior permission."
+    },
+    "common sphere booking": {
+        "intent": "general_services",
+        "answer": "In common sphere, students can have library related programmes with prior permission."
+    },
+    "how can I be aware of library events": {
+        "intent": "general_services",
+        "answer": "You are requested to visit library website for latest news and updates."
+    },
+    "library events information": {
+        "intent": "general_services",
+        "answer": "You are requested to visit library website for latest news and updates."
+    },
+    "whom to suggest about library events": {
+        "intent": "general_services",
+        "answer": "You can submit your suggestions on librarian@iitrpr.ac.in or tarvinder.singh@iitrpr.ac.in"
+    },
+    "library event suggestions": {
+        "intent": "general_services",
+        "answer": "You can submit your suggestions on librarian@iitrpr.ac.in or tarvinder.singh@iitrpr.ac.in"
+    },
+    "where to give suggestion for library services": {
+        "intent": "general_services",
+        "answer": "You can give suggestion or review for library services in the suggestion register or drop them in the suggestion box located at the entry/exit gate."
+    },
+    "library service suggestions": {
+        "intent": "general_services",
+        "answer": "You can give suggestion or review for library services in the suggestion register or drop them in the suggestion box located at the entry/exit gate."
+    },
+    "what are timings of printing copies": {
+        "intent": "general_services",
+        "answer": "9:00 AM to 10:00 PM on all days."
+    },
+    "printing timings": {
+        "intent": "general_services",
+        "answer": "9:00 AM to 10:00 PM on all days."
+    },
+    "how much do copies cost": {
+        "intent": "general_services",
+        "answer": "Rs. 1/- per page (one side) for Photocopy and Print Charges. Rs. 10/- per page (one side) for Color Print Charges."
+    },
+    "copying charges": {
+        "intent": "general_services",
+        "answer": "Rs. 1/- per page (one side) for Photocopy and Print Charges. Rs. 10/- per page (one side) for Color Print Charges."
+    },
+    "is there copyright restriction for photocopying": {
+        "intent": "general_services",
+        "answer": "No copyrighted work may be copied, published, disseminated, displayed, performed, without permission of the copyright holder except in accordance with fair use or licensed agreement. This includes DVDs/CDs and other copyrighted material. IIT Ropar may terminate the online access of users who are found to have infringed copyright."
+    },
+    "copyright photocopying restrictions": {
+        "intent": "general_services",
+        "answer": "No copyrighted work may be copied, published, disseminated, displayed, performed, without permission of the copyright holder except in accordance with fair use or licensed agreement. This includes DVDs/CDs and other copyrighted material. IIT Ropar may terminate the online access of users who are found to have infringed copyright."
+    },
+    "what are techno booths": {
+        "intent": "digital_learning",
+        "answer": "Techno booths are the perfect space for practicing group presentation, carrying out group assignment, group lecture discussion digital projects, multimedia content creation, virtual meetings, and other tech-related activities."
+    },
+    "techno booth definition": {
+        "intent": "digital_learning",
+        "answer": "Techno booths are the perfect space for practicing group presentation, carrying out group assignment, group lecture discussion digital projects, multimedia content creation, virtual meetings, and other tech-related activities."
+    },
+    "how to book techno booths": {
+        "intent": "digital_learning",
+        "answer": "To book techno booth visit https://www.iitrpr.ac.in/library/"
+    },
+    "techno booth booking": {
+        "intent": "digital_learning",
+        "answer": "To book techno booth visit https://www.iitrpr.ac.in/library/"
+    },
+    "what is min max strength for techno booth": {
+        "intent": "digital_learning",
+        "answer": "Min- 2, Max-6"
+    },
+    "techno booth capacity": {
+        "intent": "digital_learning",
+        "answer": "Min- 2, Max-6"
+    },
+    "how many communities in institutional repository": {
+        "intent": "institutional_repository",
+        "answer": "There are mainly two comminities: Ph.D Theses and Research Publications"
+    },
+    "institutional repository communities": {
+        "intent": "institutional_repository",
+        "answer": "There are mainly two comminities: Ph.D Theses and Research Publications"
+    },
+    "how to use subject guide": {
+        "intent": "subject_guide",
+        "answer": "For complete details on the use subject guide, please click here: https://www.iitrpr.ac.in/library/SubjectsPlus/subjects/index.php"
+    },
+    "subject guide usage": {
+        "intent": "subject_guide",
+        "answer": "For complete details on the use subject guide, please click here: https://www.iitrpr.ac.in/library/SubjectsPlus/subjects/index.php"
     }
 }

@@ -7,6 +7,12 @@ echo.
 
 cd /d "%~dp0"
 
+echo Checking and updating Python dependencies...
+cd backend
+echo [INFO] Upgrading sentence-transformers to latest version...
+pip install --upgrade sentence-transformers>=5.1.2 >nul 2>&1
+cd ..
+
 echo Starting Python Backend (port 8000)...
 start "Python Backend" cmd /k "cd backend && python api_server.py"
 
