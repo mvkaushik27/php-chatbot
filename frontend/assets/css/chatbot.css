@@ -274,6 +274,42 @@ header p {
     text-decoration: underline;
 }
 
+/* Auto-linked URLs and emails styling */
+.message-content .auto-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 2px 4px;
+    border-radius: 3px;
+    background: rgba(37, 99, 235, 0.1);
+    transition: all 0.2s ease;
+    word-break: break-all;
+}
+
+.message-content .auto-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+    background: rgba(37, 99, 235, 0.15);
+}
+
+.message-content .email-link {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.1);
+}
+
+.message-content .email-link:hover {
+    color: #b91c1c;
+    background: rgba(220, 38, 38, 0.15);
+}
+
+/* Ensure links don't break layout on mobile */
+@media (max-width: 768px) {
+    .message-content .auto-link {
+        word-break: break-all;
+        font-size: 0.9em;
+    }
+}
+
 .loading-message {
     background: #fff3cd !important;
     color: #856404;

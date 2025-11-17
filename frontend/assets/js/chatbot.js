@@ -178,6 +178,58 @@
         }
     }
     
+    // Auto-link URLs and emails in HTML content without breaking existing HTML
+    function autoLinkContent(htmlContent) {
+        // Create a temporary div to parse HTML safely
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlContent;
+        
+        // Function to process text nodes and add links
+        function processTextNode(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                let text = node.textContent;
+                
+                // Auto-link URLs (http, https) - handle punctuation at the end
+                text = text.replace(/(https?:\/\/[^\s<>\"]+?)([.!?;,]*(?:\s|$))/gi, '<a href="$1" target="_blank" rel="noopener" class="auto-link" title="Open link in new tab">$1</a>$2');
+                
+                // Auto-link www URLs - handle punctuation at the end  
+                text = text.replace(/(www\.[^\s<>\"]+?)([.!?;,]*(?:\s|$))/gi, '<a href="https://$1" target="_blank" rel="noopener" class="auto-link" title="Open link in new tab">$1</a>$2');
+                
+                // Auto-link domain URLs without protocol (like opac.iitrpr.ac.in)
+                text = text.replace(/\b([a-zA-Z0-9-]+\.iitrpr\.ac\.in[^\s<>\"]*?)([.!?;,]*(?:\s|$))/gi, '<a href="https://$1" target="_blank" rel="noopener" class="auto-link" title="Open link in new tab">$1</a>$2');
+                
+                // Auto-link email addresses - handle punctuation at the end
+                text = text.replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})([.!?;,]*(?:\s|$))/gi, '<a href="mailto:$1" class="auto-link email-link" title="Send email">📧 $1</a>$2');
+                
+                // Only replace if we found any links
+                if (text !== node.textContent) {
+                    const wrapper = document.createElement('span');
+                    wrapper.innerHTML = text;
+                    node.parentNode.replaceChild(wrapper, node);
+                    // Process the new nodes
+                    Array.from(wrapper.childNodes).forEach(child => {
+                        if (child.nodeType === Node.TEXT_NODE) {
+                            processTextNode(child);
+                        }
+                    });
+                    // Replace wrapper with its contents
+                    while (wrapper.firstChild) {
+                        wrapper.parentNode.insertBefore(wrapper.firstChild, wrapper);
+                    }
+                    wrapper.remove();
+                }
+            } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'A') {
+                // Don't process content inside existing links
+                Array.from(node.childNodes).forEach(child => processTextNode(child));
+            }
+        }
+        
+        // Process all text nodes
+        Array.from(tempDiv.childNodes).forEach(child => processTextNode(child));
+        
+        return tempDiv.innerHTML;
+    }
+
     // Format bot message (handle markdown-like syntax and JSON blocks)
     function formatBotMessage(text) {
         // Check if the message contains a JSON code block
@@ -209,8 +261,9 @@
         const hasHtmlTags = /<[^>]+>/.test(text);
         
         if (hasHtmlTags) {
-            // Text already contains HTML from backend, return as-is
-            return text;
+            // Text already contains HTML from backend, but still auto-link URLs and emails
+            // that aren't already linked
+            return autoLinkContent(text);
         } else {
             // Text is plain text or markdown, process it
             // Escape HTML first
@@ -224,6 +277,18 @@
             
             // Convert [text](url) to links
             text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+            
+            // Auto-link URLs (http, https) - handle punctuation at the end
+            text = text.replace(/(https?:\/\/[^\s<>\"]+?)([.!?;,]*(?:\s|$))/gi, '<a href="$1" target="_blank" rel="noopener" class="auto-link" title="Open link in new tab">$1</a>$2');
+            
+            // Auto-link www URLs - handle punctuation at the end  
+            text = text.replace(/(www\.[^\s<>\"]+?)([.!?;,]*(?:\s|$))/gi, '<a href="https://$1" target="_blank" rel="noopener" class="auto-link" title="Open link in new tab">$1</a>$2');
+            
+            // Auto-link domain URLs without protocol (like opac.iitrpr.ac.in)
+            text = text.replace(/\b([a-zA-Z0-9-]+\.iitrpr\.ac\.in[^\s<>\"]*?)([.!?;,]*(?:\s|$))/gi, '<a href="https://$1" target="_blank" rel="noopener" class="auto-link" title="Open link in new tab">$1</a>$2');
+            
+            // Auto-link email addresses - handle punctuation at the end
+            text = text.replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})([.!?;,]*(?:\s|$))/gi, '<a href="mailto:$1" class="auto-link email-link" title="Send email">📧 $1</a>$2');
             
             // Convert line breaks
             text = text.replace(/\n/g, '<br>');
