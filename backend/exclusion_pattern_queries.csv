@@ -1,0 +1,1188 @@
+question,intent,matched_pattern,answer
+can i bring a bag inside the library,rules,can i bring,Bags should be left at the designated racks or cloak area; personal large bags are not allowed insid...
+can you tell me can i bring a bag inside the library,rules,can i bring,Bags should be left at the designated racks or cloak area; personal large bags are not allowed insid...
+i want to know can i bring a bag inside the library,rules,can i bring,Bags should be left at the designated racks or cloak area; personal large bags are not allowed insid...
+please explain can i bring a bag inside the library,rules,can i bring,Bags should be left at the designated racks or cloak area; personal large bags are not allowed insid...
+could you describe can i bring a bag inside the library,rules,can i bring,Bags should be left at the designated racks or cloak area; personal large bags are not allowed insid...
+information about can i bring a bag inside the library,rules,can i bring,Bags should be left at the designated racks or cloak area; personal large bags are not allowed insid...
+details about can i bring a bag inside the library,rules,can i bring,Bags should be left at the designated racks or cloak area; personal large bags are not allowed insid...
+fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+library fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+what is the overdue fine policy,rules,fine policy,The overdue fine policy is described on the library site and may vary by user category. Typical poli...
+can you tell me fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+i want to know fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+please explain fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+could you describe fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+information about fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+details about fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+can you tell me library fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+i want to know library fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+please explain library fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+could you describe library fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+information about library fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+details about library fine policy,rules,fine policy,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+can you tell me the overdue fine policy,rules,fine policy,The overdue fine policy is described on the library site and may vary by user category. Typical poli...
+i want to know the overdue fine policy,rules,fine policy,The overdue fine policy is described on the library site and may vary by user category. Typical poli...
+please explain the overdue fine policy,rules,fine policy,The overdue fine policy is described on the library site and may vary by user category. Typical poli...
+could you describe the overdue fine policy,rules,fine policy,The overdue fine policy is described on the library site and may vary by user category. Typical poli...
+information about the overdue fine policy,rules,fine policy,The overdue fine policy is described on the library site and may vary by user category. Typical poli...
+details about the overdue fine policy,rules,fine policy,The overdue fine policy is described on the library site and may vary by user category. Typical poli...
+how to access online journals,resources,how to,"📚 **How to Access Online Journals:**
+
+**On Campus:**
+✅ Direct access to all subscribed e-journals an..."
+how to issue book,borrowing,how to,Issue books with your institute ID at the library counter or self-service kiosks. Ensure no outstand...
+how to search books,borrowing,how to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+how to reserve a book,borrowing,how to,"To reserve a book:
+1) Search in OPAC (https://opac.iitrpr.ac.in)
+2) If book is issued to someone, cl..."
+how to hold a book,general,how to,"📚 **Proper Book Handling Guidelines:**
+
+✅ **Do:**
+• Handle books with clean, dry hands
+• Open books ..."
+how to check thesis for plagiarism,plagiarism,how to,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+how to check citations,general,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+how to write research papers with library support,research,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+how to access e-journals,access,how to,Access e-journals through: 1) Library website → E-resources section 2) ONOS portal 3) Union Catalogu...
+how to download research papers,research,how to,To download research papers: 1) Search in Scopus/Web of Science for citations 2) Access full-text th...
+how to check impact factor,general,how to,Check journal impact factor in: 1) Web of Science → Journal Citation Reports (JCR) 2) Scopus → CiteS...
+how to access digital tools,access,how to,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+how to access onos,access,how to,"To access ONOS resources:
+1. Visit https://www.iitrpr.ac.in/library/onos.php
+2. Use your IIT Ropar c..."
+how to search union catalogue,general,how to,"To search the Union Catalogue:
+1. Visit https://library.iitgn.ac.in/unicat/
+2. Enter journal name, I..."
+how to access institutional repository,access,how to,"To access IIT Ropar's Institutional Repository (DSpace):
+1. Visit http://dspace.iitrpr.ac.in:8080/xm..."
+how to upload thesis to repository,general,how to,"To upload your thesis/dissertation to the Institutional Repository:
+1. Submit final thesis in PDF fo..."
+how to access grammarly,tools,how to,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+how to access overleaf,tools,how to,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+how to use turnitin,plagiarism,how to,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+how to access accessengineering,access,how to,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+how to use pearson elibrary,general,how to,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+how to check citations scopus,general,how to,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+how to read ieee papers,general,how to,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+how to cite papers,general,how to,"For citing papers: 1) Use citation management tools (Mendeley, Zotero, EndNote) 2) Check journal gui..."
+how to request an article not available,general,how to,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+how to learn using the library,general,how to,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+how to find resources by subject,resources,how to,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+how to access onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+how to download phd thesis from dspace,access,how to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+how to submit thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+how to check new arrivals in the library,general,how to,Check the 'New Arrivals' section on the library homepage or search OPAC (opac.iitrpr.ac.in) for rece...
+how to search the library catalogue,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+how to access e-resources off campus,access,how to,Off-campus access to subscribed e-resources is available through the IIT Ropar VPN. Connect to the i...
+how to use onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+how to upload thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+how to get an article through ill,service,how to,Use the 'Request an Article' / EDD form or email the library helpdesk with citation details. The lib...
+how to contact the library,contact,how to,Contact the library via helpdesk email (libraryhelpdesk@iitrpr.ac.in) or listed phone numbers. Libra...
+how to search opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+how to find a book in opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+can you tell me how to access online journals,resources,how to,"📚 **How to Access Online Journals:**
+
+**On Campus:**
+✅ Direct access to all subscribed e-journals an..."
+i want to know how to access online journals,resources,how to,"📚 **How to Access Online Journals:**
+
+**On Campus:**
+✅ Direct access to all subscribed e-journals an..."
+please explain how to access online journals,resources,how to,"📚 **How to Access Online Journals:**
+
+**On Campus:**
+✅ Direct access to all subscribed e-journals an..."
+could you describe how to access online journals,resources,how to,"📚 **How to Access Online Journals:**
+
+**On Campus:**
+✅ Direct access to all subscribed e-journals an..."
+information about how to access online journals,resources,how to,"📚 **How to Access Online Journals:**
+
+**On Campus:**
+✅ Direct access to all subscribed e-journals an..."
+details about how to access online journals,resources,how to,"📚 **How to Access Online Journals:**
+
+**On Campus:**
+✅ Direct access to all subscribed e-journals an..."
+can you tell me how to issue book,borrowing,how to,Issue books with your institute ID at the library counter or self-service kiosks. Ensure no outstand...
+i want to know how to issue book,borrowing,how to,Issue books with your institute ID at the library counter or self-service kiosks. Ensure no outstand...
+please explain how to issue book,borrowing,how to,Issue books with your institute ID at the library counter or self-service kiosks. Ensure no outstand...
+could you describe how to issue book,borrowing,how to,Issue books with your institute ID at the library counter or self-service kiosks. Ensure no outstand...
+information about how to issue book,borrowing,how to,Issue books with your institute ID at the library counter or self-service kiosks. Ensure no outstand...
+details about how to issue book,borrowing,how to,Issue books with your institute ID at the library counter or self-service kiosks. Ensure no outstand...
+can you tell me how to search books,borrowing,how to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+i want to know how to search books,borrowing,how to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+please explain how to search books,borrowing,how to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+could you describe how to search books,borrowing,how to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+information about how to search books,borrowing,how to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+details about how to search books,borrowing,how to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+can you tell me how to reserve a book,borrowing,how to,"To reserve a book: 1) Search in OPAC (https://opac.iitrpr.ac.in) 2) If book is issued to someone, cl..."
+i want to know how to reserve a book,borrowing,how to,"To reserve a book: 1) Search in OPAC (https://opac.iitrpr.ac.in) 2) If book is issued to someone, cl..."
+please explain how to reserve a book,borrowing,how to,"To reserve a book: 1) Search in OPAC (https://opac.iitrpr.ac.in) 2) If book is issued to someone, cl..."
+could you describe how to reserve a book,borrowing,how to,"To reserve a book: 1) Search in OPAC (https://opac.iitrpr.ac.in) 2) If book is issued to someone, cl..."
+information about how to reserve a book,borrowing,how to,"To reserve a book: 1) Search in OPAC (https://opac.iitrpr.ac.in) 2) If book is issued to someone, cl..."
+details about how to reserve a book,borrowing,how to,"To reserve a book: 1) Search in OPAC (https://opac.iitrpr.ac.in) 2) If book is issued to someone, cl..."
+can you tell me how to check thesis for plagiarism,plagiarism,how to,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+i want to know how to check thesis for plagiarism,plagiarism,how to,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+please explain how to check thesis for plagiarism,plagiarism,how to,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+could you describe how to check thesis for plagiarism,plagiarism,how to,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+information about how to check thesis for plagiarism,plagiarism,how to,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+details about how to check thesis for plagiarism,plagiarism,how to,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+can you tell me how to check citations,general,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+i want to know how to check citations,general,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+please explain how to check citations,general,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+could you describe how to check citations,general,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+information about how to check citations,general,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+details about how to check citations,general,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+can you tell me how to write research papers with library support,research,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+i want to know how to write research papers with library support,research,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+please explain how to write research papers with library support,research,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+could you describe how to write research papers with library support,research,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+information about how to write research papers with library support,research,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+details about how to write research papers with library support,research,how to,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+can you tell me how to access e-journals,access,how to,Access e-journals through: 1) Library website → E-resources section 2) ONOS portal 3) Union Catalogu...
+i want to know how to access e-journals,access,how to,Access e-journals through: 1) Library website → E-resources section 2) ONOS portal 3) Union Catalogu...
+please explain how to access e-journals,access,how to,Access e-journals through: 1) Library website → E-resources section 2) ONOS portal 3) Union Catalogu...
+could you describe how to access e-journals,access,how to,Access e-journals through: 1) Library website → E-resources section 2) ONOS portal 3) Union Catalogu...
+information about how to access e-journals,access,how to,Access e-journals through: 1) Library website → E-resources section 2) ONOS portal 3) Union Catalogu...
+details about how to access e-journals,access,how to,Access e-journals through: 1) Library website → E-resources section 2) ONOS portal 3) Union Catalogu...
+can you tell me how to download research papers,research,how to,To download research papers: 1) Search in Scopus/Web of Science for citations 2) Access full-text th...
+i want to know how to download research papers,research,how to,To download research papers: 1) Search in Scopus/Web of Science for citations 2) Access full-text th...
+please explain how to download research papers,research,how to,To download research papers: 1) Search in Scopus/Web of Science for citations 2) Access full-text th...
+could you describe how to download research papers,research,how to,To download research papers: 1) Search in Scopus/Web of Science for citations 2) Access full-text th...
+information about how to download research papers,research,how to,To download research papers: 1) Search in Scopus/Web of Science for citations 2) Access full-text th...
+details about how to download research papers,research,how to,To download research papers: 1) Search in Scopus/Web of Science for citations 2) Access full-text th...
+can you tell me how to check impact factor,general,how to,Check journal impact factor in: 1) Web of Science → Journal Citation Reports (JCR) 2) Scopus → CiteS...
+i want to know how to check impact factor,general,how to,Check journal impact factor in: 1) Web of Science → Journal Citation Reports (JCR) 2) Scopus → CiteS...
+please explain how to check impact factor,general,how to,Check journal impact factor in: 1) Web of Science → Journal Citation Reports (JCR) 2) Scopus → CiteS...
+could you describe how to check impact factor,general,how to,Check journal impact factor in: 1) Web of Science → Journal Citation Reports (JCR) 2) Scopus → CiteS...
+information about how to check impact factor,general,how to,Check journal impact factor in: 1) Web of Science → Journal Citation Reports (JCR) 2) Scopus → CiteS...
+details about how to check impact factor,general,how to,Check journal impact factor in: 1) Web of Science → Journal Citation Reports (JCR) 2) Scopus → CiteS...
+can you tell me how to access digital tools,access,how to,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+i want to know how to access digital tools,access,how to,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+please explain how to access digital tools,access,how to,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+could you describe how to access digital tools,access,how to,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+information about how to access digital tools,access,how to,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+details about how to access digital tools,access,how to,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+can you tell me how to access onos,access,how to,"To access ONOS resources:
+1. Visit https://www.iitrpr.ac.in/library/onos.php
+2. Use your IIT Ropar c..."
+i want to know how to access onos,access,how to,"To access ONOS resources:
+1. Visit https://www.iitrpr.ac.in/library/onos.php
+2. Use your IIT Ropar c..."
+please explain how to access onos,access,how to,"To access ONOS resources:
+1. Visit https://www.iitrpr.ac.in/library/onos.php
+2. Use your IIT Ropar c..."
+could you describe how to access onos,access,how to,"To access ONOS resources:
+1. Visit https://www.iitrpr.ac.in/library/onos.php
+2. Use your IIT Ropar c..."
+information about how to access onos,access,how to,"To access ONOS resources:
+1. Visit https://www.iitrpr.ac.in/library/onos.php
+2. Use your IIT Ropar c..."
+details about how to access onos,access,how to,"To access ONOS resources:
+1. Visit https://www.iitrpr.ac.in/library/onos.php
+2. Use your IIT Ropar c..."
+can you tell me how to search union catalogue,general,how to,"To search the Union Catalogue:
+1. Visit https://library.iitgn.ac.in/unicat/
+2. Enter journal name, I..."
+i want to know how to search union catalogue,general,how to,"To search the Union Catalogue:
+1. Visit https://library.iitgn.ac.in/unicat/
+2. Enter journal name, I..."
+please explain how to search union catalogue,general,how to,"To search the Union Catalogue:
+1. Visit https://library.iitgn.ac.in/unicat/
+2. Enter journal name, I..."
+could you describe how to search union catalogue,general,how to,"To search the Union Catalogue:
+1. Visit https://library.iitgn.ac.in/unicat/
+2. Enter journal name, I..."
+information about how to search union catalogue,general,how to,"To search the Union Catalogue:
+1. Visit https://library.iitgn.ac.in/unicat/
+2. Enter journal name, I..."
+details about how to search union catalogue,general,how to,"To search the Union Catalogue:
+1. Visit https://library.iitgn.ac.in/unicat/
+2. Enter journal name, I..."
+can you tell me how to access institutional repository,access,how to,"To access IIT Ropar's Institutional Repository (DSpace):
+1. Visit http://dspace.iitrpr.ac.in:8080/xm..."
+i want to know how to access institutional repository,access,how to,"To access IIT Ropar's Institutional Repository (DSpace):
+1. Visit http://dspace.iitrpr.ac.in:8080/xm..."
+please explain how to access institutional repository,access,how to,"To access IIT Ropar's Institutional Repository (DSpace):
+1. Visit http://dspace.iitrpr.ac.in:8080/xm..."
+could you describe how to access institutional repository,access,how to,"To access IIT Ropar's Institutional Repository (DSpace):
+1. Visit http://dspace.iitrpr.ac.in:8080/xm..."
+information about how to access institutional repository,access,how to,"To access IIT Ropar's Institutional Repository (DSpace):
+1. Visit http://dspace.iitrpr.ac.in:8080/xm..."
+details about how to access institutional repository,access,how to,"To access IIT Ropar's Institutional Repository (DSpace):
+1. Visit http://dspace.iitrpr.ac.in:8080/xm..."
+can you tell me how to upload thesis to repository,general,how to,"To upload your thesis/dissertation to the Institutional Repository:
+1. Submit final thesis in PDF fo..."
+i want to know how to upload thesis to repository,general,how to,"To upload your thesis/dissertation to the Institutional Repository:
+1. Submit final thesis in PDF fo..."
+please explain how to upload thesis to repository,general,how to,"To upload your thesis/dissertation to the Institutional Repository:
+1. Submit final thesis in PDF fo..."
+could you describe how to upload thesis to repository,general,how to,"To upload your thesis/dissertation to the Institutional Repository:
+1. Submit final thesis in PDF fo..."
+information about how to upload thesis to repository,general,how to,"To upload your thesis/dissertation to the Institutional Repository:
+1. Submit final thesis in PDF fo..."
+details about how to upload thesis to repository,general,how to,"To upload your thesis/dissertation to the Institutional Repository:
+1. Submit final thesis in PDF fo..."
+can you tell me how to access grammarly,tools,how to,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+i want to know how to access grammarly,tools,how to,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+please explain how to access grammarly,tools,how to,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+could you describe how to access grammarly,tools,how to,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+information about how to access grammarly,tools,how to,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+details about how to access grammarly,tools,how to,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+can you tell me how to access overleaf,tools,how to,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+i want to know how to access overleaf,tools,how to,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+please explain how to access overleaf,tools,how to,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+could you describe how to access overleaf,tools,how to,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+information about how to access overleaf,tools,how to,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+details about how to access overleaf,tools,how to,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+can you tell me how to use turnitin,plagiarism,how to,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+i want to know how to use turnitin,plagiarism,how to,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+please explain how to use turnitin,plagiarism,how to,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+could you describe how to use turnitin,plagiarism,how to,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+information about how to use turnitin,plagiarism,how to,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+details about how to use turnitin,plagiarism,how to,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+can you tell me how to access accessengineering,access,how to,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+i want to know how to access accessengineering,access,how to,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+please explain how to access accessengineering,access,how to,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+could you describe how to access accessengineering,access,how to,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+information about how to access accessengineering,access,how to,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+details about how to access accessengineering,access,how to,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+can you tell me how to use pearson elibrary,general,how to,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+i want to know how to use pearson elibrary,general,how to,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+please explain how to use pearson elibrary,general,how to,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+could you describe how to use pearson elibrary,general,how to,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+information about how to use pearson elibrary,general,how to,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+details about how to use pearson elibrary,general,how to,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+can you tell me how to check citations scopus,general,how to,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+i want to know how to check citations scopus,general,how to,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+please explain how to check citations scopus,general,how to,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+could you describe how to check citations scopus,general,how to,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+information about how to check citations scopus,general,how to,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+details about how to check citations scopus,general,how to,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+can you tell me how to read ieee papers,general,how to,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+i want to know how to read ieee papers,general,how to,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+please explain how to read ieee papers,general,how to,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+could you describe how to read ieee papers,general,how to,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+information about how to read ieee papers,general,how to,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+details about how to read ieee papers,general,how to,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+can you tell me how to cite papers,general,how to,"For citing papers: 1) Use citation management tools (Mendeley, Zotero, EndNote) 2) Check journal gui..."
+i want to know how to cite papers,general,how to,"For citing papers: 1) Use citation management tools (Mendeley, Zotero, EndNote) 2) Check journal gui..."
+please explain how to cite papers,general,how to,"For citing papers: 1) Use citation management tools (Mendeley, Zotero, EndNote) 2) Check journal gui..."
+could you describe how to cite papers,general,how to,"For citing papers: 1) Use citation management tools (Mendeley, Zotero, EndNote) 2) Check journal gui..."
+information about how to cite papers,general,how to,"For citing papers: 1) Use citation management tools (Mendeley, Zotero, EndNote) 2) Check journal gui..."
+details about how to cite papers,general,how to,"For citing papers: 1) Use citation management tools (Mendeley, Zotero, EndNote) 2) Check journal gui..."
+can you tell me how to request an article not available,general,how to,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+i want to know how to request an article not available,general,how to,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+please explain how to request an article not available,general,how to,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+could you describe how to request an article not available,general,how to,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+information about how to request an article not available,general,how to,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+details about how to request an article not available,general,how to,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+can you tell me how to learn using the library,general,how to,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+i want to know how to learn using the library,general,how to,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+please explain how to learn using the library,general,how to,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+could you describe how to learn using the library,general,how to,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+information about how to learn using the library,general,how to,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+details about how to learn using the library,general,how to,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+can you tell me how to find resources by subject,resources,how to,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+i want to know how to find resources by subject,resources,how to,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+please explain how to find resources by subject,resources,how to,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+could you describe how to find resources by subject,resources,how to,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+information about how to find resources by subject,resources,how to,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+details about how to find resources by subject,resources,how to,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+can you tell me how to access onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+i want to know how to access onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+please explain how to access onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+could you describe how to access onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+information about how to access onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+details about how to access onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+can you tell me how to download phd thesis from dspace,access,how to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+i want to know how to download phd thesis from dspace,access,how to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+please explain how to download phd thesis from dspace,access,how to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+could you describe how to download phd thesis from dspace,access,how to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+information about how to download phd thesis from dspace,access,how to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+details about how to download phd thesis from dspace,access,how to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+can you tell me how to submit thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+i want to know how to submit thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+please explain how to submit thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+could you describe how to submit thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+information about how to submit thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+details about how to submit thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+can you tell me how to check new arrivals in the library,general,how to,Check the 'New Arrivals' section on the library homepage or search OPAC (opac.iitrpr.ac.in) for rece...
+i want to know how to check new arrivals in the library,general,how to,Check the 'New Arrivals' section on the library homepage or search OPAC (opac.iitrpr.ac.in) for rece...
+please explain how to check new arrivals in the library,general,how to,Check the 'New Arrivals' section on the library homepage or search OPAC (opac.iitrpr.ac.in) for rece...
+could you describe how to check new arrivals in the library,general,how to,Check the 'New Arrivals' section on the library homepage or search OPAC (opac.iitrpr.ac.in) for rece...
+information about how to check new arrivals in the library,general,how to,Check the 'New Arrivals' section on the library homepage or search OPAC (opac.iitrpr.ac.in) for rece...
+details about how to check new arrivals in the library,general,how to,Check the 'New Arrivals' section on the library homepage or search OPAC (opac.iitrpr.ac.in) for rece...
+can you tell me how to search the library catalogue,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+i want to know how to search the library catalogue,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+please explain how to search the library catalogue,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+could you describe how to search the library catalogue,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+information about how to search the library catalogue,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+details about how to search the library catalogue,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+can you tell me how to access e-resources off campus,access,how to,Off-campus access to subscribed e-resources is available through the IIT Ropar VPN. Connect to the i...
+i want to know how to access e-resources off campus,access,how to,Off-campus access to subscribed e-resources is available through the IIT Ropar VPN. Connect to the i...
+please explain how to access e-resources off campus,access,how to,Off-campus access to subscribed e-resources is available through the IIT Ropar VPN. Connect to the i...
+could you describe how to access e-resources off campus,access,how to,Off-campus access to subscribed e-resources is available through the IIT Ropar VPN. Connect to the i...
+information about how to access e-resources off campus,access,how to,Off-campus access to subscribed e-resources is available through the IIT Ropar VPN. Connect to the i...
+details about how to access e-resources off campus,access,how to,Off-campus access to subscribed e-resources is available through the IIT Ropar VPN. Connect to the i...
+can you tell me how to use onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+i want to know how to use onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+please explain how to use onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+could you describe how to use onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+information about how to use onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+details about how to use onos resources,access,how to,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+can you tell me how to upload thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+i want to know how to upload thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+please explain how to upload thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+could you describe how to upload thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+information about how to upload thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+details about how to upload thesis to dspace,general,how to,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+can you tell me how to get an article through ill,service,how to,Use the 'Request an Article' / EDD form or email the library helpdesk with citation details. The lib...
+i want to know how to get an article through ill,service,how to,Use the 'Request an Article' / EDD form or email the library helpdesk with citation details. The lib...
+please explain how to get an article through ill,service,how to,Use the 'Request an Article' / EDD form or email the library helpdesk with citation details. The lib...
+could you describe how to get an article through ill,service,how to,Use the 'Request an Article' / EDD form or email the library helpdesk with citation details. The lib...
+information about how to get an article through ill,service,how to,Use the 'Request an Article' / EDD form or email the library helpdesk with citation details. The lib...
+details about how to get an article through ill,service,how to,Use the 'Request an Article' / EDD form or email the library helpdesk with citation details. The lib...
+can you tell me how to contact the library,contact,how to,Contact the library via helpdesk email (libraryhelpdesk@iitrpr.ac.in) or listed phone numbers. Libra...
+i want to know how to contact the library,contact,how to,Contact the library via helpdesk email (libraryhelpdesk@iitrpr.ac.in) or listed phone numbers. Libra...
+please explain how to contact the library,contact,how to,Contact the library via helpdesk email (libraryhelpdesk@iitrpr.ac.in) or listed phone numbers. Libra...
+could you describe how to contact the library,contact,how to,Contact the library via helpdesk email (libraryhelpdesk@iitrpr.ac.in) or listed phone numbers. Libra...
+information about how to contact the library,contact,how to,Contact the library via helpdesk email (libraryhelpdesk@iitrpr.ac.in) or listed phone numbers. Libra...
+details about how to contact the library,contact,how to,Contact the library via helpdesk email (libraryhelpdesk@iitrpr.ac.in) or listed phone numbers. Libra...
+can you tell me how to search opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+i want to know how to search opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+please explain how to search opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+could you describe how to search opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+information about how to search opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+details about how to search opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+can you tell me how to find a book in opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+i want to know how to find a book in opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+please explain how to find a book in opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+could you describe how to find a book in opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+information about how to find a book in opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+details about how to find a book in opac,search,how to,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+how to recommend a book for purchase,acquisition,how to,You can recommend book via your OPAC login portal or by filling out indent form or by scanning QR co...
+how to cancel reserved document,circulation,how to,"To cancel reserved documents, kindly utilize the KOHA WEBOPAC. Log in to your account and proceed to..."
+how to borrow book using kiosk,circulation,how to,Steps to borrow books: Place your card on the scanner ->enter password-> place book/books on scanner...
+how to know book is overdue,circulation,how to,"You will be intimated with e-mail notification for your overdue materials. In that case, you need to..."
+how to recommend journal newspaper magazines,periodicals,how to,Please contact Dr. Tarvinder Handa subscriptions@iitrpr.ac.in
+how to know suggested journal arrived,periodicals,how to,You will be informed via email as soon as books will be arrived in the library.
+how to access e resources,periodicals,how to,You can access e-resources by connecting to the library wifi. The wifi password is displayed on the ...
+how to search book in OPAC,technical,how to,"Enter the book title , author or keyword in the search bar and browse the results to find the book y..."
+how to find book on shelf,technical,how to,Books in the library are organized using the DDC system . Each book has unique accession number and ...
+how to distinguish reference and book bank books,reference,how to,Reference books are marked in green label and are kept on the first floor in the reference section a...
+how to change koha login password,general_services,how to,"To change password, click on forget password on your opac login."
+what is grammarly how to access,general_services,how to,Grammarly is a comprehensive AI writing assistant designed to enhance writing quality and correctnes...
+how to book techno booths,digital_learning,how to,To book techno booth visit https://www.iitrpr.ac.in/library/
+how to use subject guide,subject_guide,how to,"For complete details on the use subject guide, please click here: https://www.iitrpr.ac.in/library/S..."
+library id card process,general,id card,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+institute smart id card,general,id card,The Institute-cum-Library Smart ID Card serves as both institute and library ID. It uses RFID techno...
+can you tell me library id card process,general,id card,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+i want to know library id card process,general,id card,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+please explain library id card process,general,id card,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+could you describe library id card process,general,id card,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+information about library id card process,general,id card,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+details about library id card process,general,id card,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+can you tell me institute smart id card,general,id card,The Institute-cum-Library Smart ID Card serves as both institute and library ID. It uses RFID techno...
+i want to know institute smart id card,general,id card,The Institute-cum-Library Smart ID Card serves as both institute and library ID. It uses RFID techno...
+please explain institute smart id card,general,id card,The Institute-cum-Library Smart ID Card serves as both institute and library ID. It uses RFID techno...
+could you describe institute smart id card,general,id card,The Institute-cum-Library Smart ID Card serves as both institute and library ID. It uses RFID techno...
+information about institute smart id card,general,id card,The Institute-cum-Library Smart ID Card serves as both institute and library ID. It uses RFID techno...
+details about institute smart id card,general,id card,The Institute-cum-Library Smart ID Card serves as both institute and library ID. It uses RFID techno...
+is it ID card or library card,membership,id card,This smart card serves dual purpose; it is going to be your Institute Identity Card as well as a Lib...
+library rules,policy,library rule,"Library Code of Conduct: maintain silence, avoid food/drinks, handle books carefully, use Smart ID f..."
+what are the major library rules at iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+library rules iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+can you tell me library rules,policy,library rule,"Library Code of Conduct: maintain silence, avoid food/drinks, handle books carefully, use Smart ID f..."
+i want to know library rules,policy,library rule,"Library Code of Conduct: maintain silence, avoid food/drinks, handle books carefully, use Smart ID f..."
+please explain library rules,policy,library rule,"Library Code of Conduct: maintain silence, avoid food/drinks, handle books carefully, use Smart ID f..."
+could you describe library rules,policy,library rule,"Library Code of Conduct: maintain silence, avoid food/drinks, handle books carefully, use Smart ID f..."
+information about library rules,policy,library rule,"Library Code of Conduct: maintain silence, avoid food/drinks, handle books carefully, use Smart ID f..."
+details about library rules,policy,library rule,"Library Code of Conduct: maintain silence, avoid food/drinks, handle books carefully, use Smart ID f..."
+can you tell me what are the major library rules at iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+i want to know what are the major library rules at iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+please explain what are the major library rules at iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+could you describe what are the major library rules at iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+information about what are the major library rules at iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+details about what are the major library rules at iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+can you tell me library rules iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+i want to know library rules iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+please explain library rules iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+could you describe library rules iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+information about library rules iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+details about library rules iit ropar,rules,library rule,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+library services,service,library service,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+library services list,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+list all library services,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+can you tell me library services,service,library service,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+i want to know library services,service,library service,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+please explain library services,service,library service,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+could you describe library services,service,library service,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+information about library services,service,library service,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+details about library services,service,library service,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+can you tell me library services list,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+i want to know library services list,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+please explain library services list,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+could you describe library services list,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+information about library services list,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+details about library services list,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+can you tell me list all library services,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+i want to know list all library services,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+please explain list all library services,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+could you describe list all library services,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+information about list all library services,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+details about list all library services,service,library service,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+where to give suggestion for library services,general_services,library service,You can give suggestion or review for library services in the suggestion register or drop them in th...
+library service suggestions,general_services,library service,You can give suggestion or review for library services in the suggestion register or drop them in th...
+do I have to make entry for issued book in register,circulation,make entry,"Yes, please ensure to make entry for issued book in register every time you bring the books to the l..."
+do I have to make entry of books and laptop,general_services,make entry,"Proper entry of laptops, personal books should be made in the Entry/Exit Portal."
+how to get library membership,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+membership rules,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+library membership form,membership,membership,Library membership registration is done online through OPAC. Upload your photo and fill the form. Yo...
+external membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+membership for alumni,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+industry membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+government membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+membership for iit ropar students,membership,membership,"All registered students, faculty, and staff of IIT Ropar are automatic members of Nalanda Library an..."
+membership for outsiders,membership,membership,"Nalanda Library offers external membership to Academic Institutions, Research Organizations, Governm..."
+library membership,membership,membership,"All registered IIT Ropar students, faculty, and staff are automatic members of Nalanda Library. Exte..."
+can you tell me how to get library membership,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+i want to know how to get library membership,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+please explain how to get library membership,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+could you describe how to get library membership,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+information about how to get library membership,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+details about how to get library membership,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+can you tell me membership rules,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+i want to know membership rules,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+please explain membership rules,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+could you describe membership rules,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+information about membership rules,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+details about membership rules,membership,membership,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+can you tell me library membership form,membership,membership,Library membership registration is done online through OPAC. Upload your photo and fill the form. Yo...
+i want to know library membership form,membership,membership,Library membership registration is done online through OPAC. Upload your photo and fill the form. Yo...
+please explain library membership form,membership,membership,Library membership registration is done online through OPAC. Upload your photo and fill the form. Yo...
+could you describe library membership form,membership,membership,Library membership registration is done online through OPAC. Upload your photo and fill the form. Yo...
+information about library membership form,membership,membership,Library membership registration is done online through OPAC. Upload your photo and fill the form. Yo...
+details about library membership form,membership,membership,Library membership registration is done online through OPAC. Upload your photo and fill the form. Yo...
+can you tell me external membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+i want to know external membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+please explain external membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+could you describe external membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+information about external membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+details about external membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+can you tell me membership for alumni,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+i want to know membership for alumni,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+please explain membership for alumni,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+could you describe membership for alumni,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+information about membership for alumni,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+details about membership for alumni,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+can you tell me industry membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+i want to know industry membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+please explain industry membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+could you describe industry membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+information about industry membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+details about industry membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+can you tell me government membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+i want to know government membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+please explain government membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+could you describe government membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+information about government membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+details about government membership,membership,membership,"External membership is available for academic institutions, government departments, industries, corp..."
+can you tell me membership for iit ropar students,membership,membership,"All registered students, faculty, and staff of IIT Ropar are automatic members of Nalanda Library an..."
+i want to know membership for iit ropar students,membership,membership,"All registered students, faculty, and staff of IIT Ropar are automatic members of Nalanda Library an..."
+please explain membership for iit ropar students,membership,membership,"All registered students, faculty, and staff of IIT Ropar are automatic members of Nalanda Library an..."
+could you describe membership for iit ropar students,membership,membership,"All registered students, faculty, and staff of IIT Ropar are automatic members of Nalanda Library an..."
+information about membership for iit ropar students,membership,membership,"All registered students, faculty, and staff of IIT Ropar are automatic members of Nalanda Library an..."
+details about membership for iit ropar students,membership,membership,"All registered students, faculty, and staff of IIT Ropar are automatic members of Nalanda Library an..."
+can you tell me membership for outsiders,membership,membership,"Nalanda Library offers external membership to Academic Institutions, Research Organizations, Governm..."
+i want to know membership for outsiders,membership,membership,"Nalanda Library offers external membership to Academic Institutions, Research Organizations, Governm..."
+please explain membership for outsiders,membership,membership,"Nalanda Library offers external membership to Academic Institutions, Research Organizations, Governm..."
+could you describe membership for outsiders,membership,membership,"Nalanda Library offers external membership to Academic Institutions, Research Organizations, Governm..."
+information about membership for outsiders,membership,membership,"Nalanda Library offers external membership to Academic Institutions, Research Organizations, Governm..."
+details about membership for outsiders,membership,membership,"Nalanda Library offers external membership to Academic Institutions, Research Organizations, Governm..."
+can you tell me library membership,membership,membership,"All registered IIT Ropar students, faculty, and staff are automatic members of Nalanda Library. Exte..."
+i want to know library membership,membership,membership,"All registered IIT Ropar students, faculty, and staff are automatic members of Nalanda Library. Exte..."
+please explain library membership,membership,membership,"All registered IIT Ropar students, faculty, and staff are automatic members of Nalanda Library. Exte..."
+could you describe library membership,membership,membership,"All registered IIT Ropar students, faculty, and staff are automatic members of Nalanda Library. Exte..."
+information about library membership,membership,membership,"All registered IIT Ropar students, faculty, and staff are automatic members of Nalanda Library. Exte..."
+details about library membership,membership,membership,"All registered IIT Ropar students, faculty, and staff are automatic members of Nalanda Library. Exte..."
+how will I get library membership,membership,membership,The library membership form is available at the circulation counter. Please submit the filled form a...
+library membership process,membership,membership,The library membership form is available at the circulation counter. Please submit the filled form a...
+can outsider get library membership,membership,membership,"Yes, before taking the membership please drop an email regarding your deatils and reasons for availi..."
+external library membership,membership,membership,"Yes, before taking the membership please drop an email regarding your deatils and reasons for availi..."
+can I bring own books and laptop,general_services,own books,"You are allowed to bring your personal books, other reading materials, and laptops inside the librar..."
+book register entry,circulation,register entry,"Yes, please ensure to make entry for issued book in register every time you bring the books to the l..."
+why should i use the library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+when should i return books,borrowing,should i,Return books before the due date to avoid fines. Check your account in OPAC for due dates. You can r...
+whom should i contact for help,contact,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+what should i know about tell me about the library,general,should i,"Nalanda library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+what should i know about library timing,general,should i,Library working hours: Weekdays (Mon-Fri) 9:00 AM - 8:00 PM. Reading area may offer extended or 24/7...
+what should i know about fine policy,rules,should i,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+what should i know about e-resources,resources,should i,"🔢 E-Resources Available:
+
+1. Databases:
+- Scopus
+- Web of Science
+- MathSciNet
+- IEEE Xplore
+
+2. E-J..."
+what should i know about online journals,resources,should i,"📚 **How to Access Online Journals:**
+
+**On Campus:**
+✅ Direct access to all subscribed e-journals an..."
+what should i know about how to access online journals,resources,should i,"📚 **How to Access Online Journals:**
+
+**On Campus:**
+✅ Direct access to all subscribed e-journals an..."
+what should i know about access e-journals,resources,should i,"📚 **How to Access E-Journals:**
+
+**On Campus:**
+✅ Direct access to all subscribed e-journals
+✅ No VP..."
+what should i know about e-journals,resources,should i,"📚 **E-Journals Available:**
+
+**Major Publishers:**
+• Science Direct (Elsevier)
+• SpringerLink (Sprin..."
+what should i know about digital journals,resources,should i,"📚 **Digital Journals (E-Journals) Access:**
+
+**On Campus:** Direct access ✅
+**Off Campus:** VPN requ..."
+what should i know about journal access,resources,should i,"📚 **Journal Access Guide:**
+
+**E-Journals:** Available through library website
+**Physical Journals:*..."
+what should i know about how to issue book,borrowing,should i,Issue books with your institute ID at the library counter or self-service kiosks. Ensure no outstand...
+what should i know about technobooth,facility,should i,Technobooth (Digital Learning Hub) in Nalanda Library provides rooms equipped with interactive touch...
+what should i know about reading room facilities,general,should i,"Reading Room Facilities:
+
+1. Areas Available:
+- Individual study carrels
+- Group discussion rooms
+- ..."
+what should i know about nalanda library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+what should i know about give details of iit ropar library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+what should i know about information about library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+what should i know about describe the library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+what should i know about library overview,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+what should i know about library introduction,general,should i,"Nalanda Library (IIT Ropar) provides access to 25,000+ print books and extensive e-resources (Scopus..."
+what should i know about library introduction for new students,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+can you tell me why should i use the library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+i want to know why should i use the library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+please explain why should i use the library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+could you describe why should i use the library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+information about why should i use the library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+details about why should i use the library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+what should i know about why should i use the library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+what should i know about what can i do in the library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+what should i know about special about nalanda library,general,should i,"Nalanda Library at IIT Ropar is the central hub for academic resources. It has 25,000+ books, thousa..."
+what should i know about what are library timings,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about when is library open,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about library opening hours,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about library hours today,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about what time does library open,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about what time does library close,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about library timing on weekends,general,should i,The library is open all year including weekends. Ground Floor (Stack & Reading Area 2) is open 24/7....
+what should i know about library timing on holidays,general,should i,The library is open all year including holidays. Ground Floor (Stack & Reading Area 2) is open 24/7....
+what should i know about can i visit library at night,general,should i,Yes! The library Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is open from 6 AM t...
+what should i know about library midnight access,access,should i,"Yes, library Ground Floor is open 24/7 including midnight. First Floor is open till 2 AM. You can st..."
+what should i know about library schedule,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about library working hours,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about is library open 24/7,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about time of library,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about is the library open now,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about when can i visit the library,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about is library 24/7,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about what are the opening and closing hours,general,should i,The library is open all year. Ground Floor (Stack & Reading Area 2) is open 24/7. First Floor is ope...
+what should i know about how to get library membership,membership,should i,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+what should i know about library registration process,general,should i,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+what should i know about who can join library,general,should i,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+what should i know about membership rules,membership,should i,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+what should i know about how can i register in the library,general,should i,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+what should i know about how do i become library member,general,should i,"All IIT Ropar students, staff, and faculty are automatically entitled to library membership. Registe..."
+what should i know about library membership form,membership,should i,Library membership registration is done online through OPAC. Upload your photo and fill the form. Yo...
+what should i know about library card application,general,should i,"Apply for library card through OPAC by registering with your photo. All IIT Ropar students, staff, a..."
+what should i know about library id card process,general,should i,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+what should i know about library smart card,general,should i,"All IIT Ropar students, staff, and faculty are entitled to membership. Registration is via an online..."
+what should i know about borrowing rules,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about how many books can i issue,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about book issue limit,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about book borrowing policy,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about loan duration of books,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about how long can i keep a book,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about how many books can i borrow,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about book limit for students,borrowing,should i,"Students can borrow: UG - 3 books (2 weeks) + 1 Book Bank book (1 semester), PG - 5 books (2 weeks),..."
+what should i know about maximum books i can take,borrowing,should i,"Maximum borrowing limit: Faculty - 12 books, PhD - 6 books, PG - 5 books, UG - 3 books + 1 Book Bank..."
+what should i know about how many books can i issue at once,borrowing,should i,"You can issue: Faculty - 12 books, Staff - 4 books, PhD - 6 books, PG - 5 books, UG - 3 books + 1 Bo..."
+what should i know about book borrowing limit per person,borrowing,should i,"Borrowing limits per person: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD - 6 ..."
+what should i know about how long can i keep library books,borrowing,should i,"Book retention period: Faculty - 1 semester (90 days), Staff - 1 semester, PhD - 4 weeks, PG - 2 wee..."
+what should i know about book return date,borrowing,should i,"Book return dates vary: UG/PG - 2 weeks, PhD - 4 weeks, Faculty/Staff - 1 semester. You can check du..."
+can you tell me when should i return books,borrowing,should i,Return books before the due date to avoid fines. Check your account in OPAC for due dates. You can r...
+i want to know when should i return books,borrowing,should i,Return books before the due date to avoid fines. Check your account in OPAC for due dates. You can r...
+please explain when should i return books,borrowing,should i,Return books before the due date to avoid fines. Check your account in OPAC for due dates. You can r...
+could you describe when should i return books,borrowing,should i,Return books before the due date to avoid fines. Check your account in OPAC for due dates. You can r...
+information about when should i return books,borrowing,should i,Return books before the due date to avoid fines. Check your account in OPAC for due dates. You can r...
+details about when should i return books,borrowing,should i,Return books before the due date to avoid fines. Check your account in OPAC for due dates. You can r...
+what should i know about when should i return books,borrowing,should i,Return books before the due date to avoid fines. Check your account in OPAC for due dates. You can r...
+what should i know about for how long can i keep a book,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about can i renew my book,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about can i borrow reference books,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about what happens if i lose a book,borrowing,should i,"Borrowing privileges: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - ..."
+what should i know about how many books ug students get,borrowing,should i,"**Borrowing Limit for UG Students:**
+
+UG (Undergraduate) students can borrow:
+• **3 regular books** ..."
+what should i know about how many books pg students get,borrowing,should i,"**Borrowing Limit for PG Students:**
+
+PG (Postgraduate) students can borrow:
+• **5 books** for 2 wee..."
+what should i know about how many books phd students get,borrowing,should i,"**Borrowing Limit for PhD Students:**
+
+PhD scholars can borrow:
+• **6 books** for 4 weeks
+
+You can r..."
+what should i know about how many books btech students get,borrowing,should i,"**Borrowing Limit for BTech Students:**
+
+BTech (UG) students can borrow:
+• **3 regular books** for 2..."
+what should i know about how many books mtech students get,borrowing,should i,"**Borrowing Limit for MTech Students:**
+
+MTech (PG) students can borrow:
+• **5 books** for 2 weeks
+
+..."
+what should i know about how many books can ug students borrow,borrowing,should i,"**Borrowing Limit for UG Students:**
+
+UG (Undergraduate) students can borrow:
+• **3 regular books** ..."
+what should i know about how many books can pg students borrow,borrowing,should i,"**Borrowing Limit for PG Students:**
+
+PG (Postgraduate) students can borrow:
+• **5 books** for 2 wee..."
+what should i know about ug students book limit,borrowing,should i,"**Borrowing Limit for UG Students:**
+
+UG (Undergraduate) students can borrow:
+• **3 regular books** ..."
+what should i know about pg students book limit,borrowing,should i,"**Borrowing Limit for PG Students:**
+
+PG (Postgraduate) students can borrow:
+• **5 books** for 2 wee..."
+what should i know about overdue fines,rules,should i,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+what should i know about library fine policy,rules,should i,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+what should i know about late fees,general,should i,"Fines: ₹2 per book/day after the due date. The fine doubles each week (₹4, ₹8, etc.). If not returne..."
+what should i know about penalty for late return,rules,should i,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+what should i know about what happens if i return late,general,should i,"Fines: ₹2 per book/day after the due date. The fine doubles each week (₹4, ₹8, etc.). If not returne..."
+what should i know about opac,search,should i,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+what should i know about how to search books,borrowing,should i,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+what should i know about library catalogue,general,should i,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+what should i know about how can i check book availability,borrowing,should i,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+what should i know about online library search,general,should i,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+what should i know about how do i find a book in library,borrowing,should i,"To find a book: 1) Search in OPAC (https://opac.iitrpr.ac.in) by title, author, or keywords 2) Note ..."
+what should i know about search book by author,borrowing,should i,"Search books by author in OPAC (https://opac.iitrpr.ac.in). Enter author name in search box, select ..."
+what should i know about search book by title,borrowing,should i,"Search books by title in OPAC (https://opac.iitrpr.ac.in). Enter book title in search box, view resu..."
+what should i know about opac login,search,should i,"Login to OPAC (https://opac.iitrpr.ac.in) using your institute credentials. After login, you can: ch..."
+what should i know about check my borrowed books,borrowing,should i,Login to OPAC (https://opac.iitrpr.ac.in) with your credentials. Click on 'My Account' to view all b...
+what should i know about renew books online,borrowing,should i,Renew via OPAC at https://opac.iitrpr.ac.in under 'My Account'. Renewals blocked if item reserved by...
+what should i know about how to reserve a book,borrowing,should i,"To reserve a book: 1) Search in OPAC (https://opac.iitrpr.ac.in) 2) If book is issued to someone, cl..."
+what should i know about book search system,borrowing,should i,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+what should i know about where to check new arrivals,general,should i,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+what should i know about plagiarism check,plagiarism,should i,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+what should i know about turnitin access,plagiarism,should i,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+what should i know about similarity report,general,should i,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+what should i know about how to check thesis for plagiarism,plagiarism,should i,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+what should i know about plagiarism policy,plagiarism,should i,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+what should i know about anti plagiarism tool,plagiarism,should i,Nalanda Library provides plagiarism and similarity check via Turnitin. Students and faculty can requ...
+what should i know about printing service,service,should i,Photocopy/printing is available 9 AM to 10 PM daily. Charges: ₹1 per page (one side). Users must fol...
+what should i know about photocopy facility,facility,should i,Photocopy/printing is available 9 AM to 10 PM daily. Charges: ₹1 per page (one side). Users must fol...
+what should i know about xerox in library,general,should i,Photocopy/printing is available 9 AM to 10 PM daily. Charges: ₹1 per page (one side). Users must fol...
+what should i know about print charges,general,should i,Photocopy/printing is available 9 AM to 10 PM daily. Charges: ₹1 per page (one side). Users must fol...
+what should i know about photocopy timings,general,should i,Photocopy/printing is available 9 AM to 10 PM daily. Charges: ₹1 per page (one side). Users must fol...
+what should i know about can i print documents in library,general,should i,Photocopy/printing is available 9 AM to 10 PM daily. Charges: ₹1 per page (one side). Users must fol...
+what should i know about can i print in the library,general,should i,Photocopy/printing is available 9 AM to 10 PM daily. Charges: ₹1 per page (one side). Users must fol...
+what should i know about is photocopying allowed,general,should i,Photocopy/printing is available 9 AM to 10 PM daily. Charges: ₹1 per page (one side). Users must fol...
+what should i know about how much does printing cost,printing,should i,Photocopy/printing is available 9 AM to 10 PM daily. Charges: ₹1 per page (one side). Users must fol...
+what should i know about can i scan documents in the library,general,should i,Photocopy/printing is available 9 AM to 10 PM daily. Charges: ₹1 per page (one side). Users must fol...
+what should i know about research support services,service,should i,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+what should i know about help in research writing,research,should i,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+what should i know about does library provide grammarly,tools,should i,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+what should i know about does library provide overleaf,tools,should i,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+what should i know about research tools,research,should i,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+what should i know about how to check citations,general,should i,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+what should i know about how can the library help in research,research,should i,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+what should i know about does library check plagiarism,plagiarism,should i,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+what should i know about how to write research papers with library support,research,should i,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+what should i know about can i get help with citations,general,should i,"Nalanda Library offers support services: Turnitin (plagiarism check), Grammarly (writing tool), Over..."
+what should i know about e-resources available,resources,should i,"Nalanda Library provides access to IEEE Xplore, ACM Digital Library, ScienceDirect, SpringerLink, JS..."
+what should i know about databases in library,general,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about which journals are available,general,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about what e-books are there,borrowing,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about list of electronic resources,resources,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about what digital tools are provided,general,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about what e-resources are available,resources,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about how to access e-journals,access,should i,Access e-journals through: 1) Library website → E-resources section 2) ONOS portal 3) Union Catalogu...
+what should i know about how to download research papers,research,should i,To download research papers: 1) Search in Scopus/Web of Science for citations 2) Access full-text th...
+what should i know about vpn for library access,access,should i,"Use IIT Ropar VPN to access library e-resources (e-journals, e-books, databases) from off-campus. In..."
+what should i know about off campus access to library,access,should i,For off-campus access to library e-resources: 1) Connect to IIT Ropar VPN 2) Access library website ...
+what should i know about research databases available,research,should i,"Research databases available: Scopus, Web of Science, MathSciNet, IEEE Xplore, ACM Digital Library, ..."
+what should i know about citation databases,general,should i,"Citation databases available: Scopus, Web of Science (WoS), Google Scholar. These help track citatio..."
+what should i know about how to check impact factor,general,should i,Check journal impact factor in: 1) Web of Science → Journal Citation Reports (JCR) 2) Scopus → CiteS...
+what should i know about what online journals can i access,access,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about does the library have ieee,general,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about does the library have nature,general,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about does the library have science,general,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about where can i find e-books,borrowing,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about how to access digital tools,access,should i,"E-resources include Scopus, Web of Science, MathSciNet, SciFinder, Prowess IQ, States of India, Gram..."
+what should i know about external membership,membership,should i,"External membership is available for academic institutions, government departments, industries, corp..."
+what should i know about onos,general,should i,"🌐 **ONOS (Online Network of Shared Resources)**
+
+ONOS is a consortium of IITs providing centralized ..."
+what should i know about onos resources,resources,should i,"ONOS (Online Network of Shared Resources) provides access to 30+ publishers including Springer, Else..."
+what should i know about online network of shared resources,resources,should i,ONOS (Online Network of Shared Resources) is a consortium of IITs providing centralized access to e-...
+what should i know about e-resources under onos,resources,should i,"ONOS provides access to 30+ publishers including Springer, Elsevier, Wiley, IEEE, ACM, Nature, Scien..."
+what should i know about onos publishers list,general,should i,"ONOS provides access to 30+ publishers including: Springer, Elsevier (ScienceDirect), Wiley, IEEE Xp..."
+what should i know about how to access onos,access,should i,"To access ONOS resources:
+1. Visit https://www.iitrpr.ac.in/library/onos.php
+2. Use your IIT Ropar c..."
+what should i know about onos e-journals access,access,should i,"ONOS provides access to thousands of e-journals from 30+ publishers including Springer, Elsevier, Wi..."
+what should i know about union catalogue,general,should i,"**Union Catalogue of E-Resources**
+
+The Union Catalogue is a centralized database providing a compre..."
+what should i know about union catalogue access,access,should i,"The Union Catalogue of e-resources provides a centralized search for e-journals, e-books, and databa..."
+what should i know about how to search union catalogue,general,should i,"To search the Union Catalogue:
+1. Visit https://library.iitgn.ac.in/unicat/
+2. Enter journal name, I..."
+what should i know about cross iit resource sharing,resources,should i,IIT Ropar participates in cross-IIT resource sharing through ONOS (Online Network of Shared Resource...
+what should i know about institutional repository,general,should i,"🏛️ **Institutional Repository (DSpace)**
+
+The Institutional Digital Repository (IDR) at IIT Ropar pr..."
+what should i know about iit ropar dspace,general,should i,"DSpace is IIT Ropar's Institutional Digital Repository providing open access to PhD theses, MTech/BT..."
+what should i know about how to access institutional repository,access,should i,"To access IIT Ropar's Institutional Repository (DSpace):
+1. Visit http://dspace.iitrpr.ac.in:8080/xm..."
+what should i know about how to upload thesis to repository,general,should i,"To upload your thesis/dissertation to the Institutional Repository:
+1. Submit final thesis in PDF fo..."
+what should i know about dspace submission process,general,should i,"For submitting research output to DSpace:
+1. Prepare document in PDF format
+2. Email libraryhelpdesk..."
+what should i know about can i download phd thesis from repository,general,should i,"Yes, you can download PhD theses and dissertations from IIT Ropar's Institutional Repository (DSpace..."
+what should i know about previous year thesis access,access,should i,Previous year theses and dissertations from IIT Ropar are available in the Institutional Digital Rep...
+what should i know about can outsiders join library,general,should i,"External membership is available for academic institutions, government departments, industries, corp..."
+what should i know about membership for alumni,membership,should i,"External membership is available for academic institutions, government departments, industries, corp..."
+what should i know about industry membership,membership,should i,"External membership is available for academic institutions, government departments, industries, corp..."
+what should i know about government membership,membership,should i,"External membership is available for academic institutions, government departments, industries, corp..."
+what should i know about non-iit ropar library access,access,should i,"External membership is available for academic institutions, government departments, industries, corp..."
+what should i know about inter library loan,general,should i,Inter Library Loan (ILL) service allows borrowing of books/articles not available in Nalanda Library...
+what should i know about ill facility,facility,should i,Inter Library Loan (ILL) service allows borrowing of books/articles not available in Nalanda Library...
+what should i know about borrow book from other library,borrowing,should i,Inter Library Loan (ILL) service allows borrowing of books/articles not available in Nalanda Library...
+what should i know about request book not available,borrowing,should i,Inter Library Loan (ILL) service allows borrowing of books/articles not available in Nalanda Library...
+what should i know about get article from another library,general,should i,Inter Library Loan (ILL) service allows borrowing of books/articles not available in Nalanda Library...
+what should i know about library contact,contact,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+what should i know about who is librarian,general,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+what should i know about contact details of library,contact,should i,"Nalanda Library, IIT Ropar — Librarian: Dr. Dinesh K.S. (librarian@iitrpr.ac.in). Helpdesk: libraryh..."
+what should i know about whom to contact in library,contact,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+what should i know about library helpdesk,general,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+what should i know about library phone number,general,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+what should i know about library email,general,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+can you tell me whom should i contact for help,contact,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+i want to know whom should i contact for help,contact,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+please explain whom should i contact for help,contact,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+could you describe whom should i contact for help,contact,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+information about whom should i contact for help,contact,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+details about whom should i contact for help,contact,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+what should i know about whom should i contact for help,contact,should i,"Librarian: Dr. Dinesh K.S (librarian@iitrpr.ac.in, 01881-235179). Helpdesk: libraryhelpdesk@iitrpr.a..."
+what should i know about library rules,policy,should i,"Library Code of Conduct: maintain silence, avoid food/drinks, handle books carefully, use Smart ID f..."
+what should i know about code of conduct,general,should i,"Rules: Maintain silence, no food/drinks, mobile phones prohibited, Smart ID card mandatory, no unaut..."
+what should i know about what not to do in library,general,should i,"Rules: Maintain silence, no food/drinks, mobile phones prohibited, Smart ID card mandatory, no unaut..."
+what should i know about can i eat in library,general,should i,"Rules: Maintain silence, no food/drinks, mobile phones prohibited, Smart ID card mandatory, no unaut..."
+what should i know about can i use phone in library,general,should i,"Rules: Maintain silence, no food/drinks, mobile phones prohibited, Smart ID card mandatory, no unaut..."
+what should i know about general library regulations,general,should i,"Rules: Maintain silence, no food/drinks, mobile phones prohibited, Smart ID card mandatory, no unaut..."
+what should i know about can i use mobile in the library,general,should i,"Rules: Maintain silence, no food/drinks, mobile phones prohibited, Smart ID card mandatory, no unaut..."
+what should i know about is food allowed inside,general,should i,"Rules: Maintain silence, no food/drinks, mobile phones prohibited, Smart ID card mandatory, no unaut..."
+what should i know about what happens if i don’t return books on time,borrowing,should i,"Rules: Maintain silence, no food/drinks, mobile phones prohibited, Smart ID card mandatory, no unaut..."
+what should i know about what if i damage a book,borrowing,should i,"Rules: Maintain silence, no food/drinks, mobile phones prohibited, Smart ID card mandatory, no unaut..."
+what should i know about how to access grammarly,tools,should i,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+what should i know about is grammarly free for iit ropar students,tools,should i,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+what should i know about writing tool in library,general,should i,Nalanda Library provides free access to Grammarly Premium for IIT Ropar users. Sign up using your II...
+what should i know about how to access overleaf,tools,should i,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+what should i know about overleaf premium iit ropar,tools,should i,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+what should i know about can i use overleaf for latex,tools,should i,"The library offers Overleaf Premium for collaborative LaTeX writing. Users can write, edit, and shar..."
+what should i know about plagiarism tool,plagiarism,should i,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+what should i know about check plagiarism with turnitin,plagiarism,should i,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+what should i know about how to use turnitin,plagiarism,should i,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+what should i know about similarity check service,service,should i,"Turnitin is available via Nalanda Library to check plagiarism, AI-generated content, and originality..."
+what should i know about accessengineering resource,resources,should i,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+what should i know about mcgraw hill access engineering,access,should i,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+what should i know about engineering e-books,borrowing,should i,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+what should i know about how to access accessengineering,access,should i,"AccessEngineering (by McGraw Hill) provides 988+ eBooks, handbooks, 1400+ instructional videos, spre..."
+what should i know about pearson elibrary,general,should i,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+what should i know about pearson e-books access,access,should i,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+what should i know about pearson digital books,borrowing,should i,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+what should i know about how to use pearson elibrary,general,should i,Pearson eLibrary offers a vast collection of digital coursebooks and academic eBooks across Engineer...
+what should i know about springer lecture notes in physics,general,should i,Springer's Lecture Notes in Physics (LNP) is a series providing advanced graduate-level textbooks an...
+what should i know about springer lnp series,general,should i,Springer's Lecture Notes in Physics (LNP) is a series providing advanced graduate-level textbooks an...
+what should i know about physics e-books springer,borrowing,should i,Springer's Lecture Notes in Physics (LNP) is a series providing advanced graduate-level textbooks an...
+what should i know about springer lecture notes access,access,should i,Springer's Lecture Notes in Physics (LNP) is a series providing advanced graduate-level textbooks an...
+what should i know about scopus access,access,should i,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+what should i know about web of science iit ropar,general,should i,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+what should i know about research citation database,research,should i,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+what should i know about how to check citations scopus,general,should i,"Nalanda Library provides access to Scopus and Web of Science, leading scientometric databases. These..."
+what should i know about prowess iq database,general,should i,The library subscribes to Prowess IQ (financial and corporate data) and States of India (statistical...
+what should i know about states of india data,general,should i,The library subscribes to Prowess IQ (financial and corporate data) and States of India (statistical...
+what should i know about economic data access,access,should i,The library subscribes to Prowess IQ (financial and corporate data) and States of India (statistical...
+what should i know about industry database iit ropar,general,should i,The library subscribes to Prowess IQ (financial and corporate data) and States of India (statistical...
+what should i know about does library have science journal,general,should i,"Yes, Nalanda Library subscribes to Science (AAAS), providing weekly issues and online access."
+what should i know about is science magazine available,general,should i,"Yes, Nalanda Library subscribes to Science (AAAS), providing weekly issues and online access."
+what should i know about aaas science access,access,should i,"Yes, Nalanda Library subscribes to Science (AAAS), providing weekly issues and online access."
+what should i know about science journal iit ropar,general,should i,"Yes, Nalanda Library subscribes to Science (AAAS), providing weekly issues and online access."
+what should i know about does library have nature journal,general,should i,"Yes, the library provides access to Nature and other Nature journals, covering sciences, engineering..."
+what should i know about is nature available,general,should i,"Yes, the library provides access to Nature and other Nature journals, covering sciences, engineering..."
+what should i know about nature publishing access,access,should i,"Yes, the library provides access to Nature and other Nature journals, covering sciences, engineering..."
+what should i know about nature magazine iit ropar,general,should i,"Yes, the library provides access to Nature and other Nature journals, covering sciences, engineering..."
+what should i know about does library have ieee journals,general,should i,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+what should i know about access ieee xplore,access,should i,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+what should i know about ieee database iit ropar,general,should i,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+what should i know about how to read ieee papers,general,should i,"Yes, IIT Ropar subscribes to IEEE Xplore (IEL Online), which provides IEEE journals, conference proc..."
+what should i know about does library have acm journals,general,should i,"Yes, the ACM Digital Library is available at Nalanda Library, covering computing and information tec..."
+what should i know about access acm digital library,access,should i,"Yes, the ACM Digital Library is available at Nalanda Library, covering computing and information tec..."
+what should i know about acm database iit ropar,general,should i,"Yes, the ACM Digital Library is available at Nalanda Library, covering computing and information tec..."
+what should i know about acm resources in library,resources,should i,"Yes, the ACM Digital Library is available at Nalanda Library, covering computing and information tec..."
+what should i know about does library get the hindu newspaper,general,should i,"Yes, the library provides The Hindu (Frontline magazine also). Newspapers like The Times of India, T..."
+what should i know about is hindu available in library,general,should i,"Yes, the library provides The Hindu (Frontline magazine also). Newspapers like The Times of India, T..."
+what should i know about the hindu subscription iit ropar,general,should i,"Yes, the library provides The Hindu (Frontline magazine also). Newspapers like The Times of India, T..."
+what should i know about newspapers in library,general,should i,"Yes, the library provides The Hindu (Frontline magazine also). Newspapers like The Times of India, T..."
+what should i know about does library have times of india,general,should i,"Yes, The Times of India is available daily at Nalanda Library along with The Indian Express, The Tri..."
+what should i know about toi availability in library,general,should i,"Yes, The Times of India is available daily at Nalanda Library along with The Indian Express, The Tri..."
+what should i know about times of india subscription iit ropar,general,should i,"Yes, The Times of India is available daily at Nalanda Library along with The Indian Express, The Tri..."
+what should i know about newspaper list in library,general,should i,"Yes, The Times of India is available daily at Nalanda Library along with The Indian Express, The Tri..."
+what should i know about does library have indian express,general,should i,"Yes, The Indian Express is available daily. Other dailies include Times of India, The Hindu, The Tri..."
+what should i know about indian express subscription iit ropar,general,should i,"Yes, The Indian Express is available daily. Other dailies include Times of India, The Hindu, The Tri..."
+what should i know about newspapers list iit ropar library,general,should i,"Yes, The Indian Express is available daily. Other dailies include Times of India, The Hindu, The Tri..."
+what should i know about daily newspapers in library,general,should i,"Yes, The Indian Express is available daily. Other dailies include Times of India, The Hindu, The Tri..."
+what should i know about does library have tribune newspaper,general,should i,"Yes, The Tribune newspaper is subscribed by Nalanda Library for daily access."
+what should i know about tribune access iit ropar,access,should i,"Yes, The Tribune newspaper is subscribed by Nalanda Library for daily access."
+what should i know about is tribune available in library,general,should i,"Yes, The Tribune newspaper is subscribed by Nalanda Library for daily access."
+what should i know about does library have economic times,general,should i,"Yes, The Economic Times (daily) is available in Nalanda Library."
+what should i know about et subscription iit ropar,general,should i,"Yes, The Economic Times (daily) is available in Nalanda Library."
+what should i know about is economic times available in library,general,should i,"Yes, The Economic Times (daily) is available in Nalanda Library."
+what should i know about does library have punjab kesari,general,should i,"Yes, Punjab Kesari (daily Hindi newspaper) is available in the library."
+what should i know about punjab kesari newspaper iit ropar,general,should i,"Yes, Punjab Kesari (daily Hindi newspaper) is available in the library."
+what should i know about hindi newspapers in library,general,should i,"Yes, Punjab Kesari (daily Hindi newspaper) is available in the library."
+what should i know about book bank,borrowing,should i,Book Bank facility is available for UG students. They can borrow one book from the Book Bank categor...
+what should i know about book bank service,service,should i,Book Bank facility is available for UG students. They can borrow one book from the Book Bank categor...
+what should i know about can i get book for whole semester,borrowing,should i,Book Bank facility is available for UG students. They can borrow one book from the Book Bank categor...
+what should i know about ug book bank,borrowing,should i,Book Bank facility is available for UG students. They can borrow one book from the Book Bank categor...
+what should i know about book bank policy,policy,should i,UG students can borrow one book from the Book Bank each semester for six months. Books must be retur...
+what should i know about reference service,service,should i,"Reference Service helps users locate and use resources. Librarians assist with OPAC searches, e-data..."
+what should i know about get help from librarian,general,should i,"Get help from librarians for: book searches, database access, citation management, plagiarism checks..."
+what should i know about library staff assistance,general,should i,"Library staff provides assistance with: resource searches, OPAC training, e-resource access, plagiar..."
+what should i know about need help finding resources,resources,should i,For help finding resources: 1) Visit reference desk (9 AM - 5:30 PM) 2) Email libraryhelpdesk@iitrpr...
+what should i know about research consultation,research,should i,"Library offers research consultation for: literature review, database searches, citation management,..."
+what should i know about literature search help,general,should i,Get literature search help from library: 1) Email your research topic to libraryhelpdesk@iitrpr.ac.i...
+what should i know about citation management tools,general,should i,"Citation management tools available: Mendeley, Zotero, EndNote. Library provides training on these t..."
+what should i know about how to cite papers,general,should i,"For citing papers: 1) Use citation management tools (Mendeley, Zotero, EndNote) 2) Check journal gui..."
+what should i know about reference librarian help,general,should i,"Reference Service helps users locate and use resources. Librarians assist with OPAC searches, e-data..."
+what should i know about can library help me find resources,resources,should i,"Reference Service helps users locate and use resources. Librarians assist with OPAC searches, e-data..."
+what should i know about reference desk services,service,should i,"Reference Service helps users locate and use resources. Librarians assist with OPAC searches, e-data..."
+what should i know about electronic document delivery,general,should i,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+what should i know about edd service iit ropar,service,should i,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+what should i know about how to request an article not available,general,should i,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+what should i know about can i get a paper from another library,general,should i,Electronic Document Delivery (EDD) allows users to request articles/chapters not available in the li...
+what should i know about library orientation,general,should i,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+what should i know about induction program library,general,should i,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+what should i know about training for new students,general,should i,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+what should i know about how to learn using the library,general,should i,"At the beginning of each academic year, Nalanda Library organizes an orientation program for new stu..."
+what should i know about photocopy service,service,should i,Photocopy/Printing/Scanning facilities are available 9 AM to 10 PM daily. Charges: ₹1 per page (one ...
+what should i know about printing cost,printing,should i,Photocopy/Printing/Scanning facilities are available 9 AM to 10 PM daily. Charges: ₹1 per page (one ...
+what should i know about scanning facility,facility,should i,Photocopy/Printing/Scanning facilities are available 9 AM to 10 PM daily. Charges: ₹1 per page (one ...
+what should i know about does library have xerox machine,general,should i,Photocopy/Printing/Scanning facilities are available 9 AM to 10 PM daily. Charges: ₹1 per page (one ...
+what should i know about how much for printing,printing,should i,Photocopy/Printing/Scanning facilities are available 9 AM to 10 PM daily. Charges: ₹1 per page (one ...
+what should i know about plagiarism check report,plagiarism,should i,Students can request plagiarism/similarity reports for theses and dissertations using Turnitin. Send...
+what should i know about thesis plagiarism check,plagiarism,should i,Students can request plagiarism/similarity reports for theses and dissertations using Turnitin. Send...
+what should i know about similarity report request,general,should i,Students can request plagiarism/similarity reports for theses and dissertations using Turnitin. Send...
+what should i know about turnitin report service,service,should i,Students can request plagiarism/similarity reports for theses and dissertations using Turnitin. Send...
+what should i know about does library conduct events,general,should i,"Nalanda Library conducts events, workshops, and sessions on special occasions to promote knowledge s..."
+what should i know about library activities,general,should i,"Nalanda Library conducts events, workshops, and sessions on special occasions to promote knowledge s..."
+what should i know about knowledge events iit ropar library,general,should i,"Nalanda Library conducts events, workshops, and sessions on special occasions to promote knowledge s..."
+what should i know about library workshops,general,should i,"Nalanda Library conducts events, workshops, and sessions on special occasions to promote knowledge s..."
+what should i know about what are subject guides,general,should i,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+what should i know about research guides library,research,should i,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+what should i know about how to find resources by subject,resources,should i,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+what should i know about department guides iit ropar,general,should i,The Subjects/Research Guides portal helps users find curated resources by subject area. It includes ...
+what should i know about hello,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about hi,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about hey,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about good morning,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about good afternoon,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about good evening,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about namaste,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about greetings,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about how are you,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about what's up,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about hi there,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about hello library bot,general,should i,Hello! 👋 I am the Nalanda Library chatbot. How can I assist you today? You can ask me about library ...
+what should i know about thank you,general,should i,"You're welcome! 😊 Always happy to help. If you have more questions about the library, feel free to a..."
+what should i know about thanks,general,should i,"You're welcome! 😊 Always happy to help. If you have more questions about the library, feel free to a..."
+what should i know about thanks a lot,general,should i,"You're welcome! 😊 Always happy to help. If you have more questions about the library, feel free to a..."
+what should i know about many thanks,general,should i,"You're welcome! 😊 Always happy to help. If you have more questions about the library, feel free to a..."
+what should i know about thank you very much,general,should i,"You're welcome! 😊 Always happy to help. If you have more questions about the library, feel free to a..."
+what should i know about thanks bot,general,should i,"You're welcome! 😊 Always happy to help. If you have more questions about the library, feel free to a..."
+what should i know about thanks library,general,should i,"You're welcome! 😊 Always happy to help. If you have more questions about the library, feel free to a..."
+what should i know about goodbye,general,should i,"Goodbye! 👋 Have a great day ahead. Don’t forget, the library is always open for you 24/7."
+what should i know about bye,general,should i,"Goodbye! 👋 Have a great day ahead. Don’t forget, the library is always open for you 24/7."
+what should i know about see you,general,should i,"Goodbye! 👋 Have a great day ahead. Don’t forget, the library is always open for you 24/7."
+what should i know about see you later,general,should i,"Goodbye! 👋 Have a great day ahead. Don’t forget, the library is always open for you 24/7."
+what should i know about catch you later,general,should i,"Goodbye! 👋 Have a great day ahead. Don’t forget, the library is always open for you 24/7."
+what should i know about talk to you soon,general,should i,"Goodbye! 👋 Have a great day ahead. Don’t forget, the library is always open for you 24/7."
+what should i know about good night,general,should i,"Goodbye! 👋 Have a great day ahead. Don’t forget, the library is always open for you 24/7."
+what should i know about unknown query,general,should i,"Sorry, I didn’t quite understand that 🤔. Did you mean something like:
+- Library timings
+- Membership..."
+what should i know about unrecognized question,general,should i,"Sorry, I didn’t quite understand that 🤔. Did you mean something like:
+- Library timings
+- Membership..."
+what should i know about default response,general,should i,"Sorry, I didn’t quite understand that 🤔. Did you mean something like:
+- Library timings
+- Membership..."
+what should i know about not understood,general,should i,"Sorry, I didn’t quite understand that 🤔. Did you mean something like:
+- Library timings
+- Membership..."
+what should i know about confused input,general,should i,"Sorry, I didn’t quite understand that 🤔. Did you mean something like:
+- Library timings
+- Membership..."
+what should i know about technobooth facility,facility,should i,"Technobooth (Digital Learning Hub) is a dedicated space in Nalanda Library for group presentations, ..."
+what should i know about digital learning hub,general,should i,"Technobooth (Digital Learning Hub) is a dedicated space in Nalanda Library for group presentations, ..."
+what should i know about group study room library,general,should i,"Technobooth (Digital Learning Hub) is a dedicated space in Nalanda Library for group presentations, ..."
+what should i know about techno booth iit ropar,general,should i,"Technobooth (Digital Learning Hub) is a dedicated space in Nalanda Library for group presentations, ..."
+what should i know about technobooth booking,facility,should i,"Technobooth (Digital Learning Hub) is a dedicated space in Nalanda Library for group presentations, ..."
+what should i know about technobooth rules,facility,should i,"Technobooth (Digital Learning Hub) is a dedicated space in Nalanda Library for group presentations, ..."
+what should i know about technobooth guidelines,facility,should i,"Technobooth (Digital Learning Hub) is a dedicated space in Nalanda Library for group presentations, ..."
+what should i know about what facilities are available in library,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about what facilities student get in library,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about library services,service,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about library resources,resources,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about what does library provide,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about library amenities,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about what support is available in library,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about student facilities in library,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about research support iit ropar library,research,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about does library have study rooms,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about is there group study facility,facility,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about does library have computers,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about is wifi available in the library,facility,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about does library have newspapers,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about can i read magazines here,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about what journals are available,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about does library give orientation,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about how do new students learn to use the library,general,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about can i get help with opac,search,should i,"Nalanda Library at IIT Ropar provides a wide range of facilities and services:
+
+ **Resources:** 25,0..."
+what should i know about default,general,should i,"Sorry, I could not find an answer to your query. Please visit the official library website for more ..."
+what should i know about unanswered,general,should i,"Sorry, I could not find an answer to your query. Please visit the official library website for more ..."
+what should i know about no_match,general,should i,"Sorry, I could not find an answer to your query. Please visit the official library website for more ..."
+what should i know about __default__,general,should i,"Sorry, I could not find an answer to your query. Please visit the official library website for more ..."
+what should i know about borrowing limits,borrowing,should i,"Borrowing limits: Faculty - 12 books (1 semester), Staff - 4 books (1 semester), PhD Scholars - 6 bo..."
+what should i know about fines and penalties,rules,should i,"Fine & Penalty Policy (Nalanda Library, IIT Ropar): ₹2.00 per day for the first week after the due d..."
+what should i know about printing and photocopying,printing,should i,"Printing, scanning, and photocopying facilities are available in the library. Charges apply (approx...."
+what should i know about plagiarism and turnitin,plagiarism,should i,"Turnitin similarity checks are available. To request a report, email libraryhelpdesk@iitrpr.ac.in wi..."
+what should i know about library vision and mission,general,should i,The vision of Nalanda Library is to support the academic and research needs of IIT Ropar by providin...
+what should i know about library annual report,general,should i,"Nalanda Library publishes annual reports highlighting achievements, resource growth, and services. V..."
+what should i know about library staff and committee,general,should i,Nalanda Library is managed by professional staff under the guidance of the Library Committee chaired...
+what should i know about institute smart id card,general,should i,The Institute-cum-Library Smart ID Card serves as both institute and library ID. It uses RFID techno...
+what should i know about subject and research guide,research,should i,Subject-wise e-resources and research guides are available to help students and researchers locate r...
+what should i know about seat booking or article request,borrowing,should i,Users can book reading seats or request articles via the library portal at https://studyatlib.iitrpr...
+what should i know about digital and print periodicals,general,should i,The library subscribes to digital and select print periodicals across disciplines. Lists are availab...
+what should i know about economic and political database,general,should i,Access to the Economic & Political Database is provided to support humanities and social science res...
+what should i know about scientometric and patent tools,general,should i,The library offers access to scientometric tools and patent databases for research evaluation and in...
+what should i know about cds and dvds collection,general,should i,"The library maintains a collection of CDs, DVDs, and other multimedia resources for academic use."
+what should i know about membership for iit ropar students,membership,should i,"All registered students, faculty, and staff of IIT Ropar are automatic members of Nalanda Library an..."
+what should i know about membership for outsiders,membership,should i,"Nalanda Library offers external membership to Academic Institutions, Research Organizations, Governm..."
+what should i know about faculty privileges,general,should i,"Faculty members can issue up to 12 books, request EDD/ILL, and access e-resources off-campus via VPN..."
+what should i know about academic and author tools,general,should i,"Nalanda Library provides institutional access to Grammarly (academic writing support), Overleaf (col..."
+what should i know about copyright guidelines,general,should i,Users must adhere to copyright and fair use guidelines. Unauthorized copying or distribution of copy...
+what should i know about vpn and off campus access,access,should i,Library e-resources can be accessed off-campus through IIT Ropar’s VPN. Use institute credentials to...
+what should i know about books arrangement plan,borrowing,should i,"Books are arranged according to the Dewey Decimal Classification (DDC) system on each floor, with si..."
+what should i know about library floor plan,general,should i,"The library has multiple floors — ground for circulation and reading, upper floors for reference and..."
+what should i know about empanelled vendors,general,should i,Nalanda Library procures books and journals through approved empanelled vendors and subscription age...
+what should i know about grammarly access,tools,should i,Grammarly access is available for students and researchers through institutional licenses. Contact t...
+what should i know about overleaf access,tools,should i,IIT Ropar provides institutional access to Overleaf for collaborative LaTeX writing and research doc...
+what should i know about pressreader access,access,should i,"PressReader offers 7,000+ newspapers and magazines from 130+ countries in 60+ languages. It is acces..."
+what should i know about library contact details,contact,should i,"Nalanda Library, Indian Institute of Technology Ropar, Punjab - 140001. Email: libraryhelpdesk@iitrp..."
+what should i know about library membership,membership,should i,"All registered IIT Ropar students, faculty, and staff are automatic members of Nalanda Library. Exte..."
+what should i know about nalanda library at iit ropar,general,should i,Nalanda Library (Nalanda Library Information System) is the central academic library of IIT Ropar pr...
+what should i know about where is nalanda library located,contact,should i,"Nalanda Library is located in the academic complex of IIT Ropar main campus, Rupnagar (Ropar). Conta..."
+what should i know about what sections does the library have,general,should i,"The library includes reading halls, book stacks, reference section, periodicals, digital access area..."
+what should i know about the library vision and mission,general,should i,"The library's mission is to support the institute's teaching, learning and research by providing tim..."
+what should i know about what e-resources are available at iit ropar library,resources,should i,"IIT Ropar library provides access to e-journals, e-books, databases and research tools including IEE..."
+what should i know about how do i access e-resources from off campus,access,should i,Off-campus access to subscribed e-resources is available through the IIT Ropar VPN. Connect to the i...
+what should i know about the process to get vpn access for e-resources,access,should i,VPN access is provided by IIT Ropar IT services. Use institute credentials to set up the VPN client;...
+what should i know about onos for iit ropar,resources,should i,ONOS (Online Network of Shared Resources) is a consortium service providing centralized access to e-...
+what should i know about which publishers are included in onos list,resources,should i,"ONOS includes major publishers such as AAAS (Science), ACM, ACS, AIAA, AIP, AMS, APS, Annual Reviews..."
+what should i know about how to access onos resources,access,should i,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+what should i know about what are the major library rules at iit ropar,rules,should i,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+what should i know about are bags allowed inside the library,rules,should i,Bags should be left at the designated racks or cloak area; personal large bags are not allowed insid...
+what should i know about the overdue fine policy,rules,should i,The overdue fine policy is described on the library site and may vary by user category. Typical poli...
+what should i know about how to download phd thesis from dspace,access,should i,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+what should i know about how to submit thesis to dspace,general,should i,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+what should i know about what services does nalanda library provide,service,should i,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+what should i know about does the library offer inter library loan,service,should i,"Yes, Inter Library Loan (ILL) / Document Delivery services are available for material not held by th..."
+what should i know about how can i request an article not available in library,service,should i,Use the 'Request an Article' / EDD form or email the library helpdesk with citation details. The lib...
+what should i know about how do i contact nalanda library,contact,should i,Contact the library via helpdesk email (libraryhelpdesk@iitrpr.ac.in) or listed phone numbers. Libra...
+what should i know about where to find library forms and downloads,general,should i,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+what should i know about how to check new arrivals in the library,general,should i,Check the 'New Arrivals' section on the library homepage or search OPAC (opac.iitrpr.ac.in) for rece...
+what should i know about how to search the library catalogue,search,should i,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+what should i know about tell me about nalanda library,general,should i,Nalanda Library (Nalanda Library Information System) is the central academic library of IIT Ropar pr...
+what should i know about where is the library located,contact,should i,"Nalanda Library is located in the academic complex of IIT Ropar main campus, Rupnagar (Ropar). Conta..."
+what should i know about library location iit ropar,contact,should i,"Nalanda Library is located in the academic complex of IIT Ropar main campus, Rupnagar (Ropar). Conta..."
+what should i know about library sections,general,should i,"The library includes reading halls, book stacks, reference section, periodicals, digital access area..."
+what should i know about what are the sections in the library,general,should i,"The library includes reading halls, book stacks, reference section, periodicals, digital access area..."
+what should i know about the mission of the library,general,should i,"The library's mission is to support the institute's teaching, learning and research by providing tim..."
+what should i know about what e-resources does the library have,resources,should i,"IIT Ropar library provides access to e-journals, e-books, databases and research tools including IEE..."
+what should i know about list of e-resources available,resources,should i,"IIT Ropar library provides access to e-journals, e-books, databases and research tools including IEE..."
+what should i know about how to access e-resources off campus,access,should i,Off-campus access to subscribed e-resources is available through the IIT Ropar VPN. Connect to the i...
+what should i know about off campus access to e-resources,access,should i,Off-campus access to subscribed e-resources is available through the IIT Ropar VPN. Connect to the i...
+what should i know about explain onos for iit ropar,resources,should i,ONOS (Online Network of Shared Resources) is a consortium service providing centralized access to e-...
+what should i know about what publishers are in onos,resources,should i,"ONOS includes major publishers such as AAAS (Science), ACM, ACS, AIAA, AIP, AMS, APS, Annual Reviews..."
+what should i know about how to use onos resources,access,should i,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+what should i know about access onos resources,access,should i,Access ONOS resources via the IIT Ropar library website (ONOS page) or through publisher links provi...
+what should i know about library rules iit ropar,rules,should i,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+what should i know about what are the rules in the library,rules,should i,"Major rules include maintaining silence, keeping mobile phones on silent, no food or drinks inside, ..."
+what should i know about can i bring a bag inside the library,rules,should i,Bags should be left at the designated racks or cloak area; personal large bags are not allowed insid...
+what should i know about are backpacks allowed in library,rules,should i,Bags should be left at the designated racks or cloak area; personal large bags are not allowed insid...
+what should i know about what are the late fees,rules,should i,The overdue fine policy is described on the library site and may vary by user category. Typical poli...
+what should i know about dspace,general,should i,"IIT Ropar's DSpace is the institutional repository that stores and provides open access to theses, d..."
+what should i know about institutional repository iit ropar,general,should i,"IIT Ropar's DSpace is the institutional repository that stores and provides open access to theses, d..."
+what should i know about download phd thesis from dspace,access,should i,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+what should i know about where to find phd theses,access,should i,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+what should i know about how to upload thesis to dspace,general,should i,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+what should i know about submit thesis to institutional repository,general,should i,"Contact the library helpdesk with the final PDF and metadata (title, abstract, keywords, department)..."
+what should i know about library services list,service,should i,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+what should i know about what services does the library offer,service,should i,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+what should i know about inter library loan service,service,should i,"Yes, Inter Library Loan (ILL) / Document Delivery services are available for material not held by th..."
+what should i know about can i borrow from other libraries,service,should i,"Yes, Inter Library Loan (ILL) / Document Delivery services are available for material not held by th..."
+what should i know about request article not available,service,should i,Use the 'Request an Article' / EDD form or email the library helpdesk with citation details. The lib...
+what should i know about how to get an article through ill,service,should i,Use the 'Request an Article' / EDD form or email the library helpdesk with citation details. The lib...
+what should i know about how to contact the library,contact,should i,Contact the library via helpdesk email (libraryhelpdesk@iitrpr.ac.in) or listed phone numbers. Libra...
+what should i know about library forms download,general,should i,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+what should i know about where to get library forms,general,should i,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+what should i know about new arrivals in library,general,should i,Check the 'New Arrivals' section on the library homepage or search OPAC (opac.iitrpr.ac.in) for rece...
+what should i know about where are new books listed,general,should i,Check the 'New Arrivals' section on the library homepage or search OPAC (opac.iitrpr.ac.in) for rece...
+what should i know about how to search opac,search,should i,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+what should i know about search books in opac,search,should i,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+what should i know about the nalanda library,general,should i,Nalanda Library (Nalanda Library Information System) is the central academic library of IIT Ropar pr...
+what should i know about describe nalanda library,general,should i,Nalanda Library (Nalanda Library Information System) is the central academic library of IIT Ropar pr...
+what should i know about give details about nalanda library,general,should i,Nalanda Library (Nalanda Library Information System) is the central academic library of IIT Ropar pr...
+what should i know about information about nalanda library,general,should i,Nalanda Library (Nalanda Library Information System) is the central academic library of IIT Ropar pr...
+what should i know about what does nalanda library offer,general,should i,Nalanda Library (Nalanda Library Information System) is the central academic library of IIT Ropar pr...
+what should i know about what services are offered by nalanda library,service,should i,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+what should i know about list all library services,service,should i,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+what should i know about what help can i get from the library,service,should i,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+what should i know about services available in nalanda library,service,should i,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+what should i know about which facilities are provided by the library,service,should i,"Key services: circulation (issue/return), OPAC search, reference & information service, e-resource a..."
+what should i know about what online resources does the library have,resources,should i,"IIT Ropar library provides access to e-journals, e-books, databases and research tools including IEE..."
+what should i know about list of digital resources available in library,resources,should i,"IIT Ropar library provides access to e-journals, e-books, databases and research tools including IEE..."
+what should i know about which electronic resources are offered,resources,should i,"IIT Ropar library provides access to e-journals, e-books, databases and research tools including IEE..."
+what should i know about what databases can i access through the library,resources,should i,"IIT Ropar library provides access to e-journals, e-books, databases and research tools including IEE..."
+what should i know about what digital content is available,resources,should i,"IIT Ropar library provides access to e-journals, e-books, databases and research tools including IEE..."
+what should i know about how can i search books online,search,should i,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+what should i know about steps to use opac,search,should i,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+what should i know about how do i look up a book,search,should i,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+what should i know about how to find a book in opac,search,should i,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+what should i know about guide to searching the library,search,should i,"Use the OPAC at opac.iitrpr.ac.in to search by title, author, subject, ISBN, or call number. Logged-..."
+what should i know about the institutional repository,general,should i,"IIT Ropar's DSpace is the institutional repository that stores and provides open access to theses, d..."
+what should i know about what does dspace contain,general,should i,"IIT Ropar's DSpace is the institutional repository that stores and provides open access to theses, d..."
+what should i know about dspace iit ropar details,general,should i,"IIT Ropar's DSpace is the institutional repository that stores and provides open access to theses, d..."
+what should i know about what collections are in dspace,general,should i,"IIT Ropar's DSpace is the institutional repository that stores and provides open access to theses, d..."
+what should i know about explain institutional repository,general,should i,"IIT Ropar's DSpace is the institutional repository that stores and provides open access to theses, d..."
+what should I do if the book I borrowed got lost,acquisition,should i,You will be given two weeks time to replace the same copy of a new book along with the payment of ov...
+what to do if book I want is already issued,circulation,what to do,You can place a hold on it through OPAC login portal.
+what to do if book I want to issue is damaged,circulation,what to do,"Before issuing the book, the user should check it properly to ensure that there is no damage, if so ..."
+what to do if issued book got damaged,circulation,what to do,"If a book gets damaged, please bring it to the library helpdesk as soon as possible. Library staff w..."
+what to do if can't find required article,periodicals,what to do,Please visit library helpdesk for assistance.
+what to do if book not issuing from kiosk,technical,what to do,"If the book is not issuing from the kiosk , please come to the library helpdesk for assistance."
+what to do if can't find book on shelf,technical,what to do,Kindly visit the library helpdesk for assistance.
+what to do if lost library card,general_services,what to do,"A fine of Rs. 300/- is applicable on loss of the card, charges are double on each re-issue of the du..."
+where to check new arrivals,general,where to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+where to find library forms and downloads,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+where to find phd theses,access,where to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+where to get library forms,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+can you tell me where to check new arrivals,general,where to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+i want to know where to check new arrivals,general,where to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+please explain where to check new arrivals,general,where to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+could you describe where to check new arrivals,general,where to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+information about where to check new arrivals,general,where to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+details about where to check new arrivals,general,where to,"OPAC (Online Public Access Catalogue) lets users search books, journals, and resources by title, aut..."
+can you tell me where to find library forms and downloads,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+i want to know where to find library forms and downloads,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+please explain where to find library forms and downloads,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+could you describe where to find library forms and downloads,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+information about where to find library forms and downloads,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+details about where to find library forms and downloads,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+can you tell me where to find phd theses,access,where to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+i want to know where to find phd theses,access,where to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+please explain where to find phd theses,access,where to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+could you describe where to find phd theses,access,where to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+information about where to find phd theses,access,where to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+details about where to find phd theses,access,where to,"Visit the DSpace repository, search by author/title/department, and download the PDF of available th..."
+can you tell me where to get library forms,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+i want to know where to get library forms,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+please explain where to get library forms,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+could you describe where to get library forms,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+information about where to get library forms,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+details about where to get library forms,general,where to,"Forms and downloadable policies (membership, ILL request, repository submission etc.) are available ..."
+where to pay fine,circulation,where to,For the payment you need to scan the QR Code on the Circulation Counter. After making the payment yo...
+where to send document for plagiarism check,general_services,where to,You can mail your file to Mrs. Amrita Bhattacharya on libraryhelpdesk@iitrpr.ac.in
+I have lost my belongings where to find,general_services,where to,"Please avoid leaving personal belongings unattended. If you have lost something, please inquire at t..."
