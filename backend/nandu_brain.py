@@ -114,9 +114,19 @@ except Exception:
 # Disable website scraping by default (avoid slow network calls)
 # Check at runtime to allow dynamic enabling
 def _get_webscrape_enabled():
+    # Reload .env file to get latest configuration (override=True to update existing vars)
+    load_dotenv(override=True)
     return os.getenv("NANDU_WEBSCRAPE", "0") == "1"
 
-NANDU_WEBSCRAPE = _get_webscrape_enabled()
+def _get_book_search_enabled():
+    # Reload .env file to get latest configuration (override=True to update existing vars)
+    load_dotenv(override=True)
+    value = os.getenv("NANDU_BOOK_SEARCH", "1")
+    # Debug logging (remove in production)
+    # print(f"DEBUG: NANDU_BOOK_SEARCH = {value}")
+    return value == "1"
+
+# NANDU_WEBSCRAPE and NANDU_BOOK_SEARCH are now dynamic - call functions directly
 
 # -------------------- PERFORMANCE: PRE-LOAD MODELS --------------------
 # Pre-load sentence transformer models for faster first search
@@ -1063,7 +1073,11 @@ def classify_query(query):
         
         # Specific phrases
         'available book', 'book available', 'in library',
-        'library book', 'library books'
+        'library book', 'library books',
+        
+        # Famous book titles that should always be treated as book searches
+        'five laws of library science', 'ranganathan',
+        'dewey decimal classification', 'cataloging rules'
     ]
     
     # Exclusion patterns - these queries should NOT be classified as book searches
@@ -1249,7 +1263,7 @@ def merge_duplicates(results):
             author = str(item.get("Author", item.get("author", ""))).strip()
             isbn = str(item.get("ISBN", item.get("isbn", ""))).strip()
             accession = str(item.get("Barcode", item.get("barcode", ""))).strip()
-            call_no = str(item.get("Call No", item.get("itemcallnumber", ""))).strip()
+            call_no = str(item.get("Call No", item.get("call_number", ""))).strip()
             publisher = item.get("Publisher", item.get("publishercode", ""))
             year = item.get("Year", item.get("copyrightdate", ""))
 
@@ -1601,14 +1615,14 @@ def search_catalogue(query, limit=10):
                     WHEN LOWER(title) LIKE LOWER(?) THEN 80
                     WHEN LOWER(author) LIKE LOWER(?) THEN 70
                     WHEN LOWER(isbn) = LOWER(?) THEN 90
-                    WHEN LOWER(itemcallnumber) LIKE LOWER(?) THEN 50
+                    WHEN LOWER(call_number) LIKE LOWER(?) THEN 50
                     ELSE 30
                 END as relevance_score
             FROM catalogue 
             WHERE LOWER(title) LIKE LOWER(?) 
             OR LOWER(author) LIKE LOWER(?) 
             OR LOWER(isbn) LIKE LOWER(?)
-            OR LOWER(itemcallnumber) LIKE LOWER(?)
+            OR LOWER(call_number) LIKE LOWER(?)
             ORDER BY relevance_score DESC
             LIMIT ?
             """
@@ -2404,8 +2418,12 @@ def get_nandu_response(q, search_mode: str = "auto", client_ip: str = "default")
         
         # Step 3: Determine query type based on search_mode or classification
         if search_mode == "books":
-            logger.info("🔒 Forced book search mode")
-            query_type = 'book'
+            if _get_book_search_enabled():
+                logger.info("🔒 Forced book search mode")
+                query_type = 'book'
+            else:
+                logger.info("🔒 Forced book search mode but book search disabled, treating as general")
+                query_type = 'general'
         elif search_mode == "library":
             logger.info("🔒 Forced library query mode (JSON)")
             query_type = 'library'
@@ -2415,6 +2433,11 @@ def get_nandu_response(q, search_mode: str = "auto", client_ip: str = "default")
         else:  # auto mode
             # Classify query using keyword-based classifier
             query_type = classify_query(query)
+            
+            # Check if book search is disabled - force book queries to general
+            if query_type == 'book' and not _get_book_search_enabled():
+                logger.info("📚➡️📋 Book search disabled, treating as general query")
+                query_type = 'general'
         
         # Step 4: Handle GREETINGS first (before other query types)
         if query_type == 'greeting':
@@ -2473,6 +2496,10 @@ def get_nandu_response(q, search_mode: str = "auto", client_ip: str = "default")
         elif query_type == 'general':
             # Handle general query (auto mode: try JSON then website)
             try:
+                # Check if this was originally a book query but reclassified due to book search being disabled
+                original_classification = classify_query(query)
+                is_reclassified_book_query = (original_classification == 'book' and not _get_book_search_enabled())
+                
                 # First, try general_queries.json
                 general = get_general_answer(query)
                 if general:
@@ -2499,6 +2526,7 @@ def get_nandu_response(q, search_mode: str = "auto", client_ip: str = "default")
                 # Conversational fallback message - ask user for clarification
                 logger.info("⚠️ No match in general queries or website, asking for clarification")
                 clarification_response = generate_clarification_response(query, "general")
+                
                 return clarification_response
                     
             except Exception as e:

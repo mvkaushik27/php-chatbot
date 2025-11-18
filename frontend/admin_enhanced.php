@@ -44,6 +44,17 @@ function getOpacEnabled() {
     return false; // Default to disabled
 }
 
+// Function to read Book Search configuration
+function getBookSearchEnabled() {
+    if (file_exists(CONFIG_FILE)) {
+        $content = file_get_contents(CONFIG_FILE);
+        if (preg_match('/NANDU_BOOK_SEARCH=([01])/', $content, $matches)) {
+            return $matches[1] === '1';
+        }
+    }
+    return true; // Default to enabled
+}
+
 // Function to set OPAC configuration
 function setOpacEnabled($enabled) {
     $envContent = '';
@@ -56,6 +67,23 @@ function setOpacEnabled($enabled) {
         $envContent = preg_replace('/NANDU_WEBSCRAPE=[01]/', 'NANDU_WEBSCRAPE=' . $value, $envContent);
     } else {
         $envContent .= "\nNANDU_WEBSCRAPE=" . $value . "\n";
+    }
+    
+    return file_put_contents(CONFIG_FILE, $envContent) !== false;
+}
+
+// Function to set Book Search configuration
+function setBookSearchEnabled($enabled) {
+    $envContent = '';
+    if (file_exists(CONFIG_FILE)) {
+        $envContent = file_get_contents(CONFIG_FILE);
+    }
+    
+    $value = $enabled ? '1' : '0';
+    if (preg_match('/NANDU_BOOK_SEARCH=/', $envContent)) {
+        $envContent = preg_replace('/NANDU_BOOK_SEARCH=[01]/', 'NANDU_BOOK_SEARCH=' . $value, $envContent);
+    } else {
+        $envContent .= "\nNANDU_BOOK_SEARCH=" . $value . "\n";
     }
     
     return file_put_contents(CONFIG_FILE, $envContent) !== false;
@@ -101,6 +129,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_opac']) && $_S
         // Log failed OPAC configuration change
         logAdminActivity('opac_toggle_failed', [
             'attempted_action' => $enable_opac ? 'enable' : 'disable',
+            'error' => 'Configuration file write failed'
+        ]);
+    }
+}
+
+// Handle Book Search toggle
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_book_search']) && $_SESSION['admin_logged_in']) {
+    $enable_book_search = isset($_POST['enable_book_search']) && $_POST['enable_book_search'] === '1';
+    if (setBookSearchEnabled($enable_book_search)) {
+        $success_message = 'Book search ' . ($enable_book_search ? 'enabled' : 'disabled') . ' successfully!';
+        
+        // Log Book Search configuration change to backend
+        logAdminActivity('book_search_toggle', [
+            'book_search_enabled' => $enable_book_search,
+            'action' => $enable_book_search ? 'enabled' : 'disabled'
+        ]);
+    } else {
+        $error_message = 'Failed to update Book Search configuration.';
+        
+        // Log failed Book Search configuration change
+        logAdminActivity('book_search_toggle_failed', [
+            'attempted_action' => $enable_book_search ? 'enable' : 'disable',
             'error' => 'Configuration file write failed'
         ]);
     }
@@ -709,6 +759,8 @@ $queries = loadGeneralQueries();
         .status-badge.healthy { background: #e8f5e9; color: #2e7d32; }
         .status-badge.degraded { background: #fff3e0; color: #f57c00; }
         .status-badge.unhealthy { background: #ffebee; color: #c62828; }
+        .status-badge.enabled { background: #e8f5e9; color: #2e7d32; }
+        .status-badge.disabled { background: #ffebee; color: #c62828; }
         
         /* Query Editor */
         .query-editor {
@@ -1256,6 +1308,27 @@ $queries = loadGeneralQueries();
                     <h2>⚙️ System Configuration</h2>
                     
                     <div class="config-section">
+                        <h3>📖 Book Search Settings</h3>
+                        <form method="POST" style="margin-bottom: 20px;">
+                            <div class="toggle-container">
+                                <label class="toggle-label">
+                                    <input type="checkbox" name="enable_book_search" value="1" <?= getBookSearchEnabled() ? 'checked' : '' ?> onchange="this.form.submit()">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-text">
+                                        Book Catalogue Search: 
+                                        <strong><?= getBookSearchEnabled() ? 'Enabled' : 'Disabled' ?></strong>
+                                    </span>
+                                </label>
+                                <input type="hidden" name="toggle_book_search" value="1">
+                            </div>
+                            <p class="config-description">
+                                📚 When enabled, chatbot will search the book catalogue for specific book queries. 
+                                When disabled, only general queries will be handled (policies, services, etc.).
+                            </p>
+                        </form>
+                    </div>
+                    
+                    <div class="config-section">
                         <h3>🔍 OPAC Search Settings</h3>
                         <form method="POST" style="margin-bottom: 20px;">
                             <div class="toggle-container">
@@ -1270,11 +1343,31 @@ $queries = loadGeneralQueries();
                                 <input type="hidden" name="toggle_opac" value="1">
                             </div>
                             <p class="config-description">
-                                📚 When enabled, book searches will include real-time availability data from the OPAC system, 
-                                showing current status and due dates for each item.
+                                🌐 When enabled, book searches will include real-time availability data from the OPAC system, 
+                                showing current status and due dates for each item. (Requires Book Search to be enabled)
                             </p>
                         </form>
                     </div>
+                    
+                    <h3>System Configuration Status</h3>
+                    <table>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>📖 Book Catalogue Search</td>
+                            <td><span class="status-badge <?= getBookSearchEnabled() ? 'enabled' : 'disabled' ?>">
+                                <?= getBookSearchEnabled() ? '✅ Enabled' : '❌ Disabled' ?>
+                            </span></td>
+                        </tr>
+                        <tr>
+                            <td>🔍 OPAC Real-time Search</td>
+                            <td><span class="status-badge <?= getOpacEnabled() ? 'enabled' : 'disabled' ?>">
+                                <?= getOpacEnabled() ? '✅ Enabled' : '❌ Disabled' ?>
+                            </span></td>
+                        </tr>
+                    </table>
                     
                     <h3>Environment Information</h3>
                     <table>

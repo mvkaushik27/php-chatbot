@@ -603,6 +603,23 @@ async def health():
             "timestamp": datetime.now().isoformat()
         }
 
+@app.get("/config")
+async def config():
+    """
+    Get current configuration settings
+    """
+    try:
+        return {
+            "book_search_enabled": nandu_brain._get_book_search_enabled(),
+            "webscrape_enabled": nandu_brain._get_webscrape_enabled(),
+            "timestamp": datetime.now().isoformat()
+        }
+    except Exception as e:
+        return {
+            "error": str(e),
+            "timestamp": datetime.now().isoformat()
+        }
+
 @app.get("/stats")
 async def stats():
     """
