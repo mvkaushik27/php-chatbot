@@ -15934,5 +15934,21 @@
     "subject guide usage": {
         "intent": "subject_guide",
         "answer": "For complete details on the use subject guide, please click here: https://www.iitrpr.ac.in/library/SubjectsPlus/subjects/index.php"
+    },
+    "LEEP": {
+        "intent": "general",
+        "answer": "🔍 **LEEP (Library Entry Exit Portal):**\n\nThe library uses RFID technology for seamless entry and exit. Your smart ID card allows:\n\n• **24/7 Access** - Tap your ID card at entry/exit gates\n• **Book Issue/Return** - Use self-service kiosks anytime\n• **Automatic Tracking** - System records your library usage\n\n**Entry Requirements:**\n✅ Valid Institute ID card\n✅ Active library membership\n✅ No pending fines/dues\n\n**Contact:** libraryhelpdesk@iitrpr.ac.in for ID card issues"
+    },
+    "library entry exit portal": {
+        "intent": "general", 
+        "answer": "🚪 **Library Entry & Exit Portal:**\n\nThe library uses RFID-enabled entry/exit portals:\n\n• **Smart Card Access** - Tap your institute ID card\n• **24/7 Availability** - Access library anytime\n• **Self-Service Kiosks** - Issue/return books without staff\n• **Security System** - Prevents unauthorized book removal\n\n**How to Use:**\n1. Approach the entry portal\n2. Tap your ID card on the RFID reader\n3. Wait for green light/beep\n4. Enter the library\n\n**Issues?** Contact library staff (9 AM - 2 AM) or email libraryhelpdesk@iitrpr.ac.in"
+    },
+    "library address": {
+        "intent": "contact",
+        "answer": "📍 **Nalanda Library Address:**\n\n**Nalanda Library**\nIndian Institute of Technology Ropar\nRupnagar, Punjab - 140001\nIndia\n\n**Contact Information:**\n📧 Email: libraryhelpdesk@iitrpr.ac.in\n📞 Phone: +91-1881-242200\n🌐 Website: https://www.iitrpr.ac.in/library/\n\n**Library Hours:**\n🕘 24/7 access with smart ID card\n👥 Staff available: 9:00 AM - 2:00 AM daily\n📚 Self-service kiosks: Available 24/7"
+    },
+    "address": {
+        "intent": "contact",
+        "answer": "📍 **Library Location:**\n\nNalanda Library, IIT Ropar\nRupnagar, Punjab - 140001, India\n\n**Contact Details:**\n📧 libraryhelpdesk@iitrpr.ac.in\n📞 +91-1881-242200\n🌐 https://www.iitrpr.ac.in/library/\n\n**Directions:**\nThe library is centrally located on the IIT Ropar campus. It's easily accessible from all hostels and academic buildings."
     }
 }

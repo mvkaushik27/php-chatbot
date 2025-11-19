@@ -390,22 +390,117 @@ def markdown_to_html(text: str) -> str:
 def _get_response_prefix(query_lower: str) -> str:
     """
     Determine conversational prefix based on query keywords.
-    Eliminates duplication between library and general query handling.
+    Enhanced with many more contextual prefixes for better user experience.
     """
-    if any(kw in query_lower for kw in ['timing', 'hours', 'open', 'when', 'schedule']):
+    # Library Hours & Timing
+    if any(kw in query_lower for kw in ['timing', 'hours', 'open', 'when', 'schedule', 'time']):
         return "⏰ <strong>Library Hours:</strong><br><br>"
-    elif any(kw in query_lower for kw in ['fine', 'penalty', 'fee', 'late']):
-        return "💰 <strong>About Fines:</strong><br><br>"
-    elif any(kw in query_lower for kw in ['borrow', 'issue', 'how many', 'limit']):
+    
+    # Fines & Penalties
+    elif any(kw in query_lower for kw in ['fine', 'penalty', 'fee', 'late', 'overdue', 'charge']):
+        return "💰 <strong>About Fines & Penalties:</strong><br><br>"
+    
+    # Borrowing & Circulation
+    elif any(kw in query_lower for kw in ['borrow', 'issue', 'how many', 'limit', 'circulation']):
         return "📖 <strong>Borrowing Guidelines:</strong><br><br>"
-    elif any(kw in query_lower for kw in ['search', 'find', 'opac', 'catalogue']):
-        return "🔍 <strong>Searching for Books:</strong><br><br>"
-    elif any(kw in query_lower for kw in ['membership', 'join', 'register']):
-        return "🎓 <strong>Membership Information:</strong><br><br>"
-    elif any(kw in query_lower for kw in ['contact', 'email', 'phone', 'reach']):
-        return "📞 <strong>Contact Information:</strong><br><br>"
+    
+    # Book Search & Catalog
+    elif any(kw in query_lower for kw in ['search', 'find', 'opac', 'catalogue', 'catalog', 'book search']):
+        return "🔍 <strong>Finding Books:</strong><br><br>"
+    
+    # Membership & Registration
+    elif any(kw in query_lower for kw in ['membership', 'join', 'register', 'card', 'id card']):
+        return "🎓 <strong>Library Membership:</strong><br><br>"
+    
+    # Contact Information
+    elif any(kw in query_lower for kw in ['contact', 'email', 'phone', 'reach', 'address', 'location']):
+        return "📞 <strong>Contact Details:</strong><br><br>"
+    
+    # E-Resources & Digital Services
+    elif any(kw in query_lower for kw in ['e-resource', 'eresource', 'digital', 'online', 'database', 'journal']):
+        return "🌐 <strong>Digital Resources:</strong><br><br>"
+    
+    # Reservation & Holds
+    elif any(kw in query_lower for kw in ['reserve', 'hold', 'book on hold', 'reservation']):
+        return "📋 <strong>Book Reservations:</strong><br><br>"
+    
+    # Renewal & Extension
+    elif any(kw in query_lower for kw in ['renew', 'extend', 'renewal', 'extension']):
+        return "🔄 <strong>Book Renewals:</strong><br><br>"
+    
+    # Return & Drop-off
+    elif any(kw in query_lower for kw in ['return', 'drop', 'give back', 'submit']):
+        return "📤 <strong>Returning Books:</strong><br><br>"
+    
+    # Services & Facilities
+    elif any(kw in query_lower for kw in ['service', 'facility', 'amenity', 'feature']):
+        return "🏢 <strong>Library Services:</strong><br><br>"
+    
+    # Rules & Policies
+    elif any(kw in query_lower for kw in ['rule', 'policy', 'regulation', 'guideline']):
+        return "📋 <strong>Library Policies:</strong><br><br>"
+    
+    # Help & Support
+    elif any(kw in query_lower for kw in ['help', 'support', 'assistance', 'problem', 'issue']):
+        return "🆘 <strong>Getting Help:</strong><br><br>"
+    
+    # Technology & Equipment
+    elif any(kw in query_lower for kw in ['computer', 'wifi', 'internet', 'printer', 'scanner', 'technology']):
+        return "💻 <strong>Technology Services:</strong><br><br>"
+    
+    # Study Spaces & Environment
+    elif any(kw in query_lower for kw in ['study', 'seat', 'space', 'room', 'quiet', 'environment']):
+        return "📚 <strong>Study Spaces:</strong><br><br>"
+    
+    # Research & Academic Support
+    elif any(kw in query_lower for kw in ['research', 'thesis', 'dissertation', 'academic', 'citation']):
+        return "🎓 <strong>Research Support:</strong><br><br>"
+    
+    # Lost & Found
+    elif any(kw in query_lower for kw in ['lost', 'missing', 'damage', 'broken']):
+        return "🔍 <strong>Lost/Damaged Items:</strong><br><br>"
+    
+    # Visitors & Guest Access
+    elif any(kw in query_lower for kw in ['visitor', 'guest', 'outside', 'non-student']):
+        return "👥 <strong>Visitor Information:</strong><br><br>"
+    
+    # Events & Programs
+    elif any(kw in query_lower for kw in ['event', 'program', 'workshop', 'training']):
+        return "🎪 <strong>Library Events:</strong><br><br>"
+    
+    # Instructions & How-to
+    elif any(kw in query_lower for kw in ['how to', 'how do', 'step', 'instruction', 'guide']):
+        return "📝 <strong>Step-by-Step Guide:</strong><br><br>"
+    
+    # Recommendations & Suggestions
+    elif any(kw in query_lower for kw in ['recommend', 'suggest', 'advice', 'best']):
+        return "💡 <strong>Recommendations:</strong><br><br>"
+    
+    # Statistics & Information
+    elif any(kw in query_lower for kw in ['statistics', 'stat', 'how many', 'number of', 'total']):
+        return "📊 <strong>Library Statistics:</strong><br><br>"
+    
+    # Emergency & Urgent
+    elif any(kw in query_lower for kw in ['urgent', 'emergency', 'immediate', 'asap']):
+        return "🚨 <strong>Urgent Information:</strong><br><br>"
+    
+    # Feedback & Complaints
+    elif any(kw in query_lower for kw in ['feedback', 'complaint', 'suggestion', 'improve']):
+        return "💬 <strong>Your Feedback Matters:</strong><br><br>"
+    
+    # General Information (Default)
     else:
-        return "💡 <strong>Here's the information:</strong><br><br>"
+        import random
+        # Randomize the default prefix for variety
+        general_prefixes = [
+            "💡 <strong>Here's what I found:</strong><br><br>",
+            "ℹ️ <strong>Here's the information:</strong><br><br>",
+            "✨ <strong>Let me help you with that:</strong><br><br>",
+            "📚 <strong>Here's what you need to know:</strong><br><br>",
+            "🎯 <strong>Perfect! Here's the answer:</strong><br><br>",
+            "💫 <strong>I've got the details for you:</strong><br><br>"
+        ]
+        return random.choice(general_prefixes)
 
 @lru_cache(maxsize=1000)  # ⚡ Cache spelling corrections
 def auto_correct_spelling(query):
@@ -1456,7 +1551,7 @@ def get_general_answer(query):
         
         # ⚡ STRATEGY 3: FAISS Semantic Search (NEW - BEST)
         logger.info("🔍 Trying FAISS semantic search for general query...")
-        faiss_result = semantic_search_general_queries(query, top_k=3, threshold=0.75)
+        faiss_result = semantic_search_general_queries(query, top_k=3, threshold=0.5)
         if faiss_result:
             logger.info("✅ FAISS semantic match found!")
             return faiss_result
@@ -1909,7 +2004,7 @@ def _load_general_faiss_resources():
     )
 
 
-def semantic_search_general_queries(query: str, top_k: int = 3, threshold: float = 0.75):
+def semantic_search_general_queries(query: str, top_k: int = 3, threshold: float = 0.5):
     """
     Use FAISS to semantically search general library queries.
     Provides much better matching than exact string matching.
@@ -1956,13 +2051,13 @@ def semantic_search_general_queries(query: str, top_k: int = 3, threshold: float
             match_question = mapping[idx]['question'][:60]
             logger.debug(f"  {i+1}. [{sim*100:.1f}%] {match_question}")
         
-        # Apply threshold
+        # Apply threshold with better logging
         if best_similarity >= threshold:
             match = mapping[best_idx]
             logger.info(f"✅ FAISS match: '{match['question'][:60]}' (score: {best_similarity:.3f})")
             return match['answer_data']
         else:
-            logger.debug(f"⚠️ Best match below threshold: {best_similarity:.3f} < {threshold}")
+            logger.info(f"⚠️ No match found in general queries for '{query}' (best score: {best_similarity:.2f})")
             return None
             
     except Exception as e:
@@ -2172,22 +2267,56 @@ def generate_clarification_response(query: str, context: str = "general") -> str
     has_resource_words = any(word in query_lower for word in ['journal', 'database', 'eresource', 'opac', 'vpn', 'online'])
     has_facility_words = any(word in query_lower for word in ['room', 'reading', 'technobooth', 'printer', 'wifi', 'computer'])
 
-    # Generate dynamic clarification based on detected intent
+    # Generate dynamic clarification based on detected intent with varied prefixes
+    import random
+    
     if context == "general":
         if has_time_words:
-            return f"🤔 <strong>I couldn't find specific timing information for '{query}'.</strong><br><br><strong>Are you asking about:</strong><br>• Library opening/closing hours?<br>• Specific service timings (circulation, reading room)?<br>• Exam period schedules?<br><br><strong>Please specify what timings you need!</strong>"
+            time_prefixes = [
+                "🕒 <strong>I need more details about the timing you're asking about.</strong>",
+                "⏰ <strong>Let me help you find the right timing information!</strong>",
+                "🗓️ <strong>I want to give you accurate timing details.</strong>"
+            ]
+            prefix = random.choice(time_prefixes)
+            return f"{prefix}<br><br><strong>Are you asking about:</strong><br>• Library opening/closing hours?<br>• Specific service timings (circulation, reading room)?<br>• Exam period schedules?<br><br><strong>Please specify what timings you need!</strong>"
 
         elif has_service_words:
-            return f"🤔 <strong>I need more details about the library service you're asking about.</strong><br><br><strong>Did you mean:</strong><br>• How to borrow/return books?<br>• Fine and penalty policies?<br>• Membership or renewal procedures?<br>• Rules for '{query}'?<br><br><strong>What service are you inquiring about?</strong>"
+            service_prefixes = [
+                "🔧 <strong>I'd love to help with that library service!</strong>",
+                "🛠️ <strong>Let me guide you to the right service information.</strong>",
+                "⚙️ <strong>I need a bit more detail to assist you properly.</strong>"
+            ]
+            prefix = random.choice(service_prefixes)
+            return f"{prefix}<br><br><strong>Did you mean:</strong><br>• How to borrow/return books?<br>• Fine and penalty policies?<br>• Membership or renewal procedures?<br>• Rules for '{query}'?<br><br><strong>What service are you inquiring about?</strong>"
 
         elif has_resource_words:
-            return f"🤔 <strong>I couldn't find information about '{query}' in our digital resources.</strong><br><br><strong>Are you looking for:</strong><br>• Access to online journals/databases?<br>• VPN setup for off-campus access?<br>• How to use OPAC or e-resources?<br>• Information about a specific resource?<br><br><strong>Please clarify which resource you need help with!</strong>"
+            resource_prefixes = [
+                "💾 <strong>I want to help you access the right digital resource!</strong>",
+                "🌐 <strong>Let me guide you to the information you need.</strong>",
+                "📱 <strong>I can help you find that digital resource!</strong>"
+            ]
+            prefix = random.choice(resource_prefixes)
+            return f"{prefix}<br><br><strong>Are you looking for:</strong><br>• Access to online journals/databases?<br>• VPN setup for off-campus access?<br>• How to use OPAC or e-resources?<br>• Information about a specific resource?<br><br><strong>Please clarify which resource you need help with!</strong>"
 
         elif has_facility_words:
-            return f"🤔 <strong>I need clarification about the library facility you're asking about.</strong><br><br><strong>Did you mean:</strong><br>• Reading room access?<br>• Computer/printer facilities?<br>• Technobooth reservations?<br>• WiFi or other amenities?<br><br><strong>Which facility are you interested in?</strong>"
+            facility_prefixes = [
+                "🏢 <strong>I'm here to help you navigate our library facilities!</strong>",
+                "🚪 <strong>Let me help you find the right facility information.</strong>",
+                "🏛️ <strong>I want to guide you to the facility you need!</strong>"
+            ]
+            prefix = random.choice(facility_prefixes)
+            return f"{prefix}<br><br><strong>Did you mean:</strong><br>• Reading room access?<br>• Computer/printer facilities?<br>• Technobooth reservations?<br>• WiFi or other amenities?<br><br><strong>Which facility are you interested in?</strong>"
 
         else:
-            # Generic clarification with dynamic suggestions
+            # Generic clarification with dynamic suggestions and varied prefixes
+            general_prefixes = [
+                "🤔 <strong>I couldn't find specific information about that in our knowledge base.</strong>",
+                "💭 <strong>Hmm, I don't have exact information about that topic.</strong>",
+                "🔍 <strong>I want to help, but I need a bit more context!</strong>",
+                "💡 <strong>Let me suggest some alternatives that might help!</strong>",
+                "🎯 <strong>I didn't find a direct match, but here are some options:</strong>"
+            ]
+            
             suggestions = []
             if len(query.split()) <= 2:
                 suggestions.append(f"• Search for books about '{query}'")
@@ -2198,10 +2327,19 @@ def generate_clarification_response(query: str, context: str = "general") -> str
                 "• Contact information"
             ])
 
-            return f"🤔 <strong>I couldn't find specific information about '{query}' in our library knowledge base.</strong><br><br><strong>Did you mean:</strong><br>" + "<br>".join(suggestions) + f"<br><br><strong>Please rephrase your question or choose from the suggestions above!</strong><br><br>You can also visit the <a href='https://www.iitrpr.ac.in/library/' target='_blank' style='color: #10b981; text-decoration: underline;'>official library website</a> for more details."
+            prefix = random.choice(general_prefixes)
+            return f"{prefix}<br><br><strong>Did you mean:</strong><br>" + "<br>".join(suggestions) + f"<br><br><strong>Please rephrase your question or choose from the suggestions above!</strong><br><br>You can also visit the <a href='https://www.iitrpr.ac.in/library/' target='_blank' style='color: #10b981; text-decoration: underline;'>official library website</a> for more details."
 
     elif context == "book":
-        return f"🤔 <strong>I couldn't find books matching '{query}' in our catalogue.</strong><br><br><strong>Try:</strong><br>• More specific title or author name<br>• Different keywords<br>• Check spelling<br>• Ask about general topics instead<br><br><strong>How can I help you find what you're looking for?</strong>"
+        book_clarification_prefixes = [
+            "📚 <strong>I couldn't find books matching that search in our collection.</strong>",
+            "🔍 <strong>No matches found for that in our catalog, but don't worry!</strong>",
+            "📖 <strong>Hmm, I didn't locate any books with those terms.</strong>",
+            "🎯 <strong>Let's try a different approach to find what you need!</strong>"
+        ]
+        
+        prefix = random.choice(book_clarification_prefixes)
+        return f"{prefix}<br><br><strong>Try:</strong><br>• More specific title or author name<br>• Different keywords<br>• Check spelling<br>• Ask about general topics instead<br><br><strong>How can I help you find what you're looking for?</strong>"
 
     else:
         return f"🤔 <strong>I'm not sure what you mean by '{query}'.</strong><br><br><strong>Please clarify:</strong><br>• Rephrase your question<br>• Provide more details<br>• Ask about library services, books, or resources<br><br><strong>What would you like to know about the library?</strong>"
@@ -2443,9 +2581,12 @@ def get_nandu_response(q, search_mode: str = "auto", client_ip: str = "default")
         if query_type == 'greeting':
             logger.info("👋 Detected greeting - providing welcome message")
             greeting_responses = [
-                "👋 <strong>Hello! Welcome to IIT Ropar Library!</strong><br><br>I'm Nalanda, your library assistant. I can help you:<br>• 📚 Search for books by title, author, or subject<br>• ⏰ Check library hours and policies<br>• 📖 Learn about borrowing rules and fines<br>• 🔍 Guide you on using OPAC and e-resources<br><br><strong>What would you like to know today?</strong>",
-                "👋 <strong>Hi there! I'm Nalanda, your library assistant!</strong><br><br>How can I help you today? Feel free to ask me about:<br>• 📚 Books and their availability<br>• ⏰ Library timings and services<br>• 📖 Borrowing and return policies<br>• 🔍 How to search for books and journals<br><br><strong>Just ask away!</strong>",
-                "👋 <strong>Hello! Great to see you!</strong><br><br>I'm here to help you with:<br>• 📚 Finding books in our collection<br>• ⏰ Library hours and contact information<br>• 📖 Borrowing limits and fine policies<br>• 🔍 Accessing e-resources and databases<br><br><strong>What can I help you with?</strong>"
+                "👋 <strong>Hello! Welcome to IIT Ropar Library!</strong><br><br>I'm Nalanda, your friendly library assistant. I'm here to help you:<br>• 📚 Search for books by title, author, or subject<br>• ⏰ Check library hours and policies<br>• 📖 Learn about borrowing rules and fines<br>• 🔍 Guide you on using OPAC and e-resources<br><br><strong>What would you like to know today?</strong>",
+                "🌟 <strong>Hi there! I'm Nalanda, your digital library guide!</strong><br><br>Ready to explore? I can help you with:<br>• 📚 Finding the perfect books for your studies<br>• ⏰ Library timings and services<br>• 📖 Borrowing and return policies<br>• 🔍 Accessing online journals and databases<br><br><strong>What brings you to the library today?</strong>",
+                "✨ <strong>Greetings! Welcome to your library companion!</strong><br><br>I'm here to make your library experience seamless:<br>• 📚 Discover books in our vast collection<br>• ⏰ Get up-to-date library information<br>• 📖 Understand borrowing limits and policies<br>• 🔍 Navigate digital resources and catalogs<br><br><strong>How can I assist you today?</strong>",
+                "🎓 <strong>Hello, fellow learner! Welcome to IIT Ropar Library!</strong><br><br>I'm Nalanda, your 24/7 library assistant. Let me help you:<br>• 📚 Search through 25,000+ books and resources<br>• ⏰ Get real-time library information<br>• 📖 Navigate borrowing and return processes<br>• 🔍 Access e-journals, databases, and digital tools<br><br><strong>What academic adventure can I help you with?</strong>",
+                "🔥 <strong>Hey! Great to see you here!</strong><br><br>I'm Nalanda, and I'm excited to help you explore:<br>• 📚 Our extensive book collection<br>• ⏰ Library schedules and important updates<br>• 📖 Circulation policies and borrowing rules<br>• 🔍 Digital resources and research tools<br><br><strong>What can I help you discover today?</strong>",
+                "💫 <strong>Welcome! I'm Nalanda, your personal library navigator!</strong><br><br>Ready to dive in? I'm here to assist with:<br>• 📚 Finding exactly the books you need<br>• ⏰ Library hours, policies, and procedures<br>• 📖 Borrowing limits and renewal processes<br>• 🔍 Digital databases and online resources<br><br><strong>What would you like to explore first?</strong>"
             ]
             # Random selection for variety
             import random
